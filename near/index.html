@@ -666,41 +666,6 @@ dialog {border-radius:18px;box-shadow:0 25px 70px #29392f30}
 .pose-card-fields .near-card-style-label{display:grid;gap:8px;font-size:11px;font-weight:720;color:#52695b}
 .pose-card-fields #near-card-style{width:100%;border:1px solid #dfe7dd;padding:11px 12px;border-radius:9px;background:#fff;color:#456453;font-size:12px;font-weight:600;min-height:41px}
 .pose-card-fields #near-card-style:focus-visible{outline:2px solid #92ac9a}
-/* ================= néar. | explore together · discovery update ================= */
-.near-discover{display:grid;grid-template-columns:minmax(220px,285px) minmax(0,1fr);gap:24px;align-items:stretch;margin:-6px 0 25px;padding:20px 23px;border:1px solid #dde5dd;border-radius:18px;background:linear-gradient(118deg,#fffdf8 0%,#fff 64%,#f3f7f2 100%);box-shadow:0 7px 28px #4762530b;scroll-margin-top:12px}
-.near-discover__intro{padding:4px 0;min-width:0}.near-discover__overline{color:#9a7461;font-size:10px;letter-spacing:1.4px;font-weight:800;display:block;margin-bottom:8px}
-.near-discover__intro h2{font-size:20px;font-weight:760;letter-spacing:-.6px;line-height:1.4;color:#304d3c;margin:0 0 8px}
-.near-discover__intro p{color:#718777;font-size:11px;line-height:1.7;margin:0 0 12px}
-.near-discover__fields{display:grid;grid-template-columns:1fr 1fr;gap:9px;min-width:0}
-.near-discover__fields label{font-size:10px;font-weight:650;color:#6c7d70;min-width:0;display:flex;flex-direction:column;gap:4px}
-.near-discover__input-wrap{display:flex;align-items:center;gap:3px;padding:5px 8px;border:1px solid #dce6dc;background:#fff;border-radius:9px;min-width:0}
-.near-discover__input-wrap:focus-within{outline:2px solid #9eb9a4;outline-offset:1px}
-.near-discover__fields input{min-width:0;width:100%;padding:0;outline:0;border:0;text-align:right;background:transparent;color:#385845;font-size:18px;font-weight:760;font-variant-numeric:tabular-nums}
-.near-discover__input-wrap small{font-size:10px;color:#93a397}
-.near-discover__inputs-note{font-size:10px;color:#819284;margin-top:9px;display:flex;align-items:center;gap:5px}
-.near-discover__inputs-note b{color:#436b54}
-.near-discover__main{min-width:0;display:flex;flex-direction:column;gap:10px}
-.near-discover__topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
-.near-discover__topline strong{font-size:12px;font-weight:750;color:#405c4a}
-.near-discover__modes{display:flex;gap:5px;padding:3px;border:1px solid #e2e9df;border-radius:11px;background:#f3f6f1}
-.near-discover__modes button{padding:7px 13px;border-radius:8px;color:#839184;font-size:11px;font-weight:700;min-height:32px;white-space:nowrap}
-.near-discover__modes button[aria-pressed=true]{background:#426d55;color:#fff;box-shadow:0 3px 8px #345c4524}
-.near-discover__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0}
-.near-discover__card{border:1px solid #e4e9e1;background:#fff;text-align:left;padding:12px 13px;min-height:107px;display:flex;flex-direction:column;gap:7px;border-radius:12px;transition:background .18s,border-color .18s,transform .18s;min-width:0}
-.near-discover__card:hover{background:#f4f9f3;border-color:#acc9b1;transform:translateY(-2px);filter:none}
-.near-discover__card[aria-current=true]{background:#eff6ed;border-color:#7ea488;box-shadow:inset 0 0 0 1px #a7c6ac}
-.near-discover__card-head{display:flex;justify-content:space-between;align-items:center;gap:5px;color:#9c7c66;font-size:10px;font-weight:750}
-.near-discover__card-head span:last-child{color:#789380}
-.near-discover__card b{color:#344e3f;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.near-discover__card small{font-size:10px;color:#7d9082;line-height:1.45;display:block}
-.near-discover__foot{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#91a094;font-size:10px;line-height:1.5}
-.near-discover__foot button{color:#436a53;text-decoration:underline;text-underline-offset:3px;font-weight:750;font-size:10px;padding:3px 0;white-space:nowrap}
-.near-discover--mobile{display:none}
-@media(min-width:761px) and (max-width:1020px){.near-discover{grid-template-columns:210px minmax(0,1fr);gap:15px;padding:16px}.near-discover__intro h2{font-size:17px}.near-discover__card{padding:10px;min-height:118px}.near-discover__modes button{padding:6px 8px}.near-discover__card small{font-size:9px}}
-@media(max-width:760px){.near-discover--desktop{display:none!important}.near-discover--mobile{display:flex!important;flex-direction:column;gap:10px;margin:0 0 15px!important;padding:13px!important;border-radius:14px;box-shadow:none!important;background:#f6f9f5;border-color:#e0e9df}.near-discover__intro{padding:0}.near-discover__overline{font-size:9px;margin-bottom:4px}.near-discover__intro h2{font-size:16px;margin:0 0 4px}.near-discover__intro p{font-size:10px;margin:0 0 9px}.near-discover__fields{gap:8px}.near-discover__fields label{font-size:10px}.near-discover__fields input{font-size:16px}.near-discover__input-wrap{padding:6px}.near-discover__inputs-note{font-size:10px;margin-top:6px}.near-discover__topline{gap:8px}.near-discover__topline strong{font-size:11px}.near-discover__modes{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.near-discover__modes button{padding:7px 2px;min-height:35px;font-size:11px}.near-discover__cards{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#b8cdb8 transparent;padding:2px 0 8px}.near-discover__card{flex:0 0 min(80%,205px);min-height:99px;scroll-snap-align:start;padding:11px 12px}.near-discover__card b{font-size:12px}.near-discover__card small{font-size:10px}.near-discover__foot{font-size:9px;align-items:flex-start}.near-discover__foot button{font-size:10px}}
-@media(prefers-reduced-motion:reduce){.near-discover__card{transition:none}}
-
-
 /* néar. Body proportions — functional, per-character, touch friendly */
 .proportion-studio{margin:14px 0 13px;border:1px solid #dce7db;border-radius:14px;background:#f7faf6;overflow:hidden}
 .proportion-studio__summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 15px;cursor:pointer;list-style:none}
@@ -878,9 +843,9 @@ dialog {border-radius:18px;box-shadow:0 25px 70px #29392f30}
   .near-desktop-inspector .ndi-bottom{padding:11px 15px 13px;border-top:1px solid #e8eee8;background:#fcfdfa;display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .near-desktop-inspector .ndi-bottom button{min-height:40px;border:1px solid #dce7dd;border-radius:9px;font-size:11px;font-weight:740;color:#476b52;background:#fff}
   .near-desktop-inspector .ndi-bottom .ndi-primary{background:#3e6652;border-color:#3e6652;color:#fff}
-  #discover.near-discover--desktop{margin:29px 0 15px;padding:18px 20px;grid-template-columns:250px 1fr}
-  #discover .near-discover__intro h2{font-size:17px}
-  #discover .near-discover__card{min-height:95px}
+  
+  
+  
   #saved-pose-section{margin-top:30px}
   .library{padding-top:37px}
   body.focus #studio>.studio-panel{position:fixed!important;inset:12px!important;width:auto!important;height:auto!important;max-height:none!important;z-index:70;box-shadow:0 0 0 30px #eff3ed}
@@ -32074,12 +32039,12 @@ void main() {
   const settings = document.querySelector('#studio>.settings');
   const studio = document.querySelector('#studio>.studio-panel');
   const tabs = [
-    {id:'poses',label:'姿勢',icon:'▦'},
     {id:'people',label:'人物',icon:'◉'},
-    {id:'surface',label:'家具',icon:'▤'},
+    {id:'poses',label:'姿勢',icon:'▦'},
     {id:'joints',label:'關節',icon:'⟟'},
     {id:'camera',label:'視角',icon:'◎'},
-    {id:'cards',label:'圖卡',icon:'♡'}
+    {id:'cards',label:'圖卡',icon:'♡'},
+    {id:'surface',label:'家具',icon:'▤'}
   ];
   const head = document.createElement('div');
   head.className = 'mobile-control-head';
@@ -32091,13 +32056,13 @@ void main() {
   pages.className = 'mobile-control-pages';
   pages.setAttribute('aria-label','即時操作控制台');
   const pane = (id) => {const d=document.createElement('section');d.className='mobile-pane';d.dataset.pane=id;pages.append(d);return d;};
+  const peoplePane=pane('people');
   const posePane=pane('poses');
   posePane.innerHTML=`<div class="mobile-section-title">選擇姿勢</div><p class="mobile-section-desc">選取後，直接在上方 3D 預覽查看效果。</p><label class="mobile-search"><span class="search-icon" aria-hidden="true">⌕</span><input id="mobile-pose-search" type="search" placeholder="搜尋 69 種姿勢" aria-label="搜尋姿勢"></label><div class="mobile-filters" id="mobile-pose-filters"></div><div class="mobile-pose-list" id="mobile-pose-list"></div>`;
-  const peoplePane=pane('people');
-  const surfacePane=pane('surface');
   const jointsPane=pane('joints');
   const cameraPane=pane('camera');
   const cardsPane=pane('cards');
+  const surfacePane=pane('surface');
   cardsPane.innerHTML='<div class="mobile-section-title">我的姿勢圖卡</div><p class="mobile-section-desc">儲存目前的全部設定，分享圖片，或套用以前存的姿勢。</p><button id="mobile-save-pose-card" type="button" class="mobile-save-pose-card">＋ 儲存目前姿勢</button><button id="mobile-import-pose-card" type="button" class="mobile-import-pose-card">↑ 匯入姿勢設定 (.json)</button><div id="mobile-saved-pose-grid" class="mobile-saved-pose-grid"></div>';
   // Attach panes before moving real inputs so document.getElementById remains valid.
   settings.prepend(head,tabBar,pages);
@@ -32118,7 +32083,7 @@ void main() {
   studio.querySelector('.stage').append(toolbar);
   const intro=document.querySelector('.intro>div');
   // No mobile hero CTA: the editor is already visible immediately.
-  let active='poses';let poseFilter='all';let poseQuery='';
+  let active='people';let poseFilter='all';let poseQuery='';
   const names = ()=>new Map(api.poses.map(p=>[p.id,p.name]));
   const group = (p) => p.category>=8?'親密': '日常';
   function renderPoses(){
@@ -32201,7 +32166,7 @@ void main() {
   const jointObserver=new MutationObserver(enhanceJointSliders);jointObserver.observe($('joint-sliders'),{childList:true});enhanceJointSliders();
   // When a phone is rotated or browser toolbar changes size, ResizeObserver on #stage updates Three canvas.
   settings.classList.add('mobile-ready');
-  pick('poses');refresh();
+  pick('people');refresh();
   // Don't make landscape/mobile-tab UIs appear to desktop; their CSS hides them.
 })();
 
@@ -32589,144 +32554,6 @@ void main() {
 </script>
 
 <script>
-/* Discovery / height-aware pose suggestions. Non-invasive: uses existing 3D scene and real person inputs. */
-(() => {
-  'use strict';
-  const api=window.nearMobileApi;
-  if (!api || !Array.isArray(api.poses) || !document.getElementById('studio')) return;
-  const $=id=>document.getElementById(id);
-  const byId=new Map(api.poses.map(p=>[p.id,p]));
-  const modes=[['hug','擁抱親吻'],['daily','約會日常'],['intimate','私密情境']];
-  let mode='hug';
-  try {const saved=localStorage.getItem('near-explore-mode-v1');if(modes.some(m=>m[0]===saved))mode=saved;}catch(e){}
-  const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const renderShell=mobile=>{
-    const section=document.createElement('section');
-    section.className='near-discover near-discover--'+(mobile?'mobile':'desktop');
-    section.setAttribute('aria-label','雙人身高差推薦情境');
-    if(!mobile)section.id='discover';
-    section.innerHTML=`
-      <div class="near-discover__intro">
-        <span class="near-discover__overline">✦ MADE FOR YOUR HEIGHTS</span>
-        <h2>你們的身高差，<br>可以怎麼靠近？</h2>
-        <p>從兩人的身高開始，找適合探索的 3D 情境。</p>
-        <div class="near-discover__fields">
-          <label><span data-near-name="0">人物 A</span><span class="near-discover__input-wrap"><input data-near-height="0" type="number" inputmode="decimal" min="50" max="1200" step="1" aria-label="人物 A 身高，公分"><small>cm</small></span></label>
-          <label><span data-near-name="1">人物 B</span><span class="near-discover__input-wrap"><input data-near-height="1" type="number" inputmode="decimal" min="50" max="1200" step="1" aria-label="人物 B 身高，公分"><small>cm</small></span></label>
-        </div>
-        <div class="near-discover__inputs-note">♡ <span>相差 <b data-near-gap>—</b> cm</span> · 即時同步 3D</div>
-      </div>
-      <div class="near-discover__main">
-        <div class="near-discover__topline"><strong>為你們挑選的情境</strong><div class="near-discover__modes" role="group" aria-label="想探索的情境">${modes.map(([v,n])=>`<button type="button" data-near-mode="${v}" aria-pressed="false">${n}</button>`).join('')}</div></div>
-        <div class="near-discover__cards" data-near-recs aria-live="polite"></div>
-        <div class="near-discover__foot"><span>依身高差與姿勢類型排序，僅供比例探索，非舒適度或安全性判定。</span><button type="button" data-near-all>查看全部姿勢 ↗</button></div>
-      </div>`;
-    return section;
-  };
-  const desktop=renderShell(false);
-  document.querySelector('.intro')?.insertAdjacentElement('afterend',desktop);
-  const mobilePane=document.querySelector('.mobile-pane[data-pane="poses"]');
-  const mobile=renderShell(true);
-  if (mobilePane) mobilePane.prepend(mobile);
-  // The first three are curated by scenario and height-gap range; not biomechanical predictions.
-  const suggestions={
-    hug:{
-      small:[['kiss','看看兩人自然站立時臉部的高度。'],['hug','觀察肩膀與手臂相遇的位置。'],['forehead','試著微調頭部角度，看額頭如何靠近。']],
-      medium:[['hug','先看肩膀高度差，再微調擁抱位置。'],['backhug','同方向站立，觀察手臂如何環抱。'],['forehead','比比看自然對眼與微微低頭的差別。']],
-      large:[['backhug','從背後擁抱，觀察肩膀與手臂接觸。'],['sofacuddle','試試坐姿，減少站立高度差的影響。'],['bednear','靠坐床沿，並調整床面高度。']]},
-    daily:{
-      small:[['handhold','看看雙手在中間如何相遇。'],['cafe','坐下約會，調整椅面高度。'],['selfie','試試兩人同框的鏡頭角度。']],
-      medium:[['handhold','觀察牽手時手臂的相對高度。'],['sofacuddle','沙發坐姿能改變雙方頭部高度。'],['selfie','微調鏡頭，找到同框構圖。']],
-      large:[['sofacuddle','坐姿時的比例和站姿不一樣。'],['bednear','床沿高度可以由你們自行設定。'],['sit','用同一張長椅比較坐姿身高差。']]},
-    intimate:{
-      small:[['int_side_face','側躺情境，觀察臉與肩的相對位置。'],['int_sofa_face','坐姿的高度受沙發座面影響。'],['int_stand_face','站姿對位，觀察骨盆參考點的高度差。']],
-      medium:[['int_side_face','側躺不需直接對齊站立身高。'],['int_bed_edge_face','比較床高改變後的參考點。'],['int_sofa_face','查看沙發坐姿的人物比例。']],
-      large:[['int_bed_edge_face','床面高度可調，觀察床沿與站姿差異。'],['int_spoon','同方向側躺，比較兩人的身體比例。'],['int_sofa_face','沙發坐姿不直接受站立高度差限制。']]}
-  };
-  const getRange=()=>{const a=api.state.people[0].height,b=api.state.people[1].height;const gap=Math.abs(a-b);return gap<=10?'small':gap<=25?'medium':'large';};
-  let lastSignature='';
-  function refresh(force=false){
-    const a=api.state.people[0],b=api.state.people[1];
-    const gap=Math.round(Math.abs(a.height-b.height)*10)/10;
-    const key=[mode,getRange(),a.height,b.height,a.name,b.name,api.state.pose].join('|');
-    if(!force&&lastSignature===key)return;
-    lastSignature=key;
-    const arr=suggestions[mode][getRange()].filter(([id])=>byId.has(id));
-    [desktop,mobile].forEach(section=>{
-      section.querySelectorAll('[data-near-height]').forEach(input=>{
-        const v=api.state.people[Number(input.dataset.nearHeight)].height;
-        if(document.activeElement!==input)input.value=String(v);
-      });
-      section.querySelectorAll('[data-near-name]').forEach(el=>{
-        const p=api.state.people[Number(el.dataset.nearName)];
-        el.textContent=(p.name||'人物 '+(Number(el.dataset.nearName)?'B':'A')).slice(0,12);
-      });
-      section.querySelector('[data-near-gap]').textContent=String(gap);
-      section.querySelectorAll('[data-near-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.nearMode===mode)));
-      const list=section.querySelector('[data-near-recs]');
-      list.innerHTML=arr.map(([id,why],i)=>{
-        const pose=byId.get(id);
-        return `<button type="button" class="near-discover__card" data-near-pose="${id}" aria-current="${String(api.state.pose===id)}" aria-label="開啟${safe(pose.name)}姿勢，${safe(why)}"><span class="near-discover__card-head"><span>0${i+1} · ${i===0?'優先探索':'推薦探索'}</span><span>${safe(api.familyLabel(pose))} ↗</span></span><b>${safe(pose.name)}</b><small>${safe(why)}</small></button>`;
-      }).join('');
-    });
-  }
-  const updateHeight=(i,val)=>{
-    const h=Number(val);
-    if(!Number.isFinite(h)||h<50||h>1200)return false;
-    const live=$('number-'+i);
-    if(!live)return false;
-    live.value=String(h);
-    live.dispatchEvent(new Event('input',{bubbles:true}));
-    return true;
-  };
-  function revealPose(id){
-    if(!byId.has(id))return;
-    api.choosePose(id);
-    refresh(true);
-    const stage=$('studio');
-    if(window.innerWidth>760){
-      const r=stage.getBoundingClientRect();
-      if(r.top>120||r.bottom<140)stage.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
-    }
-  }
-  [desktop,mobile].forEach(section=>{
-    section.addEventListener('click',event=>{
-      const modeButton=event.target.closest('[data-near-mode]');
-      if(modeButton){mode=modeButton.dataset.nearMode;try{localStorage.setItem('near-explore-mode-v1',mode);}catch(e){}refresh(true);return;}
-      const poseButton=event.target.closest('[data-near-pose]');
-      if(poseButton){revealPose(poseButton.dataset.nearPose);return;}
-      if(event.target.closest('[data-near-all]')){
-        if(window.innerWidth<=760) {
-          section.closest('.mobile-pane')?.querySelector('#mobile-pose-search')?.focus();
-          section.closest('.mobile-pane')?.querySelector('#mobile-pose-filters')?.scrollIntoView({behavior:'smooth',block:'nearest'});
-        } else $('library')?.scrollIntoView({behavior:'smooth',block:'start'});
-      }
-    });
-    section.addEventListener('input',event=>{
-      const input=event.target.closest('[data-near-height]');
-      if(!input)return;
-      const i=Number(input.dataset.nearHeight);
-      if(updateHeight(i,input.value))refresh(true);
-    });
-    section.addEventListener('change',event=>{
-      const input=event.target.closest('[data-near-height]');
-      if(!input)return;
-      const i=Number(input.dataset.nearHeight);
-      const value=Math.round(Math.min(1200,Math.max(50,Number(input.value)||api.state.people[i].height)));
-      updateHeight(i,value);input.value=String(value);refresh(true);
-    });
-  });
-  // All other existing sliders and presets update the #difference element through refreshScene.
-  const difference=$('difference');
-  if(difference)new MutationObserver(()=>refresh()).observe(difference,{childList:true,subtree:true,characterData:true});
-  const activeName=$('active-name');
-  if(activeName)new MutationObserver(()=>refresh()).observe(activeName,{childList:true,characterData:true,subtree:true});
-  refresh(true);
-  window.nearDiscovery={recommendations:()=>suggestions[mode][getRange()].map(([id,reason])=>({id,reason})),setMode(v){if(modes.some(x=>x[0]===v)){mode=v;refresh(true);}},refresh:()=>refresh(true)};
-})();
-</script>
-
-<script>
 /* Desktop inspector: moves existing live settings, never clones controls or state. */
 (()=>{
   'use strict';
@@ -32737,12 +32564,12 @@ void main() {
   inspector.className='near-desktop-inspector';
   inspector.setAttribute('aria-label','桌面姿勢與人物調整工具');
   inspector.innerHTML=`<div class="ndi-top"><span class="ndi-eyebrow">STUDIO CONTROL</span><div class="ndi-head"><strong>精細調整</strong><span class="ndi-live">● 即時更新</span></div></div>
-  <nav class="ndi-tabs" aria-label="桌面編輯面板"><button type="button" data-ndi-tab="pose" aria-selected="false">姿勢</button><button type="button" data-ndi-tab="shape" aria-selected="true">體型</button><button type="button" data-ndi-tab="room" aria-selected="false">家具</button><button type="button" data-ndi-tab="joints" aria-selected="false">關節</button></nav>
+  <nav class="ndi-tabs" aria-label="桌面編輯面板"><button type="button" data-ndi-tab="shape" aria-selected="true">人物</button><button type="button" data-ndi-tab="pose" aria-selected="false">姿勢</button><button type="button" data-ndi-tab="joints" aria-selected="false">關節</button><button type="button" data-ndi-tab="room" aria-selected="false">家具</button></nav>
   <div class="ndi-pages">
-    <section class="ndi-page" data-ndi-pane="pose"><div class="ndi-title">尋找雙人姿勢</div><p class="ndi-desc">選取後，中間 3D 畫面會立即切換。</p><label class="ndi-pose-search">⌕ <input type="search" id="ndi-pose-search" placeholder="搜尋所有姿勢…" aria-label="搜尋姿勢"></label><div class="ndi-filters"><button data-ndi-filter="all" aria-pressed="true">全部</button><button data-ndi-filter="daily" aria-pressed="false">日常</button><button data-ndi-filter="intimate" aria-pressed="false">親密</button><button data-ndi-filter="fav" aria-pressed="false">收藏</button></div><div class="ndi-pose-list" id="ndi-pose-list"></div></section>
     <section class="ndi-page is-active" data-ndi-pane="shape"><div class="ndi-title">人物比例與輪廓</div><p class="ndi-desc">兩個人獨立調整，維持總身高不變。</p></section>
-    <section class="ndi-page" data-ndi-pane="room"><div class="ndi-title">家具與場景</div><p class="ndi-desc">調整床、沙發與椅面高度，結果同步預覽。</p></section>
+    <section class="ndi-page" data-ndi-pane="pose"><div class="ndi-title">尋找雙人姿勢</div><p class="ndi-desc">選取後，中間 3D 畫面會立即切換。</p><label class="ndi-pose-search">⌕ <input type="search" id="ndi-pose-search" placeholder="搜尋所有姿勢…" aria-label="搜尋姿勢"></label><div class="ndi-filters"><button data-ndi-filter="all" aria-pressed="true">全部</button><button data-ndi-filter="daily" aria-pressed="false">日常</button><button data-ndi-filter="intimate" aria-pressed="false">親密</button><button data-ndi-filter="fav" aria-pressed="false">收藏</button></div><div class="ndi-pose-list" id="ndi-pose-list"></div></section>
     <section class="ndi-page" data-ndi-pane="joints"><div class="ndi-title">關節精修</div><p class="ndi-desc">選擇人物及部位，精確調整姿勢與相對位置。</p></section>
+    <section class="ndi-page" data-ndi-pane="room"><div class="ndi-title">家具與場景</div><p class="ndi-desc">調整床、沙發與椅面高度，結果同步預覽。</p></section>
   </div><div class="ndi-bottom"><button type="button" id="ndi-reset-view">↺ 重設視角</button><button type="button" class="ndi-primary" id="ndi-save-card">♡ 儲存圖卡</button></div>`;
   studio.append(inspector);
   const $=(sel,root=document)=>root.querySelector(sel);
@@ -32763,18 +32590,13 @@ void main() {
     [$('.mobile-joint-shortcuts',jointPane),page('joints')],
     [document.getElementById('joint-details'),page('joints')]
   ];
-  const discover=document.getElementById('discover');
-  const discoverPlaceholder=discover?document.createComment('desktop-discover-original-position'):null;
-  if(discover)discover.before(discoverPlaceholder);
   const switchLayout=()=>{
     if(mq.matches){
       if(!moved.length)sourcePositions.forEach(([node,host])=>move(node,host));
       const p=document.getElementById('proportion-panel');if(p)p.open=true;
       const j=document.getElementById('joint-details');if(j)j.open=true;
-      if(discover){const anchor=document.getElementById('saved-pose-section');if(anchor)anchor.before(discover);}
     }else{
       while(moved.length){const {node,placeholder}=moved.pop();placeholder.replaceWith(node);}
-      if(discover&&discoverPlaceholder?.isConnected)discoverPlaceholder.after(discover);
     }
     window.dispatchEvent(new Event('resize'));
   };
