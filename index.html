@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andy's Web Hub | 專案導覽</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-hover: #334155;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --accent: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      color: var(--text-sub);
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background-color: var(--card-hover);
+      border-color: var(--accent);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Andy's Web Hub</h1>
+      <p>選擇下方專案進入對應網站</p>
+    </header>
+
+    <main class="grid">
+      <!-- 網站 1：指向 /near/ 資料夾 -->
+      <a href="./near/" class="card">
+        <div>
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Néar 專案</div>
+          <div class="card-desc">第一個網頁專案，點擊進入瀏覽完整內容與互動功能。</div>
+        </div>
+        <div class="card-link">前往網站 &rarr;</div>
+      </a>
+
+      <!-- 網站 2：指向 /game2/ 資料夾 -->
+      <a href="./game2/" class="card">
+        <div>
+          <div class="card-icon">🎮</div>
+          <div class="card-title">Game 2 測試區</div>
+          <div class="card-desc">第二個網頁應用程式或小遊戲展示頁面。</div>
+        </div>
+        <div class="card-link">前往網站 &rarr;</div>
+      </a>
+
+      <!-- 網站 3：預留擴充範例（可隨時複製此區塊新增） -->
+      <a href="./tools/" class="card">
+        <div>
+          <div class="card-icon">🛠️</div>
+          <div class="card-title">實用小工具</div>
+          <div class="card-desc">日常使用的網頁小工具集合（待上架）。</div>
+        </div>
+        <div class="card-link">前往網站 &rarr;</div>
+      </a>
+    </main>
+
+    <footer>
+      &copy; 2026 Andy.ddns.net &bull; Hosted on Cloudflare
+    </footer>
+  </div>
+
+</body>
+</html>
