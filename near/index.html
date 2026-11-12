@@ -896,6 +896,58 @@ dialog {border-radius:18px;box-shadow:0 25px 70px #29392f30}
   #studio .footer-actions{display:flex;max-width:none;justify-content:flex-start;margin-top:9px}
 }
 
+
+/* néar. 4.1 — clear mobile accordions and camera pan tools */
+.near-stage-pan{position:absolute;z-index:4;right:16px;top:46%;display:grid;gap:5px}
+.near-stage-pan button{width:35px;height:35px;border:1px solid #d8e6d9;border-radius:11px;background:#fffefbea;color:#456954;box-shadow:0 3px 14px #34573a19;font-size:20px;font-weight:700;display:grid;place-items:center;touch-action:manipulation}
+.near-stage-pan button:hover{background:#eaf3e9}
+.near-card-toggle{display:none}
+.near-mobile-pan{padding:14px 13px;margin:15px 0;border-radius:13px;background:#f7faf5;border:1px solid #e0e9dc}
+.near-mobile-pan>strong{display:block;font-size:13px;color:#395e46}
+.near-mobile-pan>p,.near-mobile-pan>small{display:block;color:#829688;font-size:11px;line-height:1.7;margin:5px 0 10px}
+.near-pan-dpad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.near-pan-dpad button{min-height:44px;border:1px solid #d5e3d5;background:#fff;color:#456b52;border-radius:10px;font-weight:750;font-size:23px}
+.near-pan-dpad button:active{background:#e9f2e7}
+@media(max-width:760px){
+  .near-stage-pan{right:9px;top:48%;gap:5px}
+  .near-stage-pan button{width:31px;height:31px;font-size:19px;background:#ffffffd9}
+  .mobile-pane .near-card-toggle{display:flex!important;align-items:center;justify-content:space-between;width:100%;min-height:59px;border:0;background:transparent;padding:10px 12px;color:#355846;text-align:left;gap:9px}
+  .near-card-toggle-text{min-width:0;display:grid;gap:3px}
+  .near-card-toggle-text b{font-size:13px;line-height:1.4}
+  .near-card-toggle-text small{font-size:11px;color:#8b9a8f;line-height:1.3}
+  .near-card-chevron{font-size:18px;transform:rotate(180deg);transition:transform .16s}
+  .near-card-collapsed>.near-card-toggle .near-card-chevron{transform:rotate(0deg)}
+  .mobile-pane .person-card,.mobile-pane .surface-field{padding:0!important;overflow:hidden}
+  .mobile-pane .person-card:not(.near-card-collapsed) > :not(.near-card-toggle),
+  .mobile-pane .surface-field:not(.near-card-collapsed) > :not(.near-card-toggle){margin-left:12px!important;margin-right:12px!important}
+  .mobile-pane .person-card:not(.near-card-collapsed) > :last-child,
+  .mobile-pane .surface-field:not(.near-card-collapsed) > :last-child{margin-bottom:13px!important}
+  .mobile-pane .person-card.near-card-collapsed > :not(.near-card-toggle),
+  .mobile-pane .surface-field.near-card-collapsed > :not(.near-card-toggle){display:none!important}
+  .mobile-pane #people{display:block!important}
+  .mobile-pane #people .person-card{margin-bottom:9px!important}
+  .mobile-pane #proportion-panel:not([open]) .proportion-studio__body{display:none!important}
+  .mobile-pane #proportion-panel > summary{min-height:65px}
+  .mobile-pane #joint-details>summary{display:flex!important;align-items:center!important;min-height:56px!important;font-size:13px!important;padding:11px 0!important}
+  .mobile-pane[data-pane=joints] .mobile-joint-shortcuts{display:none!important}
+  .mobile-pane[data-pane=joints]:has(#joint-details[open]) .mobile-joint-shortcuts{display:flex!important}
+  .mobile-pane[data-pane=joints] #joint-details{border:1px solid #dfe9df!important;border-radius:13px!important;padding:1px 13px!important;background:#fbfcfa!important;margin-top:11px!important}
+  .mobile-pane[data-pane=joints] #joint-details .fine-content{padding-top:7px!important}
+}
+
+/* Mobile pose choices now live inside closed, discoverable category cards. */
+@media(max-width:760px){
+  .near-pose-folder{border:1px solid #e0e9e0;border-radius:13px;background:#fcfdfa;margin:0 0 9px;overflow:hidden}
+  .near-pose-folder>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;cursor:pointer;min-height:60px;padding:11px 14px;color:#41644f}
+  .near-pose-folder>summary::-webkit-details-marker{display:none}
+  .near-pose-folder>summary>span:first-child{display:grid;gap:4px}
+  .near-pose-folder>summary b{font-size:13px;font-weight:760}
+  .near-pose-folder>summary small{font-size:10px;color:#88998c}
+  .near-folder-chevron{font-size:19px;transition:transform .15s}
+  .near-pose-folder[open] .near-folder-chevron{transform:rotate(180deg)}
+  .near-pose-folder-items{border-top:1px solid #e9f0e9;padding:7px;display:grid;gap:5px}
+  .near-pose-folder-items>.mobile-pose-option{margin:0!important;border-radius:9px}
+}
 </style>
 </head>
 <body>
@@ -955,7 +1007,7 @@ dialog {border-radius:18px;box-shadow:0 25px 70px #29392f30}
           <canvas id="world" tabindex="0" aria-label="雙人 3D 場景：拖曳旋轉、滾輪縮放，方向鍵旋轉，＋或－縮放。"></canvas>
           <div class="scene-loading" id="loading">正在準備你們的小世界…</div>
           <div class="person-labels"><span><i class="dot-a"></i><b id="label-a">你</b><span id="height-a">165 cm</span></span><span><i class="dot-b"></i><b id="label-b">另一半</b><span id="height-b">180 cm</span></span></div>
-          <div class="stage-hint">拖曳旋轉 <span>·</span> 滾輪縮放 <span>·</span> 方向鍵也可以</div>
+          <div class="stage-hint">拖曳旋轉 · Shift＋拖曳平移 · 滾輪縮放 · 雙指平移縮放</div><div class="near-stage-pan" role="group" aria-label="調整場景上下位置"><button type="button" data-stage-pan="0,-50" title="場景向上" aria-label="場景向上平移">↑</button><button type="button" data-stage-pan="0,50" title="場景向下" aria-label="場景向下平移">↓</button></div>
           <div class="stage-tools"><button class="icon-button" id="reset-view" aria-label="重設視角" title="重設視角">↺</button><button class="icon-button" id="rotate" aria-label="自動旋轉" aria-pressed="false" title="自動旋轉">⟳</button><button class="icon-button" id="grid" aria-label="顯示格線" aria-pressed="true" title="顯示格線">▦</button></div>
         </div>
         <div class="studio-footer"><div class="mobile-quick-heights" id="mobile-quick-heights" aria-label="快速調整身高"><span class="quick-height-title">即時調整身高</span><div class="quick-height-fields"><label>人物 A <input type="number" min="50" max="1200" step="1" data-quick-height="0" value="165" inputmode="decimal" aria-label="人物 A 身高，公分"><small>cm</small></label><label>人物 B <input type="number" min="50" max="1200" step="1" data-quick-height="1" value="180" inputmode="decimal" aria-label="人物 B 身高，公分"><small>cm</small></label></div></div><div class="scene-notes"><span class="micro">姿勢說明</span><p id="scene-description">把彼此放進臂彎，讓距離剛剛好。</p><p id="fit-message" class="fit-message" aria-live="polite"></p></div><div class="footer-actions"><a class="button" id="article-figure" href="https://helloyishi.com.tw/sexual-health/sex-tip/main-6-sex-position/" target="_blank" rel="noopener" hidden title="開啟此姿勢在 Hello 醫師文章的原始圖片">↗ 對照原圖</a><button class="button" id="focus"><span aria-hidden="true">⛶</span> 純享模式</button><button class="button" id="photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h4l2-2h4l2 2h4v14H4z"/><circle cx="12" cy="12" r="4"/></svg> 拍張合照</button><button class="button primary" type="button" id="save-card-main">♡ 儲存圖卡</button></div></div>
@@ -30545,6 +30597,8 @@ void main() {
       this.yaw = 0.25;
       this.pitch = 0.16;
       this.zoom = 1;
+      // A free-camera screen-space offset; never moves the characters or props.
+      this.panOffset = V(0, 0, 0);
       this.scene.add(new HemisphereLight("#fffdf0", "#bfc3aa", 2.4));
       const sun = new DirectionalLight("#fff5df", 3);
       sun.position.set(-3, 7, 5);
@@ -30581,10 +30635,11 @@ void main() {
         canvas.focus({ preventScroll: true });
         canvas.setPointerCapture(e.pointerId);
         this.pointers.set(e.pointerId, [e.clientX, e.clientY]);
-        this.drag = { x: e.clientX, y: e.clientY };
+        this.drag = { x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey };
         if (this.pointers.size === 2) {
           const [a, b] = [...this.pointers.values()];
           this.pinch = Math.hypot(a[0] - b[0], a[1] - b[1]);
+          this.pinchCenter = { x: (a[0] + b[0]) / 2, y: (a[1] + b[1]) / 2 };
         }
       });
       canvas.addEventListener("pointermove", (e) => {
@@ -30593,24 +30648,30 @@ void main() {
         if (this.pointers.size === 2) {
           const [a, b] = [...this.pointers.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]);
           if (d > 1) this.zoomView((this.pinch || d) / d);
+          const midpoint = { x: (a[0] + b[0]) / 2, y: (a[1] + b[1]) / 2 };
+          if (this.pinchCenter) this.panView(midpoint.x - this.pinchCenter.x, midpoint.y - this.pinchCenter.y);
+          this.pinchCenter = midpoint;
           this.pinch = d;
         } else if (this.drag) {
-          this.turnView((e.clientX - this.drag.x) * 7e-3, (e.clientY - this.drag.y) * 5e-3);
+          if (this.drag.pan || e.shiftKey) this.panView(e.clientX - this.drag.x, e.clientY - this.drag.y);
+          else this.turnView((e.clientX - this.drag.x) * 7e-3, (e.clientY - this.drag.y) * 5e-3);
         }
-        this.drag = { x: e.clientX, y: e.clientY };
+        this.drag = { x: e.clientX, y: e.clientY, pan: this.drag?.pan || e.shiftKey || (e.buttons & 2) !== 0 };
         this.dirty = true;
       });
       const release = (e) => {
         this.pointers.delete(e.pointerId);
         this.drag = null;
         this.pinch = null;
+        this.pinchCenter = null;
         if (this.pointers.size) {
           const p = [...this.pointers.values()][0];
-          this.drag = { x: p[0], y: p[1] };
+          this.drag = { x: p[0], y: p[1], pan: false };
         }
       };
       canvas.addEventListener("pointerup", release);
       canvas.addEventListener("pointercancel", release);
+      canvas.addEventListener('contextmenu', e => e.preventDefault());
       canvas.addEventListener("wheel", (e) => {
         e.preventDefault();
         this.zoomView(Math.exp(e.deltaY * 1e-3));
@@ -30620,13 +30681,20 @@ void main() {
         if (!keys.includes(e.key)) return;
         e.preventDefault();
         const fp = this.state.view !== "free";
-        if (e.key === "ArrowLeft") this.turnView(fp ? -0.1 : 0.1, 0);
-        if (e.key === "ArrowRight") this.turnView(fp ? 0.1 : -0.1, 0);
-        if (e.key === "ArrowUp") this.turnView(0, fp ? -0.08 : 0.08);
-        if (e.key === "ArrowDown") this.turnView(0, fp ? 0.08 : -0.08);
+        if (e.key === "ArrowLeft" && !e.shiftKey) this.turnView(fp ? -0.1 : 0.1, 0);
+        if (e.key === "ArrowRight" && !e.shiftKey) this.turnView(fp ? 0.1 : -0.1, 0);
+        if (e.key === "ArrowUp" && !e.shiftKey) this.turnView(0, fp ? -0.08 : 0.08);
+        if (e.key === "ArrowDown" && !e.shiftKey) this.turnView(0, fp ? 0.08 : -0.08);
         if (e.key === "+" || e.key === "=") this.zoomView(0.9);
         if (e.key === "-") this.zoomView(1.1);
         if (e.key === "Home") this.reset();
+        // Shift + arrows pans the free scene instead of orbiting.
+        if (e.shiftKey && this.state.view === 'free') {
+          if (e.key === 'ArrowLeft') this.panView(28, 0);
+          if (e.key === 'ArrowRight') this.panView(-28, 0);
+          if (e.key === 'ArrowUp') this.panView(0, 28);
+          if (e.key === 'ArrowDown') this.panView(0, -28);
+        }
         this.dirty = true;
       });
       this.update(state2);
@@ -30666,6 +30734,23 @@ void main() {
       }
       this.dirty = true;
     }
+    panView(dx, dy) {
+      if (this.state.view !== 'free') return false;
+      // Screen pixels -> scene units at the current camera distance.
+      const dimension = this.canvas.getBoundingClientRect();
+      const usableH = Math.max(160, dimension.height || 460);
+      const extent = Math.max(this.size?.y || 1.8, (this.size?.x || 0.8) / Math.max(this.camera.aspect, .4), (this.size?.z || 0.5) * .85, .4);
+      const dist = Math.max(extent / (2 * Math.tan(rad(17))) * 1.38 * this.zoom,
+                            Math.max(this.size?.x || 1, this.size?.y || 1.8, this.size?.z || 1) * .55 + .22);
+      const scale = 2 * Math.tan(rad(17)) * dist / usableH;
+      const right = V(Math.cos(this.yaw), 0, -Math.sin(this.yaw));
+      const up = V(-Math.sin(this.yaw)*Math.sin(this.pitch), Math.cos(this.pitch), -Math.cos(this.yaw)*Math.sin(this.pitch));
+      this.panOffset.addScaledVector(right, -dx * scale).addScaledVector(up, dy * scale);
+      // Avoid losing the scene after repeated swipes.
+      this.panOffset.clampLength(0, Math.max(2.5, extent * 2.5));
+      this.dirty = true;
+      return true;
+    }
     zoomView(factor) {
       const fp = this.firstPerson[this.state.view];
       if (fp) fp.zoom = Math.max(0.5, Math.min(100 / 70, fp.zoom * factor));
@@ -30682,6 +30767,7 @@ void main() {
         this.yaw = 0.25;
         this.pitch = 0.16;
         this.zoom = 1;
+        this.panOffset.set(0, 0, 0);
       }
       this.dirty = true;
     }
@@ -30691,7 +30777,10 @@ void main() {
       this.phoneTarget = null;
       const poseChanged = this.lastPose !== state2.pose;
       this.lastPose = state2.pose;
-      if (poseChanged) this.firstPerson = { a: { yaw: 0, pitch: 0, zoom: 1 }, b: { yaw: 0, pitch: 0, zoom: 1 } };
+      if (poseChanged) {
+        this.firstPerson = { a: { yaw: 0, pitch: 0, zoom: 1 }, b: { yaw: 0, pitch: 0, zoom: 1 } };
+        this.panOffset.set(0, 0, 0);
+      }
       this.state = state2;
       this.grid.visible = state2.grid;
       const old = this.content;
@@ -31260,6 +31349,7 @@ void main() {
       const dist = Math.max(extent / (2 * Math.tan(rad(17))) * 1.38 * this.zoom,
                             Math.max(size.x, size.y, size.z) * 0.55 + 0.22);
       center.y = Math.max(0.03, center.y * 0.95);
+      center.add(this.panOffset);
       this.camera.position.copy(center).add(V(Math.sin(this.yaw) * Math.cos(this.pitch) * dist, Math.sin(this.pitch) * dist, Math.cos(this.yaw) * Math.cos(this.pitch) * dist));
       this.camera.lookAt(center);
     }
@@ -31464,7 +31554,7 @@ void main() {
     $("favorite").textContent = state.favorites.includes(p.id) ? "\u2665" : "\u2661";
     $("grid").setAttribute("aria-pressed", state.grid);
     $("rotate").setAttribute("aria-pressed", state.auto);
-    document.querySelector(".stage-hint").textContent = state.view === "free" ? "\u62D6\u66F3\u65CB\u8F49 \xB7 \u6EFE\u8F2A\u7E2E\u653E \xB7 \u65B9\u5411\u9375\u4E5F\u53EF\u4EE5" : "對眼優先（自然可行時） · 拖曳自由轉頭 · Home 重設視線";
+    document.querySelector(".stage-hint").textContent = state.view === "free" ? "單指／拖曳旋轉 · Shift＋拖曳平移 · 雙指平移縮放" : "對眼優先 · 拖曳轉頭 · 自由視角可上下平移";
     document.querySelectorAll("[data-view]").forEach((b) => {
       b.classList.toggle("active", b.dataset.view === state.view);
       b.setAttribute("aria-pressed", b.dataset.view === state.view);
@@ -31780,10 +31870,14 @@ void main() {
     if (b) chooseAndRevealPose(b.dataset.pose);
   });
   function travelPose(offset) {
-    const list = getFilteredPoses();
-    const current = list.findIndex(p=>p.id===state.pose);
-    if (list.length === 0) { toast("目前的分類沒有姿勢"); return; }
-    choosePose(list[(current < 0 ? (offset>0 ? -1 : 0) : current) + offset + list.length].id);
+    // The mobile library has its own filter; top arrows should always travel
+    // through the complete catalog instead of a stale desktop filter.
+    const list = window.matchMedia('(max-width: 760px)').matches ? poses : getFilteredPoses();
+    const current = list.findIndex(p => p.id === state.pose);
+    if (!list.length) { toast("目前的分類沒有姿勢"); return; }
+    const next = current < 0 ? (offset > 0 ? 0 : list.length - 1)
+                             : (current + offset + list.length) % list.length;
+    choosePose(list[next].id);
   }
   $("prev-pose").addEventListener("click", () => travelPose(-1));
   $("next-pose").addEventListener("click", () => travelPose(1));
@@ -31817,6 +31911,15 @@ void main() {
     state.view = b.dataset.view;
     refreshScene();
   }));
+  document.querySelector('.near-stage-pan')?.addEventListener('click', event => {
+    const button = event.target.closest('[data-stage-pan]');
+    if (!button) return;
+    if (state.view !== 'free') {
+      document.querySelector('.view-switch [data-view="free"]')?.click();
+    }
+    const [x,y] = button.dataset.stagePan.split(',').map(Number);
+    scene?.panView(x,y);
+  });
   $("reset-view").addEventListener("click", () => {
     scene?.reset();
     refreshScene();
@@ -31932,6 +32035,9 @@ void main() {
       scene.yaw = Number.isFinite(camera.yaw) ? camera.yaw : scene.yaw;
       scene.pitch = Number.isFinite(camera.pitch) ? camera.pitch : scene.pitch;
       scene.zoom = Number.isFinite(camera.zoom) ? camera.zoom : scene.zoom;
+      if (Array.isArray(camera.pan) && camera.pan.length === 3 && camera.pan.every(Number.isFinite)) {
+        scene.panOffset.fromArray(camera.pan);
+      }
       scene.dirty = true;
     }
     renderCategories();
@@ -32005,7 +32111,7 @@ void main() {
   jointsPane.append(shortcuts);
   moveNodes(jointsPane,['#joint-details']);
   $('joint-details').open=true;
-  cameraPane.innerHTML=`<div class="mobile-section-title">自由調整鏡頭</div><p class="mobile-section-desc">點選人物視角或直接拖曳上方模型。雙指可縮放。</p><div class="mobile-camera-choices" id="mobile-camera-choices"><button data-camera="free"><span class="cam-icon">◈</span>自由視角</button><button data-camera="a"><span class="cam-icon">A</span>A 的眼睛</button><button data-camera="b"><span class="cam-icon">B</span>B 的眼睛</button></div><div class="mobile-camera-actions"><button id="mobile-reset-camera">↺ 重設鏡頭</button><button id="mobile-auto-camera">⟳ 自動旋轉</button><button id="mobile-grid-camera">▦ 顯示格線</button><button id="mobile-photo-camera">▣ 儲存合照</button><button id="mobile-zoom-in">＋ 放大畫面</button><button id="mobile-zoom-out">－ 縮小畫面</button></div><p class="mobile-camera-callout">面對面姿勢會優先對眼；背對及俯伏的動作維持自然朝向。需要更精確的位置，可切換「關節」調整頭部與人物位置。</p>`;
+  cameraPane.innerHTML=`<div class="mobile-section-title">自由調整鏡頭</div><p class="mobile-section-desc">點選人物視角或直接拖曳上方模型。雙指可縮放。</p><div class="mobile-camera-choices" id="mobile-camera-choices"><button data-camera="free"><span class="cam-icon">◈</span>自由視角</button><button data-camera="a"><span class="cam-icon">A</span>A 的眼睛</button><button data-camera="b"><span class="cam-icon">B</span>B 的眼睛</button></div><div class="mobile-camera-actions"><button id="mobile-reset-camera">↺ 重設鏡頭</button><button id="mobile-auto-camera">⟳ 自動旋轉</button><button id="mobile-grid-camera">▦ 顯示格線</button><button id="mobile-photo-camera">▣ 儲存合照</button><button id="mobile-zoom-in">＋ 放大畫面</button><button id="mobile-zoom-out">－ 縮小畫面</button></div><div class="near-mobile-pan"><strong>平移 3D 畫面</strong><p>移動的是鏡頭，不會改變人物的位置</p><div class="near-pan-dpad"><button type="button" data-near-pan="0,-50" aria-label="畫面向上移動">↑</button><button type="button" data-near-pan="-50,0" aria-label="畫面向左移動">←</button><button type="button" data-near-pan="0,50" aria-label="畫面向下移動">↓</button><button type="button" data-near-pan="50,0" aria-label="畫面向右移動">→</button></div><small>單指旋轉、雙指縮放與平移；電腦可按住 Shift 拖曳。</small></div><p class="mobile-camera-callout">面對面姿勢會優先對眼；背對及俯伏的動作維持自然朝向。需要更精確的位置，可切換「關節」調整頭部與人物位置。</p>`;
   // Move only the real nodes; other app event listeners continue to work unchanged.
   const toolbar=document.createElement('div');toolbar.className='mobile-toolbar';
   toolbar.innerHTML='<button type="button" id="mobile-toolbar-poses">▦ 換姿勢</button><button type="button" id="mobile-toolbar-photo">♡ 存圖卡</button>';
@@ -32020,7 +32126,15 @@ void main() {
     $('mobile-pose-filters').innerHTML=filters.map(([id,label])=>`<button type="button" data-mfilter="${id}" class="${poseFilter===id?'is-active':''}" aria-pressed="${poseFilter===id}">${label}</button>`).join('');
     const q=poseQuery.trim().toLowerCase();
     const options=api.poses.filter(p=>(poseFilter==='all'||(poseFilter==='daily'?p.category<8:poseFilter==='intimate'?p.category>=8:api.state.favorites.includes(p.id)))&&(!q||p.name.toLowerCase().includes(q)||api.familyLabel(p).toLowerCase().includes(q)));
-    $('mobile-pose-list').innerHTML=options.length? options.map((p,i)=>`<button type="button" class="mobile-pose-option ${api.state.pose===p.id?'is-active':''}" data-mobile-pose="${p.id}" aria-pressed="${api.state.pose===p.id}"><span class="pose-option-letter" aria-hidden="true">${p.category>=8?'♡':'✦'}</span><span class="pose-option-info"><b>${escapeHtml(p.name)}</b><small>${escapeHtml(api.familyLabel(p))} · ${group(p)}</small></span>${api.state.pose===p.id?'<span class="pose-option-active">使用中 ✓</span>':'<span aria-hidden="true" style="color:#bacbb9">›</span>'}</button>`).join(''):'<div class="mobile-pose-empty">沒有符合的姿勢，試試其他關鍵字。</div>';
+    // Mobile library: folder cards instead of displaying 69 choices at once.
+    const groups = new Map();
+    options.forEach(p=>{
+      const title=api.familyLabel(p);
+      if(!groups.has(title)) groups.set(title,[]);
+      groups.get(title).push(p);
+    });
+    const folderHtml = [...groups].map(([title, items])=>`<details class="near-pose-folder" ${q?'open':''}><summary><span><b>${escapeHtml(title)}</b><small>${items.length} 個姿勢</small></span><span class="near-folder-chevron">⌄</span></summary><div class="near-pose-folder-items">${items.map(p=>`<button type="button" class="mobile-pose-option ${api.state.pose===p.id?'is-active':''}" data-mobile-pose="${p.id}" aria-pressed="${api.state.pose===p.id}"><span class="pose-option-letter" aria-hidden="true">${p.category>=8?'♡':'✦'}</span><span class="pose-option-info"><b>${escapeHtml(p.name)}</b><small>${escapeHtml(api.familyLabel(p))} · ${group(p)}</small></span>${api.state.pose===p.id?'<span class="pose-option-active">使用中 ✓</span>':'<span aria-hidden="true" style="color:#bacbb9">›</span>'}</button>`).join('')}</div></details>`).join('');
+    $('mobile-pose-list').innerHTML=options.length?folderHtml:'<div class="mobile-pose-empty">沒有符合的姿勢，試試其他關鍵字。</div>';
   }
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function pick(id){
@@ -32064,6 +32178,13 @@ void main() {
   $('mobile-photo-camera').addEventListener('click',()=>$('photo').click());
   $('mobile-zoom-in').addEventListener('click',()=>api.getScene()?.zoomView(1/1.2));
   $('mobile-zoom-out').addEventListener('click',()=>api.getScene()?.zoomView(1.2));
+  cameraPane.querySelector('.near-mobile-pan').addEventListener('click',e=>{
+    const b=e.target.closest('[data-near-pan]');if(!b)return;
+    if(api.state.view!=='free') document.querySelector('.stage [data-view="free"]')?.click();
+    const [x,y]=b.dataset.nearPan.split(',').map(Number);
+    api.getScene()?.panView(x,y);
+    syncCamera();
+  });
   shortcuts.addEventListener('click',e=>{const b=e.target.closest('[data-mobile-joint]');if(b){$('edit-joint').value=b.dataset.mobileJoint;$('edit-joint').dispatchEvent(new Event('change',{bubbles:true}));syncJointShortcuts();}});
   $('edit-joint').addEventListener('change',syncJointShortcuts);
   // Add real one-degree nudges alongside existing joint sliders.
@@ -32122,7 +32243,7 @@ void main() {
   function lookupPose(id) { return api.poses.find(p => p.id === id); }
   function cameraState() {
     const sc = api.getScene();
-    return sc ? {yaw: sc.yaw, pitch: sc.pitch, zoom: sc.zoom} : {};
+    return sc ? {yaw: sc.yaw, pitch: sc.pitch, zoom: sc.zoom, pan: sc.panOffset?.toArray() || [0,0,0]} : {};
   }
   function stateCopy() {
     const c = JSON.parse(JSON.stringify(api.state));
@@ -32683,4 +32804,93 @@ void main() {
 })();
 </script>
 
+
+<script>
+/* néar. 4.1 — compact mobile settings cards. All original inputs stay live. */
+(() => {
+  'use strict';
+  const phone = window.matchMedia('(max-width:760px)');
+  const people = document.getElementById('people');
+  const proportion = document.getElementById('proportion-panel');
+  const joint = document.getElementById('joint-details');
+  const surface = document.querySelector('.mobile-pane[data-pane="surface"]');
+  if (!people || !proportion || !joint || !surface) return;
+  // Lightweight toggle button lets app.js continue to address #people.children[0/1].
+  function addToggle(card, title, subtitle) {
+    if (!card || card.querySelector(':scope > .near-card-toggle')) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'near-card-toggle';
+    button.setAttribute('aria-expanded','false');
+    button.innerHTML = '<span class="near-card-toggle-text"><b></b><small></small></span><span class="near-card-chevron" aria-hidden="true">⌄</span>';
+    card.prepend(button);
+    card.classList.add('near-card-collapsed');
+    button.querySelector('b').textContent = title;
+    button.querySelector('small').textContent = subtitle || '點擊展開設定';
+    button.addEventListener('click', () => {
+      const collapsed=card.classList.toggle('near-card-collapsed');
+      button.setAttribute('aria-expanded',String(!collapsed));
+    });
+    return button;
+  }
+  function bindPeople() {
+    people.querySelectorAll(':scope > .person-card').forEach((card,i) => {
+      const button=addToggle(card,`人物 ${i?'B':'A'}`,'身高與外觀');
+      const name=document.getElementById(`name-${i}`);
+      const height=document.getElementById(`number-${i}`);
+      if (button && name && height) {
+        const sync=()=>{button.querySelector('small').textContent=`${name.value||'未命名'} · ${height.value||'—'} cm`;};
+        name.addEventListener('input',sync);
+        height.addEventListener('input',sync);
+        height.addEventListener('change',sync);
+        sync();
+      }
+    });
+  }
+  bindPeople();
+  new MutationObserver(() => bindPeople()).observe(people,{childList:true});
+  function bindFurniture() {
+    surface.querySelectorAll('.surface-field').forEach(card=>{
+      const label=card.querySelector(':scope > label');
+      const name=label?.querySelector('span:nth-child(2)')?.childNodes?.[0]?.textContent?.trim() || label?.textContent?.trim() || '家具高度';
+      const range=card.querySelector('input[type="range"]');
+      const number=card.querySelector('input[type="number"]');
+      const button=addToggle(card,name,'點擊調整高度');
+      if (button && range) {
+        const sync=()=>{button.querySelector('small').textContent=`目前 ${number?.value || range.value} cm · 點擊調整`;};
+        range.addEventListener('input',sync);
+        number?.addEventListener('input',sync);
+        sync();
+      }
+    });
+  }
+  bindFurniture();
+  // The original joint pane deliberately forced its details open and hid the
+  // summary; restore the native accordion on phones.
+  let previousMobile=phone.matches;
+  function applyLayout() {
+    if (phone.matches) {
+      if (!previousMobile) {
+        people.querySelectorAll('.person-card').forEach(card=>{
+          card.classList.add('near-card-collapsed');
+          card.querySelector('.near-card-toggle')?.setAttribute('aria-expanded','false');
+        });
+        surface.querySelectorAll('.surface-field').forEach(card=>{
+          card.classList.add('near-card-collapsed');
+          card.querySelector('.near-card-toggle')?.setAttribute('aria-expanded','false');
+        });
+      }
+      proportion.open = false;
+      joint.open = false;
+      surface.querySelectorAll('details.advanced-details').forEach(d=>d.open=false);
+    } else if (window.matchMedia('(min-width:1100px)').matches) {
+      proportion.open=true;
+      joint.open=true;
+    }
+    previousMobile=phone.matches;
+  }
+  phone.addEventListener?.('change',applyLayout);
+  applyLayout();
+})();
+</script>
 </body></html>
