@@ -1,166 +1,1794 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andy's Web Hub | 專案導覽</title>
-  <style>
-    :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --card-hover: #334155;
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --accent: #38bdf8;
-    }
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f7f3">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta name="description" content="模擬不同身高差下的擁抱、牽手、親吻與各種親密姿勢。自由調整頭身比、腿長、關節動作及床、沙發高度，在 3D 場景中切換視角、探索適合兩人的姿勢與空間配置，收藏並分享專屬雙人圖卡。">
+<title>身高差模擬器｜日常、擁抱、親吻與親密姿勢｜néar. 靠近一點</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23f5e3da%22%2F%3E%3Cpath%20d%3D%22M15%2044V23h8v3c8-8%2020-3%2020%208v10h-8V33c0-6-12-6-12%201v10z%22%20fill%3D%22%23a75b49%22%2F%3E%3Ccircle%20cx%3D%2249%22%20cy%3D%2241%22%20r%3D%224%22%20fill%3D%22%23788d82%22%2F%3E%3C%2Fsvg%3E%0A"><style>:root{--paper:#f8f7f3;--white:#fffefa;--ink:#323b37;--muted:#8b9188;--line:#e7e6de;--coral:#b96955;--coral-light:#f4e6de;--green:#788d82;--font:Inter,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:14px;-webkit-font-smoothing:antialiased}button,input,select,a{ -webkit-tap-highlight-color:transparent}button,input,select{font:inherit;color:inherit}button,a,input,select,summary{outline-offset:4px}button{cursor:pointer}button:disabled{cursor:wait;opacity:.6}button,a{touch-action:manipulation}button{border:0;background:none}a{color:inherit;text-decoration:none}h1,h2,p{margin:0}button:hover{filter:brightness(.97)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,canvas:focus-visible{outline:2px solid var(--coral)}.skip{position:fixed;top:-60px;left:15px;background:white;padding:12px;z-index:100}.skip:focus{top:10px}.site-header{height:90px;max-width:1440px;margin:auto;padding:0 54px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:20px;align-items:center}.brand-mark{font-family:Georgia,serif;font-style:italic;font-size:39px;font-weight:700;letter-spacing:-3px;color:#4b6255}.brand-mark>span{color:var(--coral)}.brand-caption{font-size:13px;letter-spacing:3px;border-left:1px solid #cbd0c6;padding-left:20px}.header-note{color:#7b857d;font-size:12px;letter-spacing:1px;display:flex;align-items:center;gap:9px}.status-dot,.live-dot{display:inline-block;width:6px;height:6px;border-radius:100%;background:#819779}.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 17px;background:var(--white);border:1px solid #dfdfd6;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap;transition:.15s}.button.small{padding:9px 13px;font-size:12px}.button.primary{background:var(--coral);border-color:var(--coral);color:white}.button svg{height:17px;width:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}.button>span{font-size:19px;font-weight:400}main{max-width:1440px;margin:auto;padding:0 54px}.intro{padding:47px 0 34px;display:flex;justify-content:space-between;align-items:center}.eyebrow{font-size:9px;letter-spacing:2px;font-weight:600;color:#a48673}.intro h1{font-size:37px;font-weight:600;letter-spacing:1px;line-height:1.5;margin:9px 0}.intro h1 span{color:var(--coral)}.intro h1 svg{width:38px;vertical-align:middle;fill:none;stroke:var(--coral);stroke-width:1.5;margin-left:13px;transform:rotate(-10deg)}.intro p{font-size:12px;color:#8b9188;letter-spacing:.5px}.intro-aside{display:flex;gap:20px;align-items:center;color:#8b9188;line-height:1.9;font-size:12px;letter-spacing:1px}.little-label{writing-mode:vertical-rl;font-size:8px;letter-spacing:2px;color:#b3b6ab;border-left:1px solid #e3dfd5;padding-left:12px}.workspace{display:grid;grid-template-columns:284px minmax(0,1fr);gap:22px;align-items:start;scroll-margin-top:15px}.settings{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:22px 20px}.panel-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.panel-heading h2{font-size:14px;letter-spacing:.5px;font-weight:600}.micro{font-size:7px;letter-spacing:1.5px;color:#a3a89d}.person-card+.person-card{border-top:1px dashed var(--line);padding-top:20px;margin-top:20px}.person-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.person-id{display:flex;align-items:center;gap:9px;font-size:11px;color:#8d9187}.person-letter{width:23px;height:23px;display:grid;place-items:center;border-radius:7px;color:#ab6553;background:#f4e6de;font-size:11px}.person-card:nth-child(2) .person-letter{color:#62786b;background:#e7ece6}.person-name{width:135px;background:transparent;border:0;border-bottom:1px solid transparent;font-size:12px;text-align:right;outline-offset:2px;padding:3px}.person-name:hover{border-color:var(--line)}.height-control{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.height-control label{font-size:11px;color:#8e938a}.height-number{display:flex;gap:4px;align-items:baseline}.height-number input{font-family:Georgia,serif;font-size:32px;letter-spacing:-1px;font-weight:400;background:transparent;width:85px;border:0;padding:0;text-align:right;-moz-appearance:textfield}.height-number input::-webkit-inner-spin-button{appearance:none}.height-number span{font-size:10px;color:#8b9188}input[type=range]{appearance:none;-webkit-appearance:none;height:4px;border-radius:3px;background:linear-gradient(to right,var(--thumb,#c97967) var(--fill,40%),#eeede6 var(--fill,40%));width:100%;cursor:pointer;margin:10px 0 5px;display:block}input[type=range]::-webkit-slider-thumb{appearance:none;height:13px;width:13px;background:var(--thumb,#c97967);border:3px solid var(--white);border-radius:50%;box-shadow:0 0 0 1px var(--thumb,#c97967)}input[type=range]::-moz-range-thumb{height:9px;width:9px;background:var(--thumb,#c97967);border:2px solid white;border-radius:50%}.range-labels{display:flex;justify-content:space-between;color:#a8aca1;font-size:8px;letter-spacing:.5px;margin-bottom:13px}.appearance summary{color:#979b91;font-size:10px;list-style:none;cursor:pointer;display:flex;justify-content:space-between;padding:4px 0}.appearance summary::-webkit-details-marker,.fine-tune summary::-webkit-details-marker{display:none}.appearance[open] summary{margin-bottom:9px}.appearance-fields{padding-top:3px;display:grid;gap:10px}.appearance-fields label{font-size:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}.appearance-fields select,.editor-pair select{background:#f8f7f3;border:1px solid var(--line);border-radius:5px;padding:5px;font-size:10px}.appearance-fields input[type=color]{width:28px;height:23px;padding:0;border:0;background:none;cursor:pointer}.swatches{display:flex;gap:7px;align-items:center}.swatch{width:15px;height:15px;border-radius:50%;background:var(--swatch);box-shadow:0 0 0 2px var(--white)}.swatch[aria-pressed=true]{outline:1px solid var(--swatch);outline-offset:2px}.build-label input{width:120px;margin:0}.swap-button{width:100%;border:1px solid var(--line);border-radius:7px;padding:8px;font-size:10px;color:#7d897e;margin-top:19px;display:flex;align-items:center;justify-content:center;gap:8px}.swap-button span{font-size:19px;line-height:1}.quick-pairs{padding:17px 0;color:#979c91;font-size:9px}.quick-pairs>div{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.quick-pairs button{font-size:9px;letter-spacing:.3px;background:#f6f5ef;padding:7px 4px;border-radius:4px}.fine-tune{border-top:1px solid var(--line)}.fine-tune summary{padding:13px 0;font-size:10px;list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center}.fine-tune summary>span{color:#a4ac9c;font-size:14px}.fine-tune[open] summary>span{transform:rotate(45deg)}.fine-content{padding-bottom:15px}.fine-content>label,.joint-field>label{display:flex;justify-content:space-between;font-size:10px;color:#8a9185;margin-top:12px}.fine-content p{font-size:9px;line-height:1.7;color:#9da297;margin-top:10px}.fine-content output{font-variant-numeric:tabular-nums}.editor-pair{display:flex;gap:8px}.editor-pair label{display:grid;gap:6px;flex:1;font-size:10px;color:#8a9185}.editor-pair select{width:100%;max-width:110px}.fine-content>.button{margin-top:14px}.local-note{font-size:9px;color:#a0a69b;padding-top:10px;border-top:1px solid var(--line);display:flex;align-items:center;gap:7px}.local-note>span{font-size:13px}.studio-panel{background:var(--white);border:1px solid var(--line);border-radius:13px;overflow:hidden;min-width:0}.studio-header{height:60px;padding:0 23px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.scene-heading{display:flex;align-items:center;gap:10px}.scene-heading h2{font-size:13px;font-weight:500}.scene-tag{color:#9ba18f;font-size:9px;border:1px solid #e4e8dd;border-radius:4px;padding:3px 6px;margin-left:3px}.icon-button{width:30px;height:30px;display:grid;place-items:center;line-height:1;font-size:21px;border-radius:6px;color:#889383}.icon-button[aria-pressed=true]{color:var(--coral);background:#f5e9e2}.icon-button:hover{background:#f3f1e9}.stage{height:480px;position:relative;background:#f2f1eb;isolation:isolate;overflow:hidden}.stage canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab;outline-offset:-3px}.stage canvas:active{cursor:grabbing}.view-switch{position:absolute;z-index:2;top:20px;left:50%;transform:translateX(-50%);display:flex;border:1px solid #e3e1d6;border-radius:8px;padding:3px;background:#fbfaf4ef;gap:2px;white-space:nowrap}.view-switch button{font-size:9px;padding:7px 12px;color:#999c8d;border-radius:5px}.view-switch button.active{color:#5a6b5b;background:white;box-shadow:0 1px 5px #6661}.height-badge{position:absolute;left:25px;top:26px;z-index:1;pointer-events:none}.height-badge>span:first-child{font-size:10px;color:#929989}.height-badge strong{display:block;font:47px/1.2 Georgia,serif;color:#6e7f6c;letter-spacing:-2px;margin-top:8px}.height-badge small{font:12px var(--font);letter-spacing:0;color:#9ca48e;margin-left:3px}.badge-line{height:1px;background:#d8ddcb;width:30px;margin:12px 0}.badge-caption{font-size:8px;color:#a2a995;letter-spacing:.5px}.person-labels{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);display:flex;gap:22px;pointer-events:none;white-space:nowrap}.person-labels>span{font-size:10px;color:#9ba18f;background:#fdfcf7e6;border:1px solid #e8e7de;border-radius:20px;padding:7px 12px;display:flex;align-items:center;gap:6px}.person-labels b{color:#697766;font-weight:500}.person-labels i{width:6px;height:6px;border-radius:50%;background:#c97967}.person-labels i.dot-b{background:#788d82}.stage-hint{position:absolute;bottom:18px;left:25px;font-size:8px;color:#a1a793;pointer-events:none;letter-spacing:.3px}.stage-hint span{padding:0 5px}.stage-tools{display:flex;position:absolute;bottom:13px;right:17px;gap:3px}.stage-tools .icon-button{font-size:20px;color:#97a18d;width:28px;height:28px}.stage-tools .icon-button[aria-pressed=true]{background:#e7ebdf;color:#6f8061}.studio-footer{min-height:89px;display:flex;justify-content:space-between;align-items:center;padding:17px 23px;gap:15px}.studio-footer .micro{font-size:7px}.studio-footer p{font-size:10px;color:#8b9584;margin-top:8px;line-height:1.7}.footer-actions{display:flex;gap:8px}.footer-actions .button{font-size:10px;padding:10px 13px}.library{padding:43px 0 0}.library-heading{display:flex;justify-content:space-between;align-items:center}.library-heading .eyebrow{font-size:8px;letter-spacing:1.8px}.library-heading h2{font-size:23px;font-weight:500;letter-spacing:.7px;margin-top:10px}.library-heading h2>span{font-size:9px;color:#a2a892;background:#eceee4;border-radius:20px;padding:5px 9px;margin-left:13px;vertical-align:middle;letter-spacing:0}.search-box{border:1px solid #e1e3d9;display:flex;align-items:center;gap:10px;border-radius:7px;background:var(--white);padding:10px 12px}.search-box svg{width:14px;height:14px;fill:none;stroke:#a2a994;stroke-width:1.5}.search-box input{font-size:10px;border:0;outline:0;background:none;width:160px}.search-box input::placeholder{color:#a5ab9b}.categories{display:flex;gap:7px;margin:22px 0 20px;overflow:auto;padding-bottom:2px;scrollbar-width:thin}.categories button{border:1px solid transparent;border-radius:6px;padding:8px 13px;font-size:10px;white-space:nowrap;color:#8a9580}.categories button.active{color:#a15f4b;background:#f2e7df;border-color:#ecded2}.pose-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:13px}.pose-card{position:relative;padding:0;text-align:left;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--white);transition:border .15s,transform .15s}.pose-card:hover{transform:translateY(-3px);border-color:#cfc7b4}.pose-card.active{border-color:#bd8066;box-shadow:0 0 0 1px #bd8066}.pose-art{height:104px;background:var(--card-bg,#f0eee8);display:flex;align-items:center;justify-content:center;position:relative}.pose-art svg{width:120px;height:95px;filter:drop-shadow(0 5px 3px #6c786815)}.pose-title{padding:11px 12px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#808b77}.pose-title>span:last-child{font-size:10px;color:#bba48f}.pose-card.active .pose-title{color:#a46752}.pose-card.active .pose-title>span:last-child{color:#af7157}.new-label{position:absolute;right:7px;top:7px;padding:3px 5px;border-radius:3px;background:#ffffffae;color:#a47762;font-size:7px;letter-spacing:.7px}.pose-check{position:absolute;top:7px;left:7px;width:16px;height:16px;border-radius:50%;background:#b67b61;color:white;font-size:10px;display:grid;place-items:center}.library-note{margin-top:20px;font-size:9px;color:#a6ad9d;display:flex;justify-content:space-between}.library-note button{font-size:9px;color:#909d83;text-decoration:underline;text-underline-offset:3px}.page-footer{padding:43px 0 30px;margin-top:35px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.page-footer .brand-mark{font-size:25px;letter-spacing:-2px;opacity:.7}.page-footer p{color:#99a18f;font-size:11px;letter-spacing:1px}.page-footer>span:last-child{color:#afb3a8;font-size:8px}.empty-state{text-align:center;padding:50px;color:var(--muted);border:1px dashed var(--line);border-radius:10px}.scene-loading{position:absolute;inset:0;display:grid;place-items:center;background:#f2f1eb;color:#909780;font-size:12px;z-index:3}.scene-loading[hidden]{display:none}dialog{width:min(650px,calc(100% - 30px));padding:25px;border:1px solid var(--line);border-radius:15px;background:var(--white);color:var(--ink);max-height:90dvh;overflow:auto}dialog::backdrop{background:#30392c70;backdrop-filter:blur(5px)}.dialog-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:15px}.dialog-heading h2{font-size:21px;font-weight:500;margin-top:6px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}#photo-preview{display:block;width:100%;height:auto;border-radius:8px}#original-dialog>p{font-size:12px;line-height:1.8;color:var(--muted);margin-bottom:18px}#original-list{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:25px}#original-list h3{font-size:12px;font-weight:600}#original-list p{font-size:11px;line-height:2;color:#8d9684}#original-dialog>a{font-size:12px;color:var(--coral)}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);padding:12px 22px;border:1px solid #e7e2d7;background:#fffefa;box-shadow:0 7px 30px #323b3715;border-radius:9px;z-index:100;opacity:0;pointer-events:none;transition:.2s;font-size:12px;color:#6f7d63;max-width:90vw}.toast.visible{opacity:1;transform:translate(-50%,0)}body.focus .studio-panel{position:fixed;inset:15px;z-index:20;display:flex;flex-direction:column;box-shadow:0 0 0 30px var(--paper)}body.focus .stage{flex:1;height:auto;min-height:0}body.focus .studio-footer{flex-shrink:0}.fine-tune[open]~.local-note{margin-top:2px}
+@media(min-width:1450px){.stage{height:510px}}@media(max-width:1150px){main{padding:0 32px}.site-header{padding:0 32px}.workspace{grid-template-columns:250px minmax(0,1fr);gap:17px}.settings{padding:20px 17px}.height-badge{left:20px;top:80px}.height-badge strong{font-size:37px}.badge-caption{display:none}.badge-line{margin:7px 0}.pose-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.studio-footer{padding:15px}.studio-footer>div:first-child{max-width:50%}.footer-actions .button{padding:9px 10px}.stage-hint{font-size:7px;left:15px}.intro h1{font-size:33px}}@media(max-width:900px){main{padding:0 22px}.site-header{padding:0 22px;height:76px}.header-note{display:none}.intro{padding:35px 0 27px}.intro-aside{display:none}.workspace{grid-template-columns:220px minmax(0,1fr);gap:13px}.settings{padding:18px 14px}.panel-heading .micro{display:none}.stage{height:490px}.studio-header{padding:0 15px}.scene-tag{display:none}.studio-footer{display:block}.studio-footer>div:first-child{max-width:none}.footer-actions{justify-content:flex-end;margin-top:12px}.height-badge strong{font-size:32px}.height-badge{left:16px;top:75px}.height-badge>span:first-child{font-size:8px}.pose-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.person-labels{gap:8px}.person-labels>span{font-size:9px;padding:6px 8px}.person-labels>span>span{font-size:8px}.stage-hint{max-width:180px}.library-heading h2{font-size:20px}.search-box input{width:125px}.page-footer p{font-size:9px}.page-footer>span:last-child{max-width:160px;text-align:right;line-height:1.8}}
+@media(max-width:650px){main{padding:0 16px}.site-header{padding:0 18px;height:69px}.brand{gap:12px}.brand-mark{font-size:32px}.brand-caption{font-size:11px;padding-left:13px;letter-spacing:2px}.site-header .button{padding:8px 10px;font-size:10px}.intro{padding:29px 2px 23px}.eyebrow{font-size:7px;letter-spacing:1.4px}.intro h1{font-size:28px;letter-spacing:0;margin:10px 0}.intro h1 svg{width:27px;margin-left:6px}.intro p{font-size:10px;line-height:1.9;max-width:310px;letter-spacing:0}.workspace{display:flex;flex-direction:column;gap:14px}.settings{width:100%;padding:17px 16px}.panel-heading{margin-bottom:15px}.panel-heading .micro{display:block}.panel-heading h2{font-size:12px}#people{display:grid;grid-template-columns:1fr 1fr;gap:20px}.person-card+.person-card{padding-top:0;margin:0;border:0;border-left:1px dashed var(--line);padding-left:20px}.person-title{margin-bottom:7px;gap:3px}.person-name{width:80px;font-size:10px}.person-id{gap:5px;font-size:9px}.person-letter{width:19px;height:19px;font-size:9px}.height-number input{font-size:28px;width:67px}.height-control label{font-size:9px}.height-number span{font-size:9px}.range-labels{font-size:7px;margin-bottom:8px}.appearance summary{font-size:9px}.swatches{gap:5px}.swatch{width:12px;height:12px}.appearance-fields select{font-size:9px}.build-label input{width:70px}.swap-button{margin-top:15px;padding:6px}.quick-pairs{display:flex;align-items:center;gap:9px;padding:12px 0}.quick-pairs>span{font-size:8px;white-space:nowrap}.quick-pairs>div{display:flex;gap:5px;margin:0;flex:1}.quick-pairs button{flex:1;font-size:8px;padding:6px 3px}.fine-tune summary{padding:10px 0;font-size:10px}.local-note{font-size:8px;padding-top:10px}.studio-panel{width:100%}.studio-header{height:49px}.stage{height:430px}.view-switch{top:16px}.view-switch button{padding:7px 10px;font-size:9px}.height-badge{top:72px;left:18px}.height-badge strong{font-size:34px}.badge-line{display:none}.person-labels{bottom:55px}.stage-hint{bottom:20px;font-size:7px}.stage-tools{bottom:14px;right:12px}.studio-footer{padding:16px}.studio-footer p{font-size:10px}.footer-actions{margin-top:15px}.footer-actions .button{padding:10px 13px;font-size:10px}.library{padding-top:30px}.library-heading{display:block}.library-heading h2{font-size:20px;margin-top:9px}.library-heading h2>span{font-size:8px;margin-left:7px;padding:4px 7px}.search-box{margin-top:18px;padding:11px 12px}.search-box input{width:100%;font-size:11px}.categories{margin:13px 0 17px;gap:2px}.categories button{font-size:10px;padding:8px 10px}.pose-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.pose-art{height:95px}.pose-art svg{width:110px}.pose-title{font-size:9px;padding:10px 8px}.new-label{font-size:6px;right:5px;top:5px}.library-note{font-size:8px;gap:10px;line-height:1.8}.library-note button{font-size:8px}.page-footer{padding:28px 0 24px;margin-top:27px;flex-wrap:wrap;gap:15px}.page-footer p{font-size:9px}.page-footer>span:last-child{max-width:none;width:100%;text-align:center;font-size:8px}.page-footer .brand-mark{font-size:24px}#original-list{grid-template-columns:1fr}.dialog-heading h2{font-size:18px}dialog{padding:20px}body.focus .studio-panel{inset:7px}.person-labels>span{max-width:170px}.person-labels b{max-width:75px;overflow:hidden;text-overflow:ellipsis}.header-note{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.person-id{white-space:nowrap;flex-shrink:0}.person-name{min-width:0}.height-control label,.appearance summary,.fine-tune summary{font-size:11px}.view-switch button{font-size:11px}.pose-title,.categories button{font-size:12px}.studio-footer p{font-size:12px;line-height:1.8}.footer-actions .button{font-size:12px}.scene-heading h2{font-size:14px}
+@media(max-width:650px){.person-id{font-size:9px}.person-name{width:65px;max-width:65px;flex:1}.height-control label,.appearance summary{font-size:10px}.view-switch button{font-size:10px}.pose-title{font-size:11px}.categories button{font-size:11px}.studio-footer p{font-size:11px}.footer-actions .button{font-size:11px}}
+.height-number{border:1px solid #b9bcb0;border-radius:8px;background:#fff;padding:5px 8px;gap:5px}.height-number:focus-within{border-color:#b96955;box-shadow:0 0 0 2px #b9695533}.height-number input{font-size:25px;width:67px;outline:none}.height-control label{font-weight:600;color:#626f62}.height-control{gap:6px}@media(max-width:650px){.height-number{padding:5px}.height-number input{font-size:22px;width:54px}.height-control label{font-size:10px}}
+.pose-art img{width:100%;height:100%;object-fit:cover}.thumb-placeholder{font-size:10px;color:#929b87}.pose-art{height:125px}@media(max-width:650px){.pose-art{height:100px}}
+.height-config{display:flex;align-items:center;gap:7px}.height-config input[type=range]{flex:1;min-width:20px}.height-config input[type=number]{width:52px;border:1px solid #d9dcd2;background:#fff;padding:5px 4px;border-radius:6px;text-align:right;font-size:11px}.height-config span{color:#929989;font-size:10px}.fit-message{border-top:1px dashed #e6e2d8;padding-top:7px;margin-top:7px!important;color:#a0604e!important;font-size:11px!important;max-width:520px}.fine-content label[for=bedHeight],.fine-content label[for=sofaHeight]{color:#a0604e;font-weight:600}.pose-grid .pose-title{line-height:1.55;min-height:49px}.studio-footer{align-items:flex-start}.studio-footer>div:first-child{flex:1;min-width:0}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
+.intimate-role-control{padding:13px 0 11px;border-top:1px solid var(--line);display:grid;gap:7px}.intimate-role-control label{font-size:11px;font-weight:600;color:#68766a}.intimate-role-control select{width:100%;border:1px solid #d7d9ce;border-radius:7px;background:#fffefa;padding:8px 9px;font-size:12px}.intimate-role-control small{font-size:9px;line-height:1.6;color:#9da297}
+#article-figure[hidden]{display:none!important}
 
-    .container {
-      width: 100%;
-      max-width: 800px;
-    }
+/* ──────────────────────────────────────────────────────────────
+   néar. UI 2.0 · editorial studio refresh
+   Visual-only refinements: keeps the original scene/rig engine.
+   ────────────────────────────────────────────────────────────── */
+:root {
+  --paper:#f8f7f4; --white:#fff; --ink:#2e3934; --muted:#78847a;
+  --line:#e6e9e2; --coral:#ad6e57; --coral-light:#faf0e9;
+  --green:#56766a; --font:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+html {scroll-behavior:smooth;scroll-padding-top:28px}
+body {background:var(--paper);color:var(--ink);font-size:14px;letter-spacing:.005em}
+button,input,select {font-family:var(--font)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible {outline:3px solid #ad6e57a6;outline-offset:3px}
+.site-header {height:76px;max-width:1536px;padding:0 46px;border-bottom:1px solid #e8eae3}
+.brand {gap:18px}
+.brand-mark {font-size:36px;color:#374d42;letter-spacing:-3px}
+.brand-mark>span {color:#b97458}
+.brand-caption {font-size:12px;letter-spacing:1.4px;color:#727f74;border-left:1px solid #d6dcd2;padding-left:19px}
+.header-nav {display:flex;align-items:center;gap:28px;margin-left:auto;margin-right:34px}
+.header-nav a {color:#718075;font-size:12px;font-weight:650;transition:color .15s}
+.header-nav a:hover {color:#a3644f}
+.button {background:white;border:1px solid #e2e7e0;border-radius:10px;color:#52695e;font-weight:650;box-shadow:0 1px 2px #37443805}
+.button:hover {background:#fbf7f2;filter:none;border-color:#d8d9d0}
+.button.primary {background:#3e6555;border-color:#3e6555;color:white;box-shadow:0 3px 11px #39604e23}
+.button.primary:hover {background:#345849;border-color:#345849}
+.header-share {padding:10px 16px!important;font-size:12px!important}
+main {max-width:1536px;padding:0 46px}
+.intro {padding:37px 0 33px;gap:18px}
+.eyebrow,.section-index {font-size:10px;font-weight:800;letter-spacing:1.8px;color:#a06957}
+.intro .eyebrow {display:flex;align-items:center;gap:10px;color:#738175}
+.intro-status {width:7px;height:7px;border-radius:50%;background:#87a28b;box-shadow:0 0 0 4px #e9eee7}
+.intro h1 {font-size:clamp(27px,3vw,39px);letter-spacing:-1.3px;line-height:1.4;margin:10px 0 10px;font-weight:720}
+.intro h1 span {color:#b07760}
+.intro p {font-size:13px;line-height:1.85;color:#78857a;letter-spacing:.1px}
+.intro-counter {display:flex;align-items:center;gap:15px;margin-right:10px}
+.intro-counter strong {font:600 58px/1 Georgia,serif;letter-spacing:-4px;color:#62816e}
+.intro-counter span {font-size:11px;line-height:1.75;font-weight:550;color:#96a097}
+.workspace {grid-template-columns:minmax(285px,307px) minmax(0,1fr);gap:20px;align-items:start}
+.settings,.studio-panel {background:#fff;border:1px solid #e5e8e1;border-radius:18px;box-shadow:0 5px 25px #52604408}
+.settings {padding:24px 20px 18px;overflow:visible}
+.panel-heading {margin-bottom:20px;align-items:end}
+.panel-heading>div {min-width:0}
+.panel-heading h2 {font-size:17px;letter-spacing:-.3px;font-weight:740;margin-top:7px}
+.panel-hint {font-size:10px;color:#9fa8a0;background:#f4f6f1;border:1px solid #e7eae4;border-radius:50px;padding:5px 8px;white-space:nowrap}
+#people {display:grid;gap:12px}
+.person-card,.person-card+.person-card {padding:15px 14px;margin:0;border:1px solid #e8e9e3;border-radius:12px;background:#fcfcfa}
+.person-card+.person-card {border:1px solid #e7eae5}
+.person-title {gap:8px;margin-bottom:15px}
+.person-letter {width:26px;height:26px;font-size:11px;border-radius:8px;background:#faece6;color:#b5755f}
+.person-card:nth-child(2) .person-letter {background:#e5eee8;color:#598171}
+.person-id {font-size:12px;font-weight:700;color:#697970;gap:9px}
+.person-name {font-size:12px;font-weight:600;border-bottom:1px dashed #d5d9d1;min-width:0;width:106px;color:#526358}
+.person-name:focus {background:#fff;border-radius:5px}
+.height-control {align-items:center;margin-bottom:4px}
+.height-control label {font-size:11px;color:#89958c;font-weight:580}
+.height-number {border:none;background:transparent;padding:0;box-shadow:none!important}
+.height-number input {font:600 31px/1.1 Georgia,serif;min-width:78px;width:78px;color:#374c40}
+.height-number span {font-size:12px;font-weight:650;color:#99a59d}
+input[type=range] {height:5px;border-radius:5px;background:linear-gradient(to right,#749184 var(--fill,40%),#e8eae5 var(--fill,40%))}
+input[type=range]::-webkit-slider-thumb {width:17px;height:17px;background:#668b79;border:4px solid white;box-shadow:0 0 0 1.5px #6c8e7e,0 2px 5px #0001}
+.range-labels {font-size:9px;color:#a1aba2;letter-spacing:0;margin:3px 0 7px}
+.appearance summary {color:#6f8377;font-size:11px;font-weight:580;padding:5px 0;gap:10px}
+.appearance summary span {margin-left:auto;color:#9ba49a}
+.appearance-fields {padding-top:9px}
+.swatches {gap:9px}
+.swatch {width:17px;height:17px}
+.swap-button {margin-top:14px;border:1px solid #e0e7df;background:#f6f8f4;border-radius:9px;padding:10px 14px;font-size:11px;font-weight:650;color:#61816e;transition:background .15s}
+.swap-button:hover {background:#eaf1e9}
+.intimate-role-control {padding:19px 0 17px;border-top:0;gap:8px}
+.intimate-role-control label {font-size:12px;font-weight:680;color:#52665a}
+.intimate-role-control select {width:100%;background:#f8f9f6;border:1px solid #dce4dc;border-radius:9px;font-size:12px;font-weight:600;padding:11px 12px;cursor:pointer}
+.intimate-role-control small {font-size:10px;color:#93a095;line-height:1.8}
+.quick-pairs {font-size:11px;color:#63766a;padding:0 0 14px}
+.quick-pairs summary {display:flex;justify-content:space-between;list-style:none;cursor:pointer;align-items:center;padding:8px 0;font-weight:650;color:#78887c}
+.quick-pairs summary::-webkit-details-marker {display:none}
+.quick-pairs>div {grid-template-columns:1fr 1fr;gap:7px;margin:9px 0 0}
+.quick-pairs button {font-size:11px;background:#f5f7f3;border:1px solid #e6e9e2;color:#5c7362;border-radius:7px;padding:9px 4px}
+.quick-pairs button:hover {background:#eaf0e8}
+.settings-divider {height:1px;background:#e8eae5;margin:5px 0 22px}
+.surface-heading {margin-bottom:15px}
+.surface-fields {display:grid;gap:12px;margin-bottom:17px}
+.surface-field {border:1px solid #e9ebe5;background:#fbfcfa;border-radius:12px;padding:13px 12px}
+.surface-field>label {display:flex;align-items:center;gap:9px;color:#4d6356;font-size:12px;font-weight:680;margin-bottom:8px}
+.surface-field>label>span:nth-child(2) {display:grid;gap:2px}
+.surface-field small {font-size:9px;font-weight:500;color:#95a196}
+.surface-icon {width:30px;height:30px;border-radius:9px;background:#eef2eb;color:#718f7c;display:grid;place-items:center;font-size:19px}
+.height-config {gap:9px}
+.height-config input[type=range] {flex:1;min-width:45px}
+.height-config input[type=number] {width:54px;height:34px;padding:4px 6px;font-size:13px;font-weight:740;color:#415a4c;background:white;border:1px solid #dfe6df;border-radius:8px}
+.height-config span {font-size:10px;color:#8f9b91}
+.fine-tune {border-top:1px solid #eaede7}
+.advanced-details summary {padding:15px 2px;color:#6a7a6e;font-size:12px;font-weight:660;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none}
+.advanced-details summary b {font-size:17px;font-weight:400;color:#99a79c;transition:transform .2s}
+.advanced-details[open] summary b {transform:rotate(180deg)}
+.advanced-details summary::-webkit-details-marker {display:none}
+.fine-content label,.joint-field>label {font-size:11px;line-height:1.65}
+.fine-content p {font-size:10px;line-height:1.8}
+.fine-content {padding-bottom:15px}
+.editor-pair select {min-width:96px;max-width:116px;font-size:11px;border-radius:7px;padding:7px 5px}
+.local-note {border-top:1px solid #eaede7;padding-top:17px;margin-top:4px;color:#9da79e;font-size:10px;line-height:1.6}
+.studio-panel {overflow:hidden;min-width:0;scroll-margin-top:20px}
+.studio-header {height:83px;padding:0 25px;gap:10px;background:#fff}
+.scene-heading {display:grid;gap:5px;min-width:0}
+.studio-overline {display:flex;align-items:center;gap:9px;font-size:9px;font-weight:800;color:#8c9d8e;letter-spacing:1.6px}
+.live-dot {width:7px;height:7px;background:#80a18a;box-shadow:0 0 0 4px #eff4ee}
+.scene-heading h2 {font-size:20px;font-weight:720;letter-spacing:-.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scene-tag {font-size:10px;margin-left:7px;background:#f1f5ef;border:1px solid #e1e9df;color:#668675;border-radius:30px;letter-spacing:.1px;padding:4px 9px;font-weight:620}
+.studio-nav {display:flex;align-items:center;gap:5px;flex-shrink:0}
+.studio-nav .icon-button {font-size:24px;font-family:Georgia,serif;color:#627669;border:1px solid #e7eae5;background:#fafbf8;border-radius:9px;width:34px;height:34px}
+.studio-nav .icon-button:hover {background:#eef4ed;filter:none}
+.studio-nav-separator {height:24px;width:1px;background:#e1e6df;margin:0 4px}
+#favorite {color:#ae765f;font-size:22px}
+#favorite[aria-pressed=true] {color:#b96656;background:#f9efeb}
+.stage {height:clamp(470px,44vw,585px);background:#f3f5ef}
+.stage canvas {background:transparent}
+.view-switch {top:19px;left:auto;right:20px;transform:none;border:1px solid #e1e7db;background:#fffdf8e6;border-radius:12px;padding:4px;box-shadow:0 4px 18px #5f6d5213}
+.view-switch button {font-size:11px;font-weight:650;border-radius:8px;padding:9px 13px;color:#849385}
+.view-switch button.active {color:#456951;background:#eef5ec;box-shadow:none}
+.height-badge {top:19px;left:20px;background:#ffffffec;border:1px solid #e8ece2;box-shadow:0 8px 20px #85978016;padding:11px 14px;border-radius:12px}
+.height-badge>span:first-child {font-size:10px;color:#839484;font-weight:650;letter-spacing:.4px}
+.height-badge strong {font-size:32px;color:#547966;letter-spacing:-1px;margin-top:2px;line-height:1.1}
+.height-badge small {font-family:var(--font);font-size:11px;color:#799485;font-weight:650}
+.person-labels {bottom:21px;left:22px;transform:none;gap:8px}
+.person-labels>span {font-size:11px;padding:9px 12px;border-radius:30px;border:1px solid #e1e8de;background:#ffffffeb;gap:8px;color:#738374;box-shadow:0 5px 12px #364c4010}
+.person-labels b {font-weight:720;color:#466655}
+.person-labels i {width:8px;height:8px}
+.stage-hint {bottom:64px;left:25px;font-size:10px;color:#778d7b;letter-spacing:.2px;background:#f8faf1aa;padding:5px 8px;border-radius:6px}
+.stage-tools {bottom:17px;right:19px;gap:7px}
+.stage-tools .icon-button {background:#fffffff2;border:1px solid #e2e8dc;border-radius:9px;color:#617d69;width:33px;height:33px;font-size:20px;box-shadow:0 3px 10px #555e4b10}
+.stage-tools .icon-button:hover {background:#f1f6ef;filter:none}
+.studio-footer {padding:20px 25px;display:flex;align-items:flex-start;gap:20px;min-height:104px}
+.studio-footer .micro {font-size:10px;letter-spacing:1px;font-weight:800;color:#9aa398}
+.scene-notes {flex:1;min-width:0}
+.scene-notes p {font-size:12px;line-height:1.85;color:#6c7d70;margin-top:6px}
+.scene-notes .fit-message {font-size:10px!important;line-height:1.75!important;color:#8b866f!important;background:#f9f8f4;border:1px solid #edece3;border-radius:8px;padding:9px 10px;margin-top:10px!important;max-width:none}
+.scene-notes .fit-message:empty {display:none}
+.footer-actions {justify-content:flex-end;align-self:flex-start;flex-wrap:wrap;gap:8px;flex-shrink:0}
+.footer-actions .button {font-size:11px;padding:10px 12px;border-radius:9px}
+#article-figure {white-space:nowrap}
+.library {padding:62px 0 0}
+.library-topline {display:flex;justify-content:space-between;align-items:center}
+.library-total {font-size:11px;color:#94a095;font-weight:600}
+.library-heading {align-items:end;margin:10px 0 22px;gap:22px}
+.library-heading h2 {font-size:clamp(22px,2.6vw,31px);font-weight:750;letter-spacing:-.9px;line-height:1.3;margin:0}
+.library-heading h2 .library-title-dot {color:#b77b62}
+.library-heading p {font-size:12px;color:#839187;line-height:1.7;margin-top:9px}
+.search-box {min-width:280px;max-width:365px;width:32%;height:44px;border:1px solid #e0e6df;border-radius:10px;background:white;gap:10px;padding:0 13px;box-shadow:0 2px 7px #3a4e4306}
+.search-box:focus-within {border-color:#9bac9c;box-shadow:0 0 0 3px #93ad9329}
+.search-box svg {width:17px;height:17px;stroke:#8c9c8e}
+.search-box input {width:100%;font-size:12px;color:#3c5143;min-width:0}
+.search-box input:focus {outline:0}
+.search-box kbd {font:500 11px var(--font);color:#a1ada3;border:1px solid #e8ece6;border-radius:5px;min-width:20px;text-align:center;padding:2px 3px}
+.library-filter-bar {display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.scope-tabs {display:flex;align-items:center;gap:4px;padding:5px;background:#e9eee9;border-radius:12px;overflow-x:auto;scrollbar-width:none}
+.scope-tabs::-webkit-scrollbar {display:none}
+.scope-tabs button {display:flex;align-items:center;gap:8px;justify-content:center;border-radius:9px;padding:10px 17px;font-size:12px;color:#7b8e7e;font-weight:650;white-space:nowrap;transition:.16s;background:transparent}
+.scope-tabs button:hover {background:#fff9}
+.scope-tabs button.active {background:white;color:#3e614d;box-shadow:0 2px 9px #4a5e4910}
+.scope-tabs .tab-count {font-size:10px;font-weight:700;color:#9aa69a;padding:2px 5px;background:#eef2ec;border-radius:5px;min-width:22px}
+.scope-tabs button.active .tab-count {background:#e6efe5;color:#547961}
+.library-results {font-size:11px;font-weight:650;color:#819084;white-space:nowrap}
+.categories {margin:0 0 18px;display:flex;gap:8px;padding:7px 0;overflow:auto;scrollbar-width:thin}
+.categories[hidden] {display:none!important}
+.categories button {display:flex;gap:7px;align-items:center;font-size:11px;font-weight:650;letter-spacing:0;color:#839185;border:1px solid #e3e8e1;padding:8px 12px;border-radius:999px;background:#fff;white-space:nowrap}
+.categories button span {font-size:10px;color:#a2afa3}
+.categories button:hover {background:#f7faf5;filter:none;border-color:#cfd9d0}
+.categories button.active {color:#507260;background:#edf3ec;border-color:#bdcebf}
+.categories button.active span {color:#658b70}
+.pose-grid {grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}
+.pose-card {background:white;border:1px solid #e5e8e2;border-radius:13px;overflow:hidden;box-shadow:0 2px 8px #2b3a2d05;transition:transform .16s,border-color .16s,box-shadow .16s}
+.pose-card:hover {transform:translateY(-3px);border-color:#b9cbbb;box-shadow:0 8px 24px #3a584b14;filter:none}
+.pose-card.active {border-color:#739982;box-shadow:0 0 0 2px #b4d1b5,0 9px 20px #3e624819}
+.pose-art {height:145px;background:linear-gradient(165deg,#edf1e9,#f7f5f1);overflow:hidden}
+.pose-art img {width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:transform .22s}
+.pose-card:hover .pose-art img {transform:scale(1.035)}
+.thumb-placeholder {font-size:10px;letter-spacing:.2px;color:#a7afa5}
+.pose-category-tag {position:absolute;left:9px;top:10px;background:#ffffffdf;border:1px solid #eef0e9;color:#587965;font-size:10px;font-weight:700;padding:5px 9px;border-radius:6px;box-shadow:0 2px 8px #3c503812}
+.pose-check {position:absolute;top:10px;right:10px;width:23px;height:23px;border-radius:7px;background:#4e8065;color:white;font-weight:780;font-size:12px}
+.pose-content {padding:12px 13px 13px;display:grid;gap:10px}
+.pose-title {padding:0;min-height:0!important;line-height:1.5;font-size:13px!important;font-weight:720;color:#344a3c;white-space:normal;text-wrap:pretty}
+.pose-meta {display:flex;justify-content:space-between;align-items:center;gap:4px;color:#a5afa5;font-size:10px;line-height:1.2}
+.pose-indicator {font-size:16px;color:#9cae9c;line-height:1}
+.pose-card.active .pose-meta {color:#73967b}
+.pose-card.active .pose-indicator {color:#477f5f}
+.empty-state {border:1px dashed #ccd9cd;border-radius:16px;padding:54px 20px;display:flex;align-items:center;flex-direction:column;text-align:center;background:#fafff9;gap:7px}
+.empty-state[hidden] {display:none!important}
+.empty-state>span {font-size:38px;color:#9daea1}
+.empty-state h3 {font-size:17px;font-weight:720;color:#54735c}
+.empty-state p {font-size:12px;color:#95a597;margin:4px 0 10px}
+.library-note {margin-top:24px;border-top:1px solid #e8eae4;padding-top:14px;color:#97a198;font-size:11px;align-items:center;gap:15px;line-height:1.8}
+.library-note button {font-size:11px;font-weight:650;color:#728e79;text-underline-offset:3px}
+.page-footer {margin-top:55px;padding:27px 0 36px;border-top:1px solid #e4e8e1}
+.page-footer p {color:#88978b;font-size:12px}
+.page-footer>span:last-child {color:#a5b0a6;font-size:10px}
+dialog {border-radius:18px;box-shadow:0 25px 70px #29392f30}
+@media (max-width:1280px) {
+  .site-header, main {padding-left:30px;padding-right:30px}
+  .workspace {grid-template-columns:minmax(260px,286px) minmax(0,1fr);gap:16px}
+  .settings {padding:20px 16px}
+  .studio-footer {display:block}
+  .footer-actions {margin-top:13px;justify-content:flex-start}
+  .pose-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:950px) {
+  .site-header,main {padding-left:20px;padding-right:20px}
+  .header-nav {display:none}
+  .intro-counter {display:none}
+  .workspace {grid-template-columns:minmax(242px,270px) minmax(0,1fr);gap:14px}
+  .studio-header {padding:0 16px}
+  .scene-heading h2 {font-size:17px}
+  .stage {height:510px}
+  .view-switch {top:17px;right:13px}
+  .view-switch button {padding:9px 9px}
+  .studio-footer {padding:16px}
+  .pose-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+  .footer-actions {flex-wrap:wrap}
+  .library {padding-top:48px}
+}
+@media (max-width:700px) {
+  .site-header {height:65px;padding:0 16px}
+  main {padding:0 14px}
+  .brand-mark {font-size:31px}
+  .brand-caption {font-size:10px;padding-left:12px;letter-spacing:.8px}
+  .header-share {font-size:10px!important;padding:9px 10px!important}
+  .intro {padding:25px 3px 24px}
+  .intro .eyebrow {font-size:9px}
+  .intro h1 {font-size:clamp(24px,5.9vw,32px);line-height:1.4;letter-spacing:-.65px;margin:10px 0}
+  .intro p {font-size:11px;line-height:1.8}
+  .workspace {display:flex;flex-direction:column;gap:15px}
+  .settings {width:100%;padding:20px 17px;border-radius:15px;order:2}
+  .studio-panel {width:100%;order:1;border-radius:15px}
+  .panel-heading {margin-bottom:16px}
+  .panel-heading h2 {font-size:16px}
+  #people {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .person-card,.person-card+.person-card {margin:0;border:1px solid #e5e8e2;border-radius:11px;padding:12px 10px;min-width:0}
+  .person-id {font-size:10px}
+  .person-name {width:65px;max-width:65px;font-size:10px}
+  .person-letter {width:22px;height:22px}
+  .person-title {gap:4px;margin-bottom:12px}
+  .height-control {flex-wrap:wrap;gap:0}
+  .height-number input {font-size:26px;width:60px;min-width:60px}
+  .height-control label {font-size:10px}
+  .height-number span {font-size:9px}
+  .range-labels {font-size:8px}
+  .appearance summary {font-size:10px}
+  .swatches {gap:6px;flex-wrap:wrap}
+  .swatch {width:15px;height:15px}
+  .studio-header {height:72px;padding:0 15px}
+  .studio-overline {font-size:8px;letter-spacing:1px}
+  .scene-heading h2 {font-size:18px}
+  .studio-nav .icon-button {width:31px;height:31px;font-size:22px}
+  .stage {height:455px}
+  .view-switch {top:12px;right:9px;gap:0;padding:3px;border-radius:9px}
+  .view-switch button {font-size:10px;padding:8px 9px;border-radius:7px}
+  .height-badge {top:13px;left:12px;border-radius:9px;padding:9px 10px}
+  .height-badge strong {font-size:26px}
+  .person-labels {bottom:18px;left:10px;gap:6px}
+  .person-labels>span {font-size:9px;padding:7px 9px;gap:5px;max-width:135px}
+  .person-labels b {max-width:64px;overflow:hidden;text-overflow:ellipsis}
+  .stage-hint {bottom:56px;left:9px;font-size:9px;max-width:280px}
+  .stage-tools {bottom:14px;right:9px;gap:4px}
+  .stage-tools .icon-button {width:30px;height:30px;font-size:18px}
+  .studio-footer {padding:17px}
+  .scene-notes p {font-size:11px}
+  .footer-actions {justify-content:space-between;gap:5px}
+  .footer-actions .button {font-size:10px;padding:10px 9px;flex:1}
+  .library {padding-top:40px}
+  .library-heading {display:flex;flex-direction:column;align-items:stretch;gap:18px;margin:10px 0 16px}
+  .library-heading h2 {font-size:24px}
+  .library-heading p {font-size:11px}
+  .search-box {width:100%;max-width:none;min-width:0;height:44px}
+  .scope-tabs {width:100%;justify-content:space-around}
+  .scope-tabs button {padding:10px 9px;font-size:11px;gap:5px}
+  .library-filter-bar {flex-direction:column;align-items:stretch;gap:10px}
+  .library-results {text-align:right;font-size:10px}
+  .categories {gap:6px;margin-bottom:14px;padding:4px 0}
+  .categories button {font-size:10px;padding:8px 10px}
+  .pose-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .pose-art {height:134px}
+  .pose-content {padding:11px 11px 12px;gap:8px}
+  .pose-title {font-size:12px!important}
+  .pose-meta {font-size:9px}
+  .library-note {font-size:10px;line-height:1.7}
+  .page-footer {gap:12px;justify-content:center;text-align:center;margin-top:36px}
+  .page-footer>span:last-child {width:100%;text-align:center}
+  body.focus .studio-panel {inset:7px;border-radius:12px}
+  body.focus .stage {flex:1;height:auto;min-height:0}
+}
+@media(max-width:380px) {
+  .view-switch button {padding:7px 6px}
+  .height-badge strong {font-size:22px}
+  .stage {height:415px}
+  .pose-art {height:112px}
+  .scope-tabs button {font-size:10px;padding:8px 7px}
+  .scope-tabs .tab-count {font-size:9px;min-width:18px}
+}
 
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
 
-    header h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* Mobile inline height controls keep the preview visible while editing. */
+.mobile-quick-heights {display:none}
+@media(max-width:700px){
+ .mobile-quick-heights {display:block;border-bottom:1px solid #edf0e9;padding:0 0 14px;margin-bottom:15px}
+ .quick-height-title {display:block;font-size:10px;font-weight:800;color:#7e9482;letter-spacing:.8px;margin-bottom:10px}
+ .quick-height-fields {display:flex;gap:10px}
+ .quick-height-fields label {display:flex;align-items:center;gap:8px;flex:1;min-width:0;border:1px solid #e5eae4;border-radius:9px;background:#f9fbf8;padding:8px 10px;font-size:11px;font-weight:650;color:#6d8271}
+ .quick-height-fields input {width:100%;min-width:25px;border:0;background:transparent;text-align:right;color:#41644d;font-size:17px;font-weight:750;outline:none}
+ .quick-height-fields small {font-size:9px;color:#9ca99f}
+}
 
-    header p {
-      color: var(--text-sub);
-      font-size: 1rem;
-    }
+/* NEAR STUDIO / responsive controls v3: appended after existing CSS to override legacy selectors */
+.fine-tune[open] summary>span { transform:none !important; }
+.advanced-details summary, .fine-tune summary { transform:none !important; writing-mode:horizontal-tb !important; white-space:normal; }
+.advanced-details summary>span { transform:none !important; display:inline !important; writing-mode:horizontal-tb !important; }
+.advanced-details summary b { display:inline-block; transform:none; }
+.advanced-details[open] summary b { transform:rotate(180deg); }
+.mobile-control-head,.mobile-control-tabs,.mobile-pane[data-pane="poses"],.mobile-pane[data-pane="camera"],.mobile-pane[data-pane="cards"],.mobile-toolbar,.mobile-intro-link {display:none}
+.mobile-pane:not([data-pane="poses"]):not([data-pane="camera"]):not([data-pane="cards"]) {display:contents}
+.mobile-landing {display:none}
+@media(max-width:760px){
+ :root{--near-rose:#bb725d;--near-pine:#45685d;--near-line:#e2e8e1}
+ html { scroll-padding-top:8px }
+ body{background:#f4f6f3}
+ main{padding:0 10px!important;overflow:visible}
+ .site-header{height:56px!important;padding:0 15px!important;border-bottom:0;background:#f7f9f7}
+ .site-header .brand-mark{font-size:27px!important;letter-spacing:-2px}
+ .brand-caption{font-size:10px!important;letter-spacing:.4px!important;padding-left:9px!important}
+ .header-nav{display:none!important}
+ .header-share{font-size:10px!important;padding:8px 10px!important}
+ .intro{padding:12px 6px 14px!important;display:block!important}
+ .intro .eyebrow,.intro-counter{display:none!important}
+ .intro h1{font-size:20px!important;line-height:1.5!important;margin:0 0 2px!important;letter-spacing:-.4px!important}
+ .intro h1 span{display:inline}
+ .intro p{font-size:11px!important;max-width:none!important;line-height:1.6!important}
+ .mobile-intro-link{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 12px;background:#47695d;color:white;border-radius:9px;font-weight:700;font-size:11px}
+ .workspace#studio{
+   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+   grid-template-rows:minmax(225px,43%) minmax(0,1fr)!important;
+   gap:0!important;height:calc(100dvh - 10px);min-height:530px;max-height:1000px;
+   position:relative;overflow:hidden;border-radius:19px;
+   background:#fefefc;border:1px solid #dde5dc;box-shadow:0 16px 40px #283c3017;
+   scroll-margin-top:5px;
+ }
+ .workspace .studio-panel{order:0!important;grid-row:1!important;width:100%!important;display:flex!important;flex-direction:column!important;height:100%!important;min-height:0!important;border:none!important;border-radius:0!important;overflow:hidden!important;position:relative;box-shadow:none!important;background:#f7f8f3!important}
+ .studio-panel .studio-header{height:43px!important;min-height:43px!important;padding:0 12px!important;border-bottom:1px solid #dfe7df!important;background:#fcfcf9!important}
+ .studio-header .scene-heading{min-width:0;gap:2px!important}
+ .studio-overline{display:none!important}
+ .scene-heading h2{font-size:14px!important;font-weight:750!important;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:230px}
+ .studio-nav{gap:2px!important}
+ .studio-nav .icon-button{height:32px;width:32px;font-size:23px}
+ .studio-panel .stage{flex:1!important;height:auto!important;min-height:0!important;overflow:hidden!important;position:relative!important;background:radial-gradient(ellipse at 40% 20%,#fbfcf9,#edf3ed)!important}
+ .stage canvas{height:100%!important;width:100%!important}
+ .stage .view-switch{top:9px!important;right:9px!important;left:auto!important;transform:none!important;padding:2px!important;border:1px solid #d8e1d7!important;border-radius:10px!important;gap:0!important;box-shadow:0 3px 11px #344c3c12}
+ .stage .view-switch button{font-size:10px!important;padding:8px 10px!important;border-radius:8px!important;min-height:31px}
+ .stage .height-badge{top:12px!important;left:13px!important;background:#fffefaee;border:1px solid #e2e8e1;border-radius:11px;padding:6px 9px!important;max-width:86px;box-shadow:0 2px 8px #40564c10}
+ .height-badge>span:first-child{font-size:8px!important}
+ .height-badge strong{font-size:24px!important;letter-spacing:-.8px!important;line-height:1.05!important;margin-top:3px!important}
+ .height-badge small{font-size:9px!important}
+ .height-badge .badge-line,.height-badge .badge-caption{display:none!important}
+ .stage .person-labels{bottom:34px!important;gap:6px!important;max-width:calc(100% - 70px)!important}
+ .person-labels>span{padding:5px 7px!important;line-height:1!important;font-size:9px!important;max-width:130px!important;box-shadow:0 2px 6px #425a4610}
+ .stage-hint{display:none!important}
+ .stage-tools{right:10px!important;bottom:6px!important;gap:2px!important;z-index:2}
+ .stage-tools .icon-button{width:29px;height:29px;font-size:18px;background:#fffdfbe5;border-radius:8px}
+ .studio-panel>.studio-footer{display:none!important}
+ .mobile-toolbar{display:flex;position:absolute;bottom:9px;left:11px;gap:5px;z-index:4;pointer-events:auto}
+ .mobile-toolbar button{border:1px solid #dae4da;background:#fffffff0;box-shadow:0 2px 8px #2d453222;border-radius:8px;color:#486457;padding:6px 9px;font-size:10px;font-weight:650;min-height:28px}
+ .workspace .settings:not(.mobile-ready){overflow-y:auto!important;padding:14px!important}
+ .workspace .settings:not(.mobile-ready)>.mobile-control-pages{display:none}
+ .workspace .settings{order:1!important;grid-row:2!important;display:flex!important;flex-direction:column!important;min-height:0!important;max-height:none!important;height:100%!important;width:100%!important;margin:0!important;padding:0!important;position:relative!important;border:none!important;border-top:1px solid #dce4dc!important;border-radius:0!important;overflow:hidden!important;background:#fffefa!important}
+ .mobile-control-head{display:flex!important;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px 7px!important;min-height:51px;background:#fffefa}
+ .mobile-control-head .head-title{display:flex;flex-direction:column;gap:3px;min-width:0}
+ .mobile-control-head strong{font-size:15px;font-weight:750;letter-spacing:-.3px}
+ .mobile-control-head small{font-size:10px;color:#87968b;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .mobile-live-chip{display:inline-flex;gap:5px;align-items:center;border-radius:20px;background:#eef5ef;color:#527461;font-weight:700;font-size:10px;padding:6px 8px;white-space:nowrap}
+ .mobile-live-chip:before{content:"";background:#65a77b;width:5px;height:5px;border-radius:50%}
+ .mobile-control-tabs{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr));align-items:center;gap:3px;padding:0 10px 9px!important;background:#fffefa;border-bottom:1px solid #edf0ea;flex-shrink:0}
+ .mobile-control-tabs button{border:1px solid transparent;border-radius:10px;min-width:0;min-height:44px;padding:5px 1px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;color:#819088;background:transparent;line-height:1;font-weight:600;font-size:11px}
+ .mobile-control-tabs button .mobile-tab-icon{font-size:16px;line-height:18px;font-weight:500}
+ .mobile-control-tabs button.is-active{background:#eaf1ea;border-color:#d5e5d7;color:#3b6253;font-weight:800}
+ .mobile-control-pages{min-height:0;flex:1;overflow:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0 15px max(22px,env(safe-area-inset-bottom))}
+ .mobile-pane{display:none!important;min-width:0;padding:13px 0 4px}
+ .mobile-pane.is-active{display:block!important}
+ .mobile-pane .panel-heading{margin:2px 0 13px!important}
+ .mobile-pane .panel-heading h2{font-size:16px!important;letter-spacing:-.3px!important}
+ .mobile-pane .panel-heading .section-index{font-size:9px}
+ .mobile-pane .panel-hint{font-size:10px}
+ .mobile-pane .settings-divider{display:none}
+ .mobile-pane .surface-heading{margin-top:0!important}
+ .mobile-pane .surface-fields{display:grid;gap:13px}
+ .mobile-pane .surface-field{background:#f8faf6;border:1px solid #e5ebe2;border-radius:13px;padding:12px 13px}
+ .mobile-pane .surface-field label{font-size:13px!important}
+ .mobile-pane .surface-field label small{font-size:10px!important}
+ .mobile-pane .surface-field .height-config{margin-top:8px;display:flex;gap:10px}
+ .mobile-pane .height-config input[type=number]{width:59px;min-height:38px;border-radius:9px;background:white;font-weight:750;font-size:15px}
+ .mobile-pane input[type=range]{height:7px!important;margin:12px 0 9px!important;min-width:0;touch-action:pan-x}
+ .mobile-pane input[type=range]::-webkit-slider-thumb{height:22px!important;width:22px!important;border:4px solid #fffefa!important;box-shadow:0 0 0 1px #6f9181,0 2px 6px #334f3730!important}
+ .mobile-pane input[type=range]::-moz-range-thumb{height:18px!important;width:18px!important}
+ .mobile-pane .person-card{border:1px solid #e5ebe3!important;background:#f9faf7!important;border-radius:13px;padding:12px 13px!important;margin:0 0 10px!important}
+ .mobile-pane .person-card+.person-card{border:1px solid #e5ebe3!important;margin:0 0 10px!important;padding:12px 13px!important}
+ .mobile-pane #people{display:block!important}
+ .person-title{margin-bottom:8px!important}
+ .person-id{gap:7px;font-size:11px!important}
+ .person-letter{width:23px!important;height:23px!important;border-radius:7px!important;font-size:11px!important}
+ .person-name{flex:1;max-width:145px!important;width:145px!important;text-align:right;font-size:12px!important;border-bottom:1px solid #d7e0d5!important}
+ .height-control{align-items:center!important;gap:8px!important;flex-wrap:nowrap!important}
+ .height-control label{font-size:11px!important;flex:1}
+ .height-number{min-width:96px!important;justify-content:flex-end!important;padding:4px 7px!important;border-radius:9px!important}
+ .height-number input{font-size:21px!important;width:68px!important}
+ .height-number span{font-size:10px!important}
+ .range-labels{font-size:9px!important}
+ .mobile-pane .appearance{margin-top:4px}
+ .mobile-pane .appearance summary{font-size:11px;padding:6px 0}
+ .mobile-pane .swatch{width:24px;height:24px}
+ .mobile-pane .swatches{gap:11px;flex-wrap:wrap}
+ .mobile-pane .appearance-fields{padding-top:5px}
+ .mobile-pane .swap-button{margin:9px 0 11px!important;min-height:41px;border-radius:10px!important;font-size:12px!important;background:#f7f9f5;border-color:#dbe5db}
+ .mobile-pane .intimate-role-control{padding:12px!important;background:#f8faf6;border-radius:11px;border:1px solid #e5ebe3;display:grid;gap:7px}
+ .mobile-pane .intimate-role-control label{font-size:12px}
+ .mobile-pane .intimate-role-control select{width:100%;min-height:40px;font-size:12px;border-radius:9px}
+ .mobile-pane .quick-pairs{display:block!important;margin-top:9px!important}
+ .mobile-pane .quick-pairs summary{font-size:11px}
+ .mobile-pane .quick-pairs>div{display:grid!important;grid-template-columns:1fr 1fr!important}
+ .mobile-pane .quick-pairs button{min-height:35px;font-size:11px!important}
+ .mobile-pane .local-note{margin-top:12px;font-size:10px}
+ .mobile-pane details.advanced-details{margin:11px 0;border:1px solid #e2e9e0;border-radius:13px;padding:1px 12px;background:#fbfcfa;overflow:hidden}
+ .mobile-pane .advanced-details summary{padding:12px 0!important;font-size:13px!important;line-height:1.4!important;white-space:normal!important;word-break:keep-all!important;font-weight:700!important;transform:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important}
+ .mobile-pane .advanced-details summary span{display:inline!important;transform:none!important;position:static!important;white-space:normal!important;line-height:1.5!important}
+ .mobile-pane .advanced-details summary b{transform:none!important;flex-shrink:0}
+ .mobile-pane .advanced-details[open] summary b{transform:rotate(180deg)!important}
+ .mobile-pane .fine-content{padding:0 0 13px!important}
+ .mobile-pane .fine-content>label,.mobile-pane .joint-field>label{font-size:12px!important;margin-top:12px!important;align-items:center!important;line-height:1.4}
+ .mobile-pane .fine-content output{font-size:12px!important;color:#456456!important;font-weight:700}
+ .mobile-pane .fine-content p{font-size:10px!important;line-height:1.6!important;color:#8b9789}
+ .mobile-pane .editor-pair{gap:10px!important;margin-bottom:12px}
+ .mobile-pane .editor-pair label{font-size:11px!important;max-width:none;min-width:0;flex:1}
+ .mobile-pane .editor-pair select{font-size:13px!important;max-width:none!important;width:100%!important;min-height:43px!important;border-radius:10px!important;background:white;padding:8px!important}
+ .mobile-pane #joint-details{border:0!important;padding:0!important;margin:0!important;background:transparent}
+ .mobile-pane #joint-details>summary{display:none!important}
+ .mobile-pane #joint-sliders .joint-field{padding:8px 11px;margin-bottom:11px;background:#f9faf8;border:1px solid #e6ede5;border-radius:12px}
+ .mobile-pane #joint-sliders .joint-field[hidden]{display:none!important}
+ .mobile-pane #reset-pose{width:100%;min-height:42px;font-size:12px}
+ .mobile-pane .fine-content p{padding-top:4px}
+ .mobile-section-title{font-size:15px;font-weight:780;color:#33483e;margin:2px 0 7px}
+ .mobile-section-desc{font-size:11px;line-height:1.6;color:#8b988e;margin:0 0 13px}
+ .mobile-search{display:flex;gap:7px;align-items:center;background:#f8faf7;border:1px solid #dfe8dd;border-radius:10px;padding:0 12px;height:42px}
+ .mobile-search input{border:0;outline:0;background:transparent;flex:1;min-width:0;font-size:13px}
+ .mobile-search .search-icon{font-size:17px;color:#97a59b}
+ .mobile-filters{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;scrollbar-width:none}
+ .mobile-filters::-webkit-scrollbar{display:none}
+ .mobile-filters button{border:1px solid #dfe8df;background:#f7faf6;white-space:nowrap;border-radius:9px;padding:8px 11px;color:#677f70;min-height:32px;font-size:11px;font-weight:650}
+ .mobile-filters button.is-active{background:#486b5d;color:#fff;border-color:#486b5d}
+ .mobile-pose-list{display:grid;gap:7px;padding-bottom:18px}
+ .mobile-pose-option{background:#fff;border:1px solid #e2eae1;border-radius:11px;display:flex;align-items:center;gap:11px;padding:10px 12px;min-height:55px;text-align:left;position:relative}
+ .mobile-pose-option .pose-option-letter{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#eef2ec;color:#64816d;font-size:15px;flex-shrink:0}
+ .mobile-pose-option .pose-option-info{display:grid;gap:4px;min-width:0;flex:1}
+ .mobile-pose-option .pose-option-info b{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#384b3e}
+ .mobile-pose-option .pose-option-info small{font-size:10px;color:#91a095}
+ .mobile-pose-option .pose-option-active{font-size:10px;color:#456b59;font-weight:750}
+ .mobile-pose-option.is-active{border-color:#88b095;background:#f0f7f0;box-shadow:inset 3px 0 #608b6c}
+ .mobile-pose-empty{font-size:12px;color:#94a197;text-align:center;padding:18px}
+ .mobile-person-select-row{display:flex;gap:8px;margin-bottom:12px}
+ .mobile-joint-chip{background:#f7f9f5;border:1px solid #e1e9e1;border-radius:10px;padding:9px 11px;font-size:11px;white-space:nowrap}
+ .mobile-joint-chip.is-active{background:#e9f3e9;border-color:#9ebaa2;color:#456c50;font-weight:750}
+ .mobile-joint-shortcuts{display:flex;gap:6px;overflow:auto;scrollbar-width:none;margin-bottom:12px;padding:2px 0}
+ .mobile-step-row{display:flex;align-items:center;gap:8px;margin-top:4px}
+ .mobile-step-row button{width:37px;height:33px;display:grid;place-items:center;border:1px solid #d9e5d9;background:#fff;border-radius:9px;font-size:17px;color:#406354;flex-shrink:0}
+ .mobile-step-row input[type=range]{flex:1}
+ .mobile-camera-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+ .mobile-camera-choices button{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#f8faf7;border:1px solid #dfe8de;border-radius:11px;font-size:11px;font-weight:650;color:#6f8978}
+ .mobile-camera-choices button.is-active{border-color:#85a88e;background:#ebf4eb;color:#3b6652}
+ .mobile-camera-choices .cam-icon{font-size:20px}
+ .mobile-camera-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .mobile-camera-actions button{min-height:44px;border-radius:11px;border:1px solid #dfe8de;background:#fafcf8;color:#456656;font-size:12px;font-weight:700}
+ .mobile-camera-actions button[aria-pressed=true]{background:#e8f2e8;border-color:#8fac94}
+ .mobile-camera-callout{margin-top:14px;background:#f7f6f1;padding:13px;border-radius:11px;color:#738479;font-size:11px;line-height:1.7}
+ .library{padding-top:28px!important}
+ .library-heading h2{font-size:20px!important}
+ .library-heading p{font-size:11px}
+ .library-filter-bar{flex-wrap:wrap!important}
+ .pose-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .page-footer{margin-top:20px!important}
+ body.focus .studio-panel{inset:8px!important;z-index:40!important;height:auto!important}
+ body.focus .stage{height:auto!important}
+ body.focus .studio-footer{display:flex!important}
+}
+@media(max-width:760px) and (max-height:635px) and (orientation:portrait){
+ .workspace#studio{grid-template-rows:minmax(208px,41%) minmax(0,1fr)!important;min-height:475px}
+ .mobile-control-head{min-height:44px!important;padding-top:7px!important;padding-bottom:4px!important}
+ .mobile-control-tabs{padding-bottom:5px!important}
+ .mobile-control-tabs button{min-height:40px}
+ .stage .person-labels{display:none}
+}
+@media(max-width:900px) and (max-height:520px) and (orientation:landscape){
+ .workspace#studio{display:grid!important;grid-template-columns:minmax(0,55%) minmax(0,45%)!important;grid-template-rows:1fr!important;height:calc(100dvh - 10px)!important;min-height:270px!important}
+ .workspace .studio-panel{grid-column:1!important;grid-row:1!important}
+ .workspace .settings{grid-column:2!important;grid-row:1!important;border-top:0!important;border-left:1px solid #dce4dc!important}
+ .mobile-control-tabs button{font-size:10px!important}
+ .mobile-control-head{min-height:40px!important;padding:6px 9px!important}
+ .mobile-control-tabs{padding:0 5px 5px!important}
+ .stage .person-labels{display:none!important}
+ .mobile-control-pages{padding:0 8px 15px!important}
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
 
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 1.75rem;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+/* Custom saved pose cards and aligned hand/foot comparisons */
+.compare-switch[hidden]{display:none!important}
+.compare-switch{position:absolute;z-index:5;top:65px;right:18px;display:flex;align-items:center;gap:9px;background:#fffdf7f2;border:1px solid #dce4d9;box-shadow:0 3px 14px #2d45321c;padding:5px 7px 5px 10px;border-radius:12px}
+.compare-switch-title{color:#648074;font-size:11px;font-weight:700;white-space:nowrap}
+.compare-switch>div{display:flex;gap:2px}
+.compare-switch button{font-weight:700;font-size:11px;color:#71877c;padding:7px 10px;border-radius:8px;min-width:40px}
+.compare-switch button.active{background:#e6f0e7;color:#365c4f}
+.saved-pose-section{margin:44px 0 42px;padding:28px 30px;background:#fffefa;border:1px solid #e1e6df;border-radius:18px}
+.saved-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px}
+.saved-head h2{font-size:24px;letter-spacing:-.5px;font-weight:650;margin:8px 0 7px}
+.saved-head h2 span{font-size:13px;color:#748e80;vertical-align:middle;border-radius:20px;padding:4px 9px;background:#eef3ed}
+.saved-head p,.saved-footnote{color:#88968a;font-size:12px;line-height:1.7}
+.saved-footnote{margin-top:15px}
+.saved-pose-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.saved-empty{border:1px dashed #d6e2d6;border-radius:14px;padding:22px;color:#7a9181;background:#f7faf6;line-height:1.75;font-size:12px;grid-column:1/-1;text-align:center}
+.saved-card{border:1px solid #e1e9de;background:#fffefa;border-radius:14px;overflow:hidden;min-width:0;box-shadow:0 4px 15px #34483c0a}
+.saved-card img{width:100%;aspect-ratio:4/5;display:block;object-fit:cover;background:#e5eae3}
+.saved-card-text{padding:11px 12px 6px}
+.saved-card-title{font-size:13px;font-weight:700;color:#344f44;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saved-card-meta{font-size:10px;color:#8a9a8e;margin-top:4px;line-height:1.65}
+.saved-card-buttons{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:8px 10px 12px}
+.saved-card-buttons button{min-width:0;border:1px solid #dce7da;background:#f6faf5;color:#466c57;border-radius:8px;font-size:11px;font-weight:700;padding:9px 2px;min-height:36px}
+.saved-card-buttons .saved-apply{background:#557767;color:white;border-color:#557767}
+.saved-card-buttons .saved-delete{color:#a36a5d;background:#fffafa;border-color:#efdfda}
+.pose-card-dialog{width:min(780px,calc(100% - 24px));max-height:min(94dvh,880px);border-radius:18px;padding:22px}
+.pose-card-dialog-grid{display:grid;grid-template-columns:minmax(170px,0.9fr) minmax(210px,1fr);gap:22px;align-items:start}
+.pose-card-live-preview{background:#f0f3ec;border-radius:13px;overflow:hidden;position:relative;min-height:250px}
+.pose-card-live-preview img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.pose-card-loading{position:absolute;inset:0;display:grid;place-items:center;background:#f8faf7d8;color:#526c5c;font-weight:700;font-size:13px}
+.pose-card-loading[hidden]{display:none}
+.pose-card-fields label{display:grid;gap:7px;font-size:12px;font-weight:700;color:#566b5d;margin:6px 0 18px}
+.pose-card-fields input,.pose-card-fields textarea{width:100%;padding:11px;border:1px solid #dbe3d9;border-radius:9px;background:#fffefa;color:#385144;resize:vertical;outline-offset:3px;font:inherit}
+.pose-card-summary{padding:12px;background:#f6f8f3;border-radius:10px;font-size:12px;color:#647e6e;line-height:1.85}
+.pose-card-tip{font-size:11px;color:#9aa79a;line-height:1.8;margin-top:15px}
+.pose-card-dialog-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}
+.mobile-saved-pose-grid{display:grid;gap:10px;margin:15px 0}
+.mobile-save-pose-card{width:100%;padding:13px;border-radius:11px;background:#4d715f;color:white;font-size:13px;font-weight:750}
+.mobile-saved-pose-grid .saved-card{display:grid;grid-template-columns:100px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:start}
+.mobile-saved-pose-grid .saved-card img{grid-row:1/3;height:100%;min-height:160px;object-fit:cover}
+.mobile-saved-pose-grid .saved-card-text{padding:10px 10px 0}
+.mobile-saved-pose-grid .saved-card-buttons{align-self:end;padding:4px 8px 8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.mobile-saved-pose-grid .saved-card-buttons button{font-size:10px;padding:6px 1px;min-height:31px}
+@media(max-width:760px){
+  .saved-pose-section{display:none}
+  .compare-switch{top:57px;right:8px;gap:4px;padding:4px 5px 4px 7px;border-radius:9px}
+  .compare-switch-title{font-size:9px}
+  .compare-switch button{font-size:10px;padding:6px 7px}
+  .mobile-control-tabs button{min-height:42px;font-size:10px!important}
+  .pose-card-dialog{padding:15px;max-height:92dvh}
+  .pose-card-dialog-grid{grid-template-columns:42% 1fr;gap:12px}
+  .pose-card-live-preview{min-height:0}
+  .pose-card-fields label{font-size:11px;margin-bottom:10px}
+  .pose-card-fields input,.pose-card-fields textarea{padding:9px;font-size:12px}
+  .pose-card-summary,.pose-card-tip{font-size:10px}
+  .pose-card-dialog-actions{display:grid;grid-template-columns:1fr 1fr;margin-top:14px}
+  .pose-card-dialog-actions button:last-child{grid-column:1/-1}
+  .pose-card-dialog-actions .button{min-height:40px}
+}
+@media(max-width:365px){.pose-card-dialog-grid{display:block}.pose-card-live-preview{width:45%;float:left;margin:0 12px 8px 0}.pose-card-fields:after{content:"";display:block;clear:both}}
 
-    .card:hover {
-      transform: translateY(-4px);
-      background-color: var(--card-hover);
-      border-color: var(--accent);
-    }
+.saved-head-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.mobile-import-pose-card{width:100%;margin-top:9px;padding:10px;border:1px solid #d4e2d4;color:#4f715b;background:#f8faf6;border-radius:10px;font-size:12px;font-weight:700}
+.studio-footer .footer-actions{flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:1020px){.studio-footer .footer-actions .button{white-space:nowrap;font-size:11px;padding:9px 10px}}
 
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+/* NEAR — Precise controls redesign, November 2026 */
+:root { --ed-ink:#273f35; --ed-muted:#809187; --ed-line:#e2eae3; --ed-green:#547b66; --ed-wash:#f5f8f4; --ed-glow:#e5f0e8; }
+/* The whole editor is deliberately typographic, not a wall of raw browser inputs. */
+.settings .advanced-details {border:1px solid var(--ed-line);border-radius:14px;margin:14px 0 0;background:#fff;overflow:hidden;}
+.settings .advanced-details>summary {padding:13px 14px;min-height:48px;margin:0;display:flex;align-items:center;gap:8px;justify-content:space-between;color:var(--ed-ink);font-size:13px;font-weight:750;line-height:1.4;cursor:pointer;border:0;}
+.settings .advanced-details>summary>span {color:inherit!important;font-size:inherit!important;font-weight:inherit!important;line-height:1.4!important;transform:none!important;writing-mode:horizontal-tb!important;letter-spacing:0!important;}
+.settings .advanced-details>summary>b {display:grid;place-items:center;min-width:25px;height:25px;border-radius:8px;background:var(--ed-wash);color:var(--ed-green);font-size:16px;transform:none;transition:transform .2s}
+.settings .advanced-details[open]>summary>b {transform:rotate(180deg)}
+.settings .advanced-details[open]>summary{border-bottom:1px solid #edf0ed;}
+.settings .advanced-details>.fine-content{padding:12px!important;}
+.settings .refined-fine-rows{display:grid;gap:9px;}
+.settings .refined-fine-control{border:1px solid #e9eee9;background:#fbfcfa;border-radius:12px;padding:11px 12px 6px;min-width:0;}
+.settings .refined-fine-control>label{display:flex;justify-content:space-between;align-items:center;margin:0!important;gap:8px;min-width:0;font-size:12px!important;font-weight:650;color:#486054;line-height:1.4!important;}
+.settings .refined-fine-control>label output{background:#eff4ee;border-radius:6px;min-width:51px;text-align:center;padding:4px 6px;font-size:12px;color:#476b55;font-variant-numeric:tabular-nums;font-weight:750;}
+.settings .refined-fine-control input[type=range]{display:block;width:100%;height:6px;margin:16px 0 8px!important;accent-color:#638771;}
+.settings .refined-fine-control input[type=range]::-webkit-slider-thumb{width:21px;height:21px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 1px #688c78,0 2px 6px #293c301e;}
+.settings .refined-fine-hint{font-size:10px;color:var(--ed-muted);line-height:1.65;padding:2px 3px 0;margin:0!important;}
+/* Card-like joint editor, also works in the narrow desktop settings rail. */
+.settings #joint-details {min-width:0;}
+.settings #joint-details>.fine-content{padding:12px!important;}
+.settings .joint-person-toggle{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;background:#f0f4ef;border:1px solid #e5ebe3;border-radius:12px;margin:0 0 12px;}
+.settings .joint-person-toggle button{border:1px solid transparent;border-radius:9px;min-height:39px;font-size:12px;color:#7e9081;background:transparent;font-weight:650;transition:background .12s,color .12s}
+.settings .joint-person-toggle button.is-current{background:white;color:#355947;border-color:#dce6da;box-shadow:0 2px 6px #2f4b3313;font-weight:800;}
+.settings .joint-person-toggle button .person-toggle-symbol{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;margin-right:5px;background:#f5e9e4;color:#b76f5a;font-size:10px;}
+.settings .joint-person-toggle button[data-person='1'] .person-toggle-symbol{background:#e8f0e8;color:#678477;}
+.settings #joint-details .editor-pair{display:block!important;margin:0 0 11px!important;}
+.settings #joint-details .editor-pair>label:has(#edit-person){position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;}
+.settings #joint-details .editor-pair>label:has(#edit-joint){display:grid!important;gap:6px;max-width:none!important;font-size:11px!important;font-weight:700;color:#819185!important;}
+.settings #edit-joint{width:100%!important;max-width:none!important;min-height:44px!important;border:1px solid #dce7dd;border-radius:10px!important;padding:9px 32px 9px 12px!important;background:#fff!important;font-size:13px!important;font-weight:700;color:#354f40;box-shadow:0 1px 2px #24432b09;}
+.settings .joint-axis-grid{display:grid;gap:8px;min-width:0;}
+.settings #joint-sliders .joint-field{margin:0!important;border:1px solid #e7eee7!important;border-radius:12px!important;padding:10px 11px 8px!important;background:#fbfcf9!important;min-width:0;}
+.settings #joint-sliders .joint-field[hidden]{display:none!important;}
+.settings #joint-sliders .joint-field>label{display:flex!important;align-items:center;justify-content:space-between;gap:10px;margin:0 0 5px!important;min-width:0;font-size:12px!important;line-height:1.4!important;font-weight:680;color:#40574b;}
+.settings #joint-sliders .joint-field>label output{min-width:49px;text-align:center;color:#446b52;background:#e8f2e9;border-radius:7px;padding:5px 7px;font-weight:800;font-size:12px!important;font-variant-numeric:tabular-nums;}
+.settings #joint-sliders .mobile-step-row,.settings #joint-sliders .ed-step-row{display:grid!important;grid-template-columns:36px minmax(0,1fr) 36px;gap:9px;align-items:center;margin:0!important;min-width:0;}
+.settings #joint-sliders .mobile-step-row input[type=range],.settings #joint-sliders .ed-step-row input[type=range]{width:100%!important;min-width:0!important;height:7px!important;margin:13px 0 10px!important;flex:auto;accent-color:#5f866d;touch-action:pan-x;}
+.settings #joint-sliders .mobile-step-row input[type=range]::-webkit-slider-thumb,.settings #joint-sliders .ed-step-row input[type=range]::-webkit-slider-thumb{width:21px!important;height:21px!important;background:#67937a!important;border:4px solid #fff!important;box-shadow:0 0 0 1px #61896f,0 2px 7px #415b4c24!important;}
+.settings #joint-sliders .mobile-step-row button,.settings #joint-sliders .ed-step-row button{width:36px;height:36px;min-height:36px;border:1px solid #dce7de;border-radius:10px;background:white;color:#4f7460;font-size:19px;font-weight:450;display:grid;place-items:center;box-shadow:0 1px 3px #233b2810;}
+.settings #joint-sliders .mobile-step-row button:active,.settings #joint-sliders .ed-step-row button:active{background:#e6f1e7;transform:scale(.96)}
+.settings .joint-reset-line{margin-top:10px;padding-top:10px;border-top:1px solid #ecf0eb;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.settings #reset-pose{margin:0!important;width:auto!important;min-height:37px;font-size:11px!important;font-weight:750;color:#52705e;border:1px solid #dce8dc;border-radius:10px;padding:8px 12px;background:#f5faf5;}
+.settings .joint-reset-line .joint-help{color:#8b9a8d;font-size:10px;line-height:1.5;margin:0!important;padding:0!important;max-width:124px;}
+.settings .mobile-joint-shortcuts{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;overflow:visible!important;margin:0 0 12px!important;padding:0!important;}
+.settings .mobile-joint-chip{display:flex!important;align-items:center;justify-content:center;white-space:nowrap!important;min-height:35px;padding:5px 2px!important;border:1px solid #e3eae1!important;background:#f8faf7!important;border-radius:9px!important;font-size:11px!important;font-weight:650;color:#74877a;line-height:1.15;}
+.settings .mobile-joint-chip.is-active{color:#3f6650;background:#e7f2e9!important;border-color:#9ebda7!important;box-shadow:0 0 0 1px #a4bdab25;font-weight:800;}
+.settings .mobile-joint-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 0 13px;margin:0 0 12px;border-bottom:1px solid #e9eee9;}
+.settings .mobile-joint-header-title{font-size:15px;font-weight:800;letter-spacing:-.2px;color:#2e4b3b}
+.settings .mobile-joint-header-sub{margin-top:3px;font-size:11px;line-height:1.5;color:#8d9c91}
+.settings .mobile-joint-header .joint-header-icon{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#e9f3ea;color:#597967;font-size:17px;flex-shrink:0}
+/* Desktop: show the native summary only, not duplicate mobile-only controls. */
+@media(min-width:761px){
+  .settings .mobile-pane[data-pane=joints]>.mobile-joint-header,.settings .mobile-pane[data-pane=joints]>.mobile-joint-shortcuts{display:none!important}
+  .settings .refined-fine-control{padding:10px 10px 4px}
+  .settings #joint-details .fine-content{padding:11px!important;}
+  .settings #joint-details .joint-axis-grid{gap:9px}
+}
+/* Phone: compact, calm, and readable in the bottom editor while 3D stays visible. */
+@media(max-width:760px){
+ .workspace .settings .mobile-pane[data-pane='joints']{padding-top:17px!important;}
+ .workspace .settings .mobile-joint-shortcuts{margin-bottom:13px!important}
+ .workspace .settings #joint-details{margin:0!important;padding:0!important;border:0!important;background:transparent!important;overflow:visible!important}
+ .workspace .settings #joint-details>.fine-content{padding:0!important;}
+ .workspace .settings .joint-axis-grid{gap:9px}
+ .workspace .settings #joint-sliders .joint-field{padding:11px 12px 8px!important}
+ .workspace .settings .joint-person-toggle{margin-bottom:12px;}
+ .workspace .settings .advanced-details:not(#joint-details){margin:14px 0 0!important;padding:0!important;background:white!important;border-radius:14px!important;}
+ .workspace .settings .advanced-details:not(#joint-details) .fine-content{padding:12px!important;}
+ .workspace .settings .advanced-details summary{padding:13px 14px!important;min-height:48px;font-size:13px!important;}
+ .workspace .settings .refined-fine-control{padding:12px 13px 6px}
+ .workspace .settings .joint-reset-line{margin-bottom:10px}
+}
+@media(max-width:360px){.settings .mobile-joint-chip{font-size:10px!important}.settings #joint-sliders .mobile-step-row,.settings #joint-sliders .ed-step-row{grid-template-columns:34px minmax(0,1fr) 34px;gap:6px}.settings .joint-reset-line .joint-help{max-width:105px}}
 
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
 
-    .card-desc {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
-    }
+/* Choose a visual mood for saved/shareable couple cards. */
+.pose-card-fields .near-card-style-label{display:grid;gap:8px;font-size:11px;font-weight:720;color:#52695b}
+.pose-card-fields #near-card-style{width:100%;border:1px solid #dfe7dd;padding:11px 12px;border-radius:9px;background:#fff;color:#456453;font-size:12px;font-weight:600;min-height:41px}
+.pose-card-fields #near-card-style:focus-visible{outline:2px solid #92ac9a}
+/* néar. Body proportions — functional, per-character, touch friendly */
+.proportion-studio{margin:14px 0 13px;border:1px solid #dce7db;border-radius:14px;background:#f7faf6;overflow:hidden}
+.proportion-studio__summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 15px;cursor:pointer;list-style:none}
+.proportion-studio__summary::-webkit-details-marker{display:none}
+.proportion-studio__summary>span:first-child{display:grid;gap:4px}
+.proportion-studio__summary strong{font-size:14px;font-weight:760;color:#385846;letter-spacing:-.2px}
+.proportion-studio__summary small{font-size:10px;color:#8a9b8e}
+.proportion-studio__summary .section-index{font-size:8px;letter-spacing:1.2px;color:#a17258}
+.proportion-studio__chevron{font-size:19px;color:#809989;transition:transform .2s}
+.proportion-studio[open] .proportion-studio__chevron{transform:rotate(180deg)}
+.proportion-studio__body{padding:0 14px 15px}
+.proportion-studio__hint{font-size:10px;line-height:1.7;color:#7b8d7f;margin:0 0 12px}
+.proportion-studio__hint b{color:#416f51}
+.proportion-studio__people{display:grid;grid-template-columns:1fr 1fr;gap:5px;background:#e8eee6;padding:4px;border-radius:11px}
+.proportion-studio__people button{min-height:36px;border-radius:8px;font-size:11px;font-weight:750;color:#728779}
+.proportion-studio__people button[aria-pressed=true]{background:#fff;color:#3f684e;box-shadow:0 2px 8px #47654a18}
+.proportion-studio__info{padding:12px 2px;display:grid;gap:4px}
+.proportion-studio__info span{font-size:12px;color:#456553;font-weight:780}
+.proportion-studio__info small{font-size:10px;line-height:1.5;color:#8a988c}
+.proportion-studio__presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:0 0 17px}
+.proportion-studio__presets button{border:1px solid #dbe6d9;background:#fff;border-radius:8px;padding:9px 5px;font-size:11px;color:#5b7463;font-weight:650;min-height:36px}
+.proportion-studio__presets button:hover{background:#eaf4e9}
+.proportion-studio__sliders{display:grid;gap:18px}
+.prop-control__heading{display:flex;justify-content:space-between;align-items:baseline;gap:7px;margin-bottom:6px}
+.prop-control__heading label{font-size:11px;font-weight:720;color:#536b58}
+.prop-control__heading output{font-size:12px;font-weight:800;color:#456e55;font-variant-numeric:tabular-nums;white-space:nowrap}
+.prop-control input[type=range]{margin:9px 0;width:100%;min-height:18px;height:5px;touch-action:pan-y;cursor:pointer}
+.prop-control input[type=range]::-webkit-slider-thumb{height:22px;width:22px;box-shadow:0 0 0 1px #779881,0 2px 7px #536b4929}
+.prop-control small{font-size:9px;color:#9aa79b;line-height:1.55;display:block}
+.proportion-studio__foot{margin-top:16px;padding-top:12px;border-top:1px solid #e0e9df;display:flex;flex-direction:column;gap:10px}
+.proportion-studio__foot>span{font-size:9px;color:#9ba69c;line-height:1.5}
+.proportion-studio__foot>button{align-self:flex-start;padding:8px 10px;border:1px solid #d8e4d8;background:white;color:#6a806b;border-radius:8px;font-size:10px;font-weight:750}
+@media(max-width:760px){
+ .proportion-studio{margin:12px 0 14px}
+ .proportion-studio__summary{padding:13px 14px}
+ .proportion-studio__body{padding:0 14px 16px}
+ .proportion-studio__presets{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+ .proportion-studio__presets button{font-size:10px;min-height:42px;padding:7px 2px}
+ .proportion-studio__sliders{gap:17px}
+ .prop-control__heading label,.prop-control__heading output{font-size:12px}
+ .prop-control small{font-size:10px}
+}
 
-    .card-link {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
+/* néar. 3D sculpt update — appearance sliders in a calm collapsible section */
+.near-sculpt-details{margin-top:19px;border:1px solid #e2eae0;border-radius:13px;background:#fafcf9;overflow:hidden}
+.near-sculpt-details>summary{list-style:none;cursor:pointer;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#476b53}
+.near-sculpt-details>summary::-webkit-details-marker{display:none}
+.near-sculpt-details>summary strong{font-size:12px;font-weight:800;display:block}
+.near-sculpt-details>summary small{font-size:10px;color:#90a294;display:block;line-height:1.7;margin-top:2px}
+.near-sculpt-arrow{font-size:17px;transform-origin:center;transition:transform .18s;color:#839e85}
+.near-sculpt-details[open] .near-sculpt-arrow{transform:rotate(180deg)}
+.near-sculpt-details__body{padding:0 14px 17px}
+.near-sculpt-details__body>p{margin:0 0 18px;color:#859789;font-size:10px;line-height:1.65}
+.near-sculpt-details__body .proportion-studio__sliders{gap:15px}
+@media(max-width:760px){.near-sculpt-details{margin-top:16px}.near-sculpt-details>summary{min-height:62px}.near-sculpt-details__body .prop-control input[type=range]{min-height:26px}}
 
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-sub);
-    }
-  </style>
+/* -------------------------------------------------------------
+   néar. Desktop studio 4.0 / desktop-only 3-column editor
+   Mobile controller and its nodes stay authoritative.
+   ------------------------------------------------------------- */
+.near-desktop-inspector{display:none}
+@media(min-width:1100px){
+  :root{--paper:#f3f5f1;--white:#fff;--ink:#263e33;--line:#e2e9e1;--green:#315e49;--coral:#b86d59}
+  html{scroll-padding-top:16px}
+  body{background:linear-gradient(155deg,#f7f8f5 0,#f0f4ef 100%);color:#2f4238}
+  .site-header{max-width:1800px;height:64px;padding:0 28px;background:#ffffffbc;backdrop-filter:blur(12px);border-bottom:1px solid #e2e9e2}
+  .brand-mark{font-size:32px}.brand-caption{font-size:11px}
+  .header-nav{gap:19px}.header-nav a{font-size:12px}
+  main{max-width:1800px;padding:0 28px}
+  .intro{padding:17px 4px 15px;align-items:center}
+  .intro .eyebrow{font-size:9px;letter-spacing:1px}
+  .intro h1{font-size:25px;line-height:1.3;letter-spacing:-.9px;margin:3px 0 3px}
+  .intro h1 svg{width:23px;margin-left:8px}
+  .intro p{font-size:11px;line-height:1.5}
+  .intro-counter strong{font-size:34px;letter-spacing:-2px}
+  .intro-counter span{font-size:10px;line-height:1.5}
+  #studio.workspace{display:grid!important;grid-template-columns:minmax(255px,282px) minmax(390px,1fr) minmax(285px,320px)!important;align-items:start;gap:14px!important;overflow:visible;max-width:none;margin-top:0}
+  #studio>.settings,#studio>.studio-panel,#studio>.near-desktop-inspector{min-width:0;box-shadow:0 8px 36px #294c3220;border:1px solid #dfe7df;border-radius:16px;background:#fff}
+  #studio>.settings,#studio>.near-desktop-inspector{position:sticky;top:12px;height:calc(100dvh - 26px);min-height:650px;max-height:940px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#cbd8cc transparent}
+  #studio>.settings{padding:21px 15px 17px;display:block}
+  #studio .settings>.mobile-control-pages{display:contents!important}
+  #studio .settings .mobile-pane[data-pane=people]{display:contents!important}
+  #studio .settings .mobile-pane[data-pane=surface],#studio .settings .mobile-pane[data-pane=joints]{display:contents!important}
+  #studio .settings .mobile-control-head,#studio .settings .mobile-control-tabs{display:none!important}
+  #studio .settings .panel-heading{margin:0 0 18px}
+  #studio .settings .panel-heading h2{font-size:17px;color:#293e33}
+  #studio .settings .panel-hint{font-size:9px}
+  #studio #people{display:grid;grid-template-columns:1fr;gap:12px}
+  #studio .person-card,#studio .person-card+.person-card{padding:16px 13px 13px;margin:0;border:1px solid #e0e7df;border-radius:13px;background:linear-gradient(155deg,#fbfcfa,#f6f9f5)}
+  #studio .person-title{margin:0 0 13px;gap:7px}
+  #studio .person-id{font-size:11px;font-weight:750}
+  #studio .person-name{flex:1;max-width:120px;width:100px;font-size:11px}
+  #studio .height-number input{font-size:28px;min-width:65px;width:65px}
+  #studio .height-control label{font-size:10px}
+  #studio .height-number span{font-size:10px}
+  #studio .range-labels{margin-bottom:6px}
+  #studio .person-card .appearance summary{padding-top:5px}
+  #studio .settings .swap-button{margin:12px 0 14px;border-radius:10px;min-height:39px}
+  #studio .settings .intimate-role-control{padding:14px 0 10px}
+  #studio .settings .intimate-role-control select{min-height:41px;font-size:12px}
+  #studio .settings .quick-pairs{padding:5px 0 12px}
+  #studio .settings .quick-pairs>div{display:grid;gap:5px}
+  #studio .settings .local-note{font-size:9px;line-height:1.6;margin-top:14px}
+  #studio>.studio-panel{position:sticky;top:12px;display:flex;flex-direction:column;overflow:hidden;height:calc(100dvh - 26px);min-height:650px;max-height:940px}
+  #studio .studio-header{height:72px;min-height:72px;padding:0 18px}
+  #studio .scene-heading h2{font-size:19px}
+  #studio .stage{flex:1;min-height:0;height:auto;background:radial-gradient(ellipse at 48% 38%,#f9fbf6 0%,#eef3ed 55%,#e4ece4 100%)}
+  #studio .stage canvas{width:100%;height:100%}
+  #studio .height-badge{top:15px;left:15px;padding:10px 12px;background:#ffffffeb}
+  #studio .height-badge strong{font-size:30px}
+  #studio .view-switch{top:15px;right:15px}
+  #studio .stage .stage-hint{bottom:58px;font-size:10px}
+  #studio .person-labels{bottom:17px;left:17px}
+  #studio .studio-footer{display:flex;align-items:center;padding:13px 17px;gap:8px;min-height:116px;background:#fff}
+  #studio .scene-notes{min-width:0;flex:1}
+  #studio .scene-notes .micro{font-size:9px}
+  #studio .scene-notes p{font-size:11px;line-height:1.55;margin:6px 0 0}
+  #studio .footer-actions{display:grid;grid-template-columns:repeat(2,max-content);align-items:center;justify-content:end;gap:6px;margin:0;max-width:240px}
+  #studio .footer-actions .button{font-size:10px;padding:9px 10px}
+  #studio .footer-actions #save-card-main{grid-column:span 2;justify-self:stretch}
+  #studio .studio-footer .mobile-quick-heights{display:none}
+  #studio>.near-desktop-inspector{display:flex;flex-direction:column;overflow:hidden;padding:0}
+  .near-desktop-inspector .ndi-top{padding:20px 18px 13px;border-bottom:1px solid #e8eee8}
+  .near-desktop-inspector .ndi-eyebrow{font-size:9px;font-weight:850;letter-spacing:1.7px;color:#a57b66}
+  .near-desktop-inspector .ndi-head{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:6px}
+  .near-desktop-inspector .ndi-head strong{font-size:19px;font-weight:780;color:#2b4337;letter-spacing:-.5px}
+  .near-desktop-inspector .ndi-live{font-size:10px;color:#4b805d;background:#edf5eb;border-radius:30px;padding:6px 8px;font-weight:700}
+  .near-desktop-inspector .ndi-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:10px 11px;gap:4px;border-bottom:1px solid #e8eee8;background:#fafbf9}
+  .near-desktop-inspector .ndi-tabs button{padding:11px 3px;border-radius:8px;color:#86968a;font-weight:700;font-size:11px;white-space:nowrap}
+  .near-desktop-inspector .ndi-tabs button[aria-selected=true]{background:#e7f1e7;color:#355d43;box-shadow:inset 0 0 0 1px #d7e5d5}
+  .near-desktop-inspector .ndi-pages{min-height:0;overflow:auto;flex:1;scrollbar-width:thin;scrollbar-color:#cad9cb transparent}
+  .near-desktop-inspector .ndi-page{display:none;padding:16px 17px 22px}
+  .near-desktop-inspector .ndi-page.is-active{display:block}
+  .near-desktop-inspector .ndi-title{font-size:14px;font-weight:780;color:#344f3b;margin-bottom:5px}
+  .near-desktop-inspector .ndi-desc{font-size:10px;color:#849588;line-height:1.65;margin-bottom:15px}
+  .near-desktop-inspector .proportion-studio{border:0;background:transparent;margin:0;overflow:visible}
+  .near-desktop-inspector .proportion-studio>summary{display:none}
+  .near-desktop-inspector .proportion-studio__body{padding:0}
+  .near-desktop-inspector .proportion-studio__people{padding:4px}
+  .near-desktop-inspector .proportion-studio__presets{margin-bottom:17px;gap:5px}
+  .near-desktop-inspector .proportion-studio__presets button{min-height:35px;font-size:11px}
+  .near-desktop-inspector .proportion-studio__sliders{gap:17px}
+  .near-desktop-inspector .prop-control__heading label{font-size:12px}
+  .near-desktop-inspector .prop-control small{font-size:10px;line-height:1.6}
+  .near-desktop-inspector .prop-control input[type=range]{min-height:24px;margin:7px 0}
+  .near-desktop-inspector .near-sculpt-details{margin-top:17px}
+  .near-desktop-inspector .surface-heading{display:none}
+  .near-desktop-inspector .surface-fields{display:grid;gap:12px}
+  .near-desktop-inspector .surface-field{background:#f8faf7;border-radius:12px;padding:13px}
+  .near-desktop-inspector .height-config input[type=number]{font-size:13px;width:59px;min-height:36px}
+  .near-desktop-inspector details.advanced-details{margin-top:14px;border:1px solid #e4ebe2;background:#fbfcfa;border-radius:12px;padding:0 12px}
+  .near-desktop-inspector details.advanced-details>summary{padding:14px 0;font-size:12px}
+  .near-desktop-inspector #joint-details{border:0;background:transparent;padding:0;margin:0}
+  .near-desktop-inspector #joint-details>summary{display:none}
+  .near-desktop-inspector .editor-pair label{font-size:12px;gap:7px}
+  .near-desktop-inspector .editor-pair select{max-width:none;width:100%;min-height:38px;font-size:12px}
+  .near-desktop-inspector .mobile-joint-shortcuts{display:flex;flex-wrap:wrap;overflow:visible;gap:5px}
+  .near-desktop-inspector .mobile-joint-chip{font-size:10px;padding:7px 9px}
+  .near-desktop-inspector .mobile-step-row button{width:34px;height:34px}
+  .near-desktop-inspector #joint-sliders .joint-field{padding:9px 11px;border:1px solid #e5ece4;border-radius:10px;margin-bottom:11px;background:#f9faf8}
+  .near-desktop-inspector #joint-sliders .joint-field[hidden]{display:none}
+  .near-desktop-inspector #reset-pose{width:100%;min-height:42px}
+  .ndi-pose-search{display:flex;align-items:center;height:40px;padding:0 12px;gap:6px;background:#f8faf7;border:1px solid #dce6dc;border-radius:10px;margin-bottom:10px}
+  .ndi-pose-search input{border:0;outline:0;min-width:0;width:100%;font-size:12px;background:transparent}
+  .ndi-filters{display:flex;gap:5px;margin-bottom:13px}
+  .ndi-filters button{flex:1;border-radius:8px;padding:8px 3px;background:#f3f6f2;border:1px solid #e7eee6;color:#647967;font-size:10px}
+  .ndi-filters button[aria-pressed=true]{background:#e6f2e9;color:#335d43;border-color:#b6cfbc;font-weight:760}
+  .ndi-pose-list{display:grid;gap:6px}
+  .ndi-pose-list button{display:flex;text-align:left;align-items:center;gap:10px;padding:12px 10px;border:1px solid #e6ece4;background:#fff;border-radius:9px;width:100%;min-height:54px}
+  .ndi-pose-list button:hover{background:#f6faf5}
+  .ndi-pose-list button[aria-current=true]{border-color:#83a68a;background:#edf6ee}
+  .ndi-pose-list .ndi-pose-number{font-size:10px;color:#9eafa0;min-width:20px;font-weight:700}
+  .ndi-pose-list .ndi-pose-name{font-size:12px;color:#3e5745;font-weight:740;flex:1}
+  .ndi-pose-list .ndi-pose-type{font-size:9px;color:#95a697}
+  .near-desktop-inspector .ndi-bottom{padding:11px 15px 13px;border-top:1px solid #e8eee8;background:#fcfdfa;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .near-desktop-inspector .ndi-bottom button{min-height:40px;border:1px solid #dce7dd;border-radius:9px;font-size:11px;font-weight:740;color:#476b52;background:#fff}
+  .near-desktop-inspector .ndi-bottom .ndi-primary{background:#3e6652;border-color:#3e6652;color:#fff}
+  
+  
+  
+  #saved-pose-section{margin-top:30px}
+  .library{padding-top:37px}
+  body.focus #studio>.studio-panel{position:fixed!important;inset:12px!important;width:auto!important;height:auto!important;max-height:none!important;z-index:70;box-shadow:0 0 0 30px #eff3ed}
+}
+@media(min-width:1100px) and (max-height:730px){
+  #studio>.settings,#studio>.studio-panel,#studio>.near-desktop-inspector{min-height:550px}
+  #studio .studio-footer{min-height:98px;padding:10px 12px}
+}
+@media(min-width:1100px) and (max-width:1310px){
+  .site-header,main{padding-left:15px;padding-right:15px}
+  #studio.workspace{grid-template-columns:260px minmax(350px,1fr) 290px!important;gap:10px!important}
+  #studio .studio-footer{display:block}
+  #studio .footer-actions{display:flex;max-width:none;justify-content:flex-start;margin-top:9px}
+}
+
+
+/* néar. 4.1 — clear mobile accordions and camera pan tools */
+.near-stage-pan{position:absolute;z-index:4;right:16px;top:46%;display:grid;gap:5px}
+.near-stage-pan button{width:35px;height:35px;border:1px solid #d8e6d9;border-radius:11px;background:#fffefbea;color:#456954;box-shadow:0 3px 14px #34573a19;font-size:20px;font-weight:700;display:grid;place-items:center;touch-action:manipulation}
+.near-stage-pan button:hover{background:#eaf3e9}
+.near-card-toggle{display:none}
+.near-mobile-pan{padding:14px 13px;margin:15px 0;border-radius:13px;background:#f7faf5;border:1px solid #e0e9dc}
+.near-mobile-pan>strong{display:block;font-size:13px;color:#395e46}
+.near-mobile-pan>p,.near-mobile-pan>small{display:block;color:#829688;font-size:11px;line-height:1.7;margin:5px 0 10px}
+.near-pan-dpad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.near-pan-dpad button{min-height:44px;border:1px solid #d5e3d5;background:#fff;color:#456b52;border-radius:10px;font-weight:750;font-size:23px}
+.near-pan-dpad button:active{background:#e9f2e7}
+@media(max-width:760px){
+  .near-stage-pan{right:9px;top:48%;gap:5px}
+  .near-stage-pan button{width:31px;height:31px;font-size:19px;background:#ffffffd9}
+  .mobile-pane .near-card-toggle{display:flex!important;align-items:center;justify-content:space-between;width:100%;min-height:59px;border:0;background:transparent;padding:10px 12px;color:#355846;text-align:left;gap:9px}
+  .near-card-toggle-text{min-width:0;display:grid;gap:3px}
+  .near-card-toggle-text b{font-size:13px;line-height:1.4}
+  .near-card-toggle-text small{font-size:11px;color:#8b9a8f;line-height:1.3}
+  .near-card-chevron{font-size:18px;transform:rotate(180deg);transition:transform .16s}
+  .near-card-collapsed>.near-card-toggle .near-card-chevron{transform:rotate(0deg)}
+  .mobile-pane .person-card,.mobile-pane .surface-field{padding:0!important;overflow:hidden}
+  .mobile-pane .person-card:not(.near-card-collapsed) > :not(.near-card-toggle),
+  .mobile-pane .surface-field:not(.near-card-collapsed) > :not(.near-card-toggle){margin-left:12px!important;margin-right:12px!important}
+  .mobile-pane .person-card:not(.near-card-collapsed) > :last-child,
+  .mobile-pane .surface-field:not(.near-card-collapsed) > :last-child{margin-bottom:13px!important}
+  .mobile-pane .person-card.near-card-collapsed > :not(.near-card-toggle),
+  .mobile-pane .surface-field.near-card-collapsed > :not(.near-card-toggle){display:none!important}
+  .mobile-pane #people{display:block!important}
+  .mobile-pane #people .person-card{margin-bottom:9px!important}
+  .mobile-pane #proportion-panel:not([open]) .proportion-studio__body{display:none!important}
+  .mobile-pane #proportion-panel > summary{min-height:65px}
+  .mobile-pane #joint-details>summary{display:flex!important;align-items:center!important;min-height:56px!important;font-size:13px!important;padding:11px 0!important}
+  .mobile-pane[data-pane=joints] .mobile-joint-shortcuts{display:none!important}
+  .mobile-pane[data-pane=joints]:has(#joint-details[open]) .mobile-joint-shortcuts{display:flex!important}
+  .mobile-pane[data-pane=joints] #joint-details{border:1px solid #dfe9df!important;border-radius:13px!important;padding:1px 13px!important;background:#fbfcfa!important;margin-top:11px!important}
+  .mobile-pane[data-pane=joints] #joint-details .fine-content{padding-top:7px!important}
+}
+
+/* Mobile pose choices now live inside closed, discoverable category cards. */
+@media(max-width:760px){
+  .near-pose-folder{border:1px solid #e0e9e0;border-radius:13px;background:#fcfdfa;margin:0 0 9px;overflow:hidden}
+  .near-pose-folder>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;cursor:pointer;min-height:60px;padding:11px 14px;color:#41644f}
+  .near-pose-folder>summary::-webkit-details-marker{display:none}
+  .near-pose-folder>summary>span:first-child{display:grid;gap:4px}
+  .near-pose-folder>summary b{font-size:13px;font-weight:760}
+  .near-pose-folder>summary small{font-size:10px;color:#88998c}
+  .near-folder-chevron{font-size:19px;transition:transform .15s}
+  .near-pose-folder[open] .near-folder-chevron{transform:rotate(180deg)}
+  .near-pose-folder-items{border-top:1px solid #e9f0e9;padding:7px;display:grid;gap:5px}
+  .near-pose-folder-items>.mobile-pose-option{margin:0!important;border-radius:9px}
+}
+
+/* Lightweight lazy-model state; never blocks pose or height controls. */
+.near-avatar-loading{position:absolute;z-index:8;top:83px;left:50%;transform:translateX(-50%);max-width:calc(100% - 24px);padding:10px 15px;border-radius:10px;border:1px solid #d9e4d9;background:#fffffff0;color:#4d7360;box-shadow:0 5px 18px #293e2916;font-size:12px;font-weight:650;line-height:1.6;text-align:center;pointer-events:none}
+.near-avatar-loading[hidden]{display:none!important}
+</style>
+<style>
+.doll-wardrobe{margin:12px 0 7px;border-top:1px solid #e5e0eb;padding-top:12px}
+.doll-wardrobe summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;font-weight:700;font-size:12px;color:#766485}
+.doll-wardrobe summary::-webkit-details-marker{display:none}
+.doll-wardrobe summary small{font-size:9px;font-weight:500;color:#a092aa}
+.doll-looks{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:12px 0}
+.doll-look{padding:8px 2px;border-radius:8px;border:1px solid #e6dfea;background:#fff;font-size:9px;color:#786783;line-height:1.5}
+.doll-look i{display:block;width:23px;height:27px;margin:0 auto 5px;clip-path:polygon(20% 0,80% 0,100% 25%,79% 33%,76% 49%,95% 100%,5% 100%,24% 49%,21% 33%,0 25%);background:linear-gradient(var(--look-top) 48%,var(--look-bottom) 48%)}
+.doll-look:hover{border-color:#aa92ba;background:#faf7fc}
+.doll-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px 9px}
+.doll-fields label{display:grid;gap:5px;font-size:10px;color:#8c8093;min-width:0}
+.doll-fields select{min-width:0;width:100%;font-size:11px;padding:7px 5px;color:#63556e;border:1px solid #e5dfea;background:#fcfafc;border-radius:6px}
+.doll-colors{display:flex;justify-content:space-between;gap:5px;margin-top:12px}
+.doll-colors label{display:grid;justify-items:center;gap:5px;font-size:9px;color:#95869c}
+.doll-colors input{appearance:none;width:29px;height:25px;border:1px solid #e6dfeb;border-radius:6px;padding:2px;background:#fff;cursor:pointer}
+.doll-note{font-size:9px;line-height:1.6;color:#a89aaf;margin-top:10px}
+.doll-portrait{display:block;width:100%;font-size:10px;color:#796786;border:1px solid #e3dbe9;background:#f6f1f9;padding:9px 5px;border-radius:7px;margin-top:12px}
+</style><style>
+.avatar-choice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(65px,1fr));gap:7px;margin:13px 0 14px}
+.avatar-choice{border:1px solid #e3dce8;background:white;border-radius:9px;padding:3px;overflow:hidden;color:#8b7a95}
+.avatar-choice img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
+.avatar-choice b{display:block;font-size:9px;padding:6px 0 4px;font-weight:600}
+.avatar-choice[aria-pressed=true]{border-color:#8e759d;box-shadow:0 0 0 1px #8e759d;background:#f6f0fa}
+.avatar-palette{display:flex;gap:12px;align-items:center;margin-top:13px}
+.avatar-palette label{font-size:10px;color:#91819c;display:flex;gap:7px;align-items:center}
+.avatar-palette input{width:28px;height:24px;border:1px solid #e5dce9;border-radius:5px;background:white;padding:2px}
+.avatar-palette button{font-size:9px;color:#a08aab;margin-left:auto;padding:5px 0}
+.everyday-looks{padding:12px;margin:0 0 13px;border:1px solid #dbe3e8;background:#f4f7f9;border-radius:9px;color:#65798a}
+.everyday-looks>b{font-size:10px;font-weight:600}.everyday-looks>div{display:flex;gap:5px;margin:9px 0}
+.everyday-looks button{flex:1;font-size:10px;padding:8px 3px;background:#fff;border:1px solid #d7e0e7;border-radius:6px;color:#65798a;cursor:pointer}
+.everyday-looks button[aria-pressed=true]{color:#fff;background:#657f94;border-color:#657f94}.everyday-looks small{display:block;font-size:9px;line-height:1.6;color:#8d9ba5}
+.pair-auto-control{display:flex;align-items:center;gap:10px;margin:0 0 15px;padding:12px;background:#f1f5f0;border:1px solid #dfe8dc;border-radius:10px;cursor:pointer}
+.pair-auto-control input{accent-color:#658574;width:16px;height:16px;margin:0}
+.pair-auto-control span{display:grid;gap:4px}.pair-auto-control b{font-size:11px;font-weight:650;color:#5c7864}.pair-auto-control small{font-size:9px;color:#879786}
+</style><script src="./assets/near-assets.js"></script><style id="near-classic-model-ui">
+.classic-model-controls{border-top:1px solid #e5e9e5;padding-top:12px;margin-top:10px}
+.classic-model-controls .doll-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.classic-model-controls .doll-fields label{display:grid;gap:7px;min-width:0;color:#7a8d7f;font-size:11px}
+.classic-model-controls .doll-fields select{width:100%;min-width:0;padding:10px 7px;border:1px solid #dce3dd;border-radius:9px;background:#f9faf8;color:#456452;font-size:11px}
+.classic-model-note{font-size:10px;line-height:1.7;color:#93a099;margin:9px 0 0}
+</style>
+<style id="near-intimacy-safety-styles">
+  dialog.near-safety-dialog {width:min(440px,calc(100vw - 34px));max-width:440px;max-height:calc(100dvh - 36px);padding:0;overflow:auto;border:1px solid #e3e9e1;border-radius:22px;background:#fffefa;box-shadow:0 28px 80px #253a303f;color:#33483b;}
+  dialog.near-safety-dialog::backdrop {background:#1f302bcc;backdrop-filter:blur(7px);}
+  .near-safety-content {padding:30px 28px 26px;text-align:left;}
+  .near-safety-icon {display:grid;place-items:center;width:60px;height:60px;border-radius:18px;background:#eaf1eb;color:#4b745a;font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:20px;}
+  .near-safety-icon.warning {background:#fcf0e7;color:#af7655;}
+  .near-safety-eyebrow {font-size:10px;font-weight:800;letter-spacing:1.8px;color:#8a9c8d;margin-bottom:8px;}
+  .near-safety-content h2 {font-size:23px;line-height:1.43;letter-spacing:-.5px;color:#33483b;font-weight:770;margin:0 0 12px;}
+  .near-safety-content p {font-size:13px;line-height:1.9;color:#728176;margin:0;}
+  .near-safety-note {display:flex;gap:9px;align-items:flex-start;margin-top:18px;padding:12px 13px;border-radius:10px;border:1px solid #e8ede6;background:#f6f8f4;font-size:11px;line-height:1.7;color:#77867b;}
+  .near-safety-actions {display:flex;gap:9px;margin-top:25px;}
+  .near-safety-actions button {font-size:12px;font-weight:720;line-height:1.5;padding:13px 10px;border-radius:11px;min-height:46px;flex:1;white-space:normal;border:1px solid #dfe6dc;}
+  .near-safety-actions .near-safety-secondary {background:#fffefa;color:#66796b;}
+  .near-safety-actions .near-safety-primary {background:#476d56;color:#fff;border-color:#476d56;}
+  .near-safety-actions .near-safety-primary:hover {background:#3c604b;}
+  @media(max-width:430px){.near-safety-content{padding:25px 20px 20px}.near-safety-content h2{font-size:20px}.near-safety-actions{flex-direction:column-reverse}.near-safety-actions button{width:100%;flex:none}}
+</style>
 </head>
 <body>
+  <a class="skip" href="#studio">跳至模擬器</a>
+  <header class="site-header"><a class="brand" href="#" aria-label="回到靠近一點首頁"><span class="brand-mark">n<span>é</span>ar.</span><span class="brand-caption">雙人比例實驗室</span></a><nav class="header-nav" aria-label="頁面導覽"><a href="#studio">3D 模擬</a><a href="#library">探索姿勢</a></nav><button class="button small header-share" id="share"><span aria-hidden="true">↗</span> 分享場景</button></header>
+  <main>
+    <section class="intro" aria-labelledby="intro-title"><div><div class="eyebrow"><span class="intro-status"></span> INTERACTIVE 3D COUPLE STUDIO</div><h1>身高有差，<span>喜歡無差。</span><svg viewBox="0 0 50 48" aria-hidden="true"><path d="M24 39C2 26 6 9 16 13c4 1 7 6 8 9 3-13 15-18 19-9 5 11-7 20-19 26Z"></path></svg></h1><p>調整身高、切換姿勢與家具高度，把你與對方放在一起，看看每一種靠近的模樣。</p></div><div class="intro-counter"><strong>69</strong><span>種雙人情境<br>自由探索</span></div></section>
+    <section class="workspace" id="studio" aria-label="雙人身高差模擬器">
+      <aside class="settings" aria-label="人物與環境設定">
+        <div class="panel-heading"><div><span class="section-index">01 · PEOPLE</span><h2>設定你們的身高</h2></div><span class="panel-hint">即時更新</span></div>
+        <label class="pair-auto-control"><input id="auto-gender" type="checkbox" checked><span><b>依身高自動配對</b><small>較高者為男生，搭配男裝</small></span></label><div id="people"></div>
+        <details class="proportion-studio" id="proportion-panel" open>
+<summary class="proportion-studio__summary"><span><span class="section-index">02 · BODY SHAPE</span><strong>人物比例與外觀</strong><small>腿長 · 頭身比 · 輪廓 · 手腳</small></span><span class="proportion-studio__chevron" aria-hidden="true">⌄</span></summary>
+<div class="proportion-studio__body">
+<p class="proportion-studio__hint">調整一個人的體型，另一人不變；<b>總身高固定</b>。3D 會隨滑桿即時重新計算。</p>
+<div class="proportion-studio__people" aria-label="選擇要調整的人物"><button type="button" data-prop-person="0" aria-pressed="true">人物 A</button><button type="button" data-prop-person="1" aria-pressed="false">人物 B</button></div>
+<div class="proportion-studio__info"><span id="proportion-person-name"></span><small id="prop-summary"></small></div>
+<div class="proportion-studio__presets" aria-label="體型快速範本"><button type="button" data-prop-preset="balanced">自然比例</button><button type="button" data-prop-preset="longleg">長腿</button><button type="button" data-prop-preset="compact">短腿</button><button type="button" data-prop-preset="doll">Q 版</button></div>
+<div class="proportion-studio__sliders"><div class="prop-control"><div class="prop-control__heading"><label for="prop-headRatio">頭身比</label><output id="prop-value-headRatio"></output></div><input id="prop-headRatio" type="range" min="5.5" max="9.5" step="0.1" data-prop-key="headRatio" aria-label="調整頭身比"><small>頭越大，頭身數越小</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-legRatio">腿長比例</label><output id="prop-value-legRatio"></output></div><input id="prop-legRatio" type="range" min="43" max="57" step="1" data-prop-key="legRatio" aria-label="調整腿長比例"><small>佔總身高的比例，調整後自動補償軀幹</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-thighRatio">大腿／小腿分配</label><output id="prop-value-thighRatio"></output></div><input id="prop-thighRatio" type="range" min="42" max="58" step="1" data-prop-key="thighRatio" aria-label="調整大腿／小腿分配"><small>大腿在整條腿骨架中所占的比例</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-armRatio">手臂長度</label><output id="prop-value-armRatio"></output></div><input id="prop-armRatio" type="range" min="75" max="125" step="1" data-prop-key="armRatio" aria-label="調整手臂長度"><small>上臂和前臂會一起伸縮</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-shoulderRatio">肩膀寬度</label><output id="prop-value-shoulderRatio"></output></div><input id="prop-shoulderRatio" type="range" min="75" max="135" step="1" data-prop-key="shoulderRatio" aria-label="調整肩膀寬度"><small>調整雙肩間距與胸廓寬度</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-hipRatio">骨盆寬度</label><output id="prop-value-hipRatio"></output></div><input id="prop-hipRatio" type="range" min="80" max="125" step="1" data-prop-key="hipRatio" aria-label="調整骨盆寬度"><small>同步改變雙腿起點的間距</small></div></div>
 
-  <div class="container">
-    <header>
-      <h1>Andy's Web Hub</h1>
-      <p>選擇下方專案進入對應網站</p>
-    </header>
-
-    <main class="grid">
-      <!-- 網站 1：指向 /near/ 資料夾 -->
-      <a href="./near/" class="card">
-        <div>
-          <div class="card-icon">🚀</div>
-          <div class="card-title">Néar 專案</div>
-          <div class="card-desc">第一個網頁專案，點擊進入瀏覽完整內容與互動功能。</div>
+<details class="near-sculpt-details" id="near-sculpt-details">
+<summary><span><strong>外觀輪廓精修</strong><small>腰身 · 手臂與腿部粗細 · 手掌與腳掌</small></span><span aria-hidden="true" class="near-sculpt-arrow">⌄</span></summary>
+<div class="near-sculpt-details__body">
+<p>保留總身高與關節位置，只有模型的外觀曲線會變動。人物 A、B 各自獨立儲存。</p>
+<div class="proportion-studio__sliders">
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-waistRatio">腰身曲線</label><output id="prop-value-waistRatio"></output></div><input id="prop-waistRatio" type="range" min="70" max="120" step="1" data-prop-key="waistRatio" aria-label="腰身曲線"><small>較小數值腰線較明顯；較大數值軀幹較直</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-armThickness">手臂粗細</label><output id="prop-value-armThickness"></output></div><input id="prop-armThickness" type="range" min="70" max="135" step="1" data-prop-key="armThickness" aria-label="手臂粗細"><small>上臂、前臂及關節柔和連接</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-legThickness">腿部粗細</label><output id="prop-value-legThickness"></output></div><input id="prop-legThickness" type="range" min="70" max="140" step="1" data-prop-key="legThickness" aria-label="腿部粗細"><small>大腿到膝蓋、小腿到腳踝連續收束</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-handRatio">手掌大小</label><output id="prop-value-handRatio"></output></div><input id="prop-handRatio" type="range" min="75" max="135" step="1" data-prop-key="handRatio" aria-label="手掌大小"><small>手掌、拇指和手指按比例調整，接觸點保持不變</small></div>
+<div class="prop-control"><div class="prop-control__heading"><label for="prop-footRatio">腳掌大小</label><output id="prop-value-footRatio"></output></div><input id="prop-footRatio" type="range" min="75" max="135" step="1" data-prop-key="footRatio" aria-label="腳掌大小"><small>主要調整腳掌寬度與前後長度，保留腳底高度</small></div>
+</div></div></details>
+<div class="proportion-studio__foot"><span>數值是簡化 3D 骨架比例，並非醫學人體測量。</span><button type="button" id="proportion-reset">↺ 重設此人物比例</button></div>
+</div></details>
+<button class="swap-button" id="swap"><span aria-hidden="true">⇄</span> 交換人物 A / B</button>
+        <div class="intimate-role-control"><label for="female-person">親密情境角色</label><select id="female-person" aria-label="選擇人物 A 或 B 為女性"><option value="0">人物 A 為女性</option><option value="1">人物 B 為女性</option></select><small>只影響親密姿勢中男女的相對位置，不改身高。</small></div>
+        <details class="quick-pairs"><summary>快速套用身高 <span>⌄</span></summary><div><button data-pair="165,180">165 / 180</button><button data-pair="170,170">170 / 170</button><button data-pair="160,210">160 / 210</button><button data-pair="168,1200" title="極端比例測試">極端測試</button></div></details>
+        <div class="settings-divider"></div>
+        <div class="panel-heading surface-heading"><div><span class="section-index">02 · ENVIRONMENT</span><h2>家具高度</h2></div><span class="panel-hint">單位 cm</span></div>
+        <div class="surface-fields">
+          <div class="surface-field"><label for="bedHeight"><span class="surface-icon" aria-hidden="true">▤</span><span>床面高度<small>地面至床墊上緣</small></span></label><div class="height-config"><input id="bedHeight" type="range" min="30" max="140" value="62"><input id="bedHeight-number" type="number" min="30" max="140" step="1" value="62" aria-label="床面高度，公分"><span>cm</span></div><output id="bedHeight-value" hidden>62 cm</output></div>
+          <div class="surface-field"><label for="sofaHeight"><span class="surface-icon" aria-hidden="true">▥</span><span>沙發座面<small>地面至座墊上緣</small></span></label><div class="height-config"><input id="sofaHeight" type="range" min="20" max="100" value="44"><input id="sofaHeight-number" type="number" min="20" max="100" step="1" value="44" aria-label="沙發座面高度，公分"><span>cm</span></div><output id="sofaHeight-value" hidden>44 cm</output></div>
         </div>
-        <div class="card-link">前往網站 &rarr;</div>
-      </a>
-
-      <!-- 網站 2：指向 /game2/ 資料夾 -->
-      <a href="./game2/" class="card">
-        <div>
-          <div class="card-icon">🎮</div>
-          <div class="card-title">Game 2 測試區</div>
-          <div class="card-desc">第二個網頁應用程式或小遊戲展示頁面。</div>
+        <details class="fine-tune advanced-details"><summary><span>進階比例調整</span><b>⌄</b></summary><div class="fine-content"><label for="distance">額外間距 <output id="distance-value">0 cm</output></label><input id="distance" type="range" min="-15" max="60" value="0"><label for="lift">人物 A 墊高 <output id="lift-value">0 cm</output></label><input id="lift" type="range" min="0" max="35" value="0"><label for="seat">椅面／長椅高度 <output id="seat-value">46 cm</output></label><input id="seat" type="range" min="25" max="75" value="46"><p>高度會即時反映在場景；腳部與家具是否接觸仍屬比例示意。</p></div></details>
+        <details class="fine-tune advanced-details" id="joint-details"><summary><span>微調人物關節</span><b>⌄</b></summary><div class="fine-content"><div class="editor-pair"><label>人物<select id="edit-person"><option value="0">人物 A</option><option value="1">人物 B</option></select></label><label>部位<select id="edit-joint"><option value="body">上半身</option><option value="head">頭部</option><option value="leftArm">左肩</option><option value="leftElbow">左肘</option><option value="rightArm">右肩</option><option value="rightElbow">右肘</option><option value="leftLeg">左髖</option><option value="leftKnee">左膝</option><option value="rightLeg">右髖</option><option value="rightKnee">右膝</option><option value="position">人物位置</option><option value="turn">人物朝向</option></select></label></div><div id="joint-sliders"></div><button class="button small" id="reset-pose">重設關節</button><p>可微調角度與人物位置，選擇其他情境後會重設。</p></div></details>
+        <p class="local-note"><span aria-hidden="true">◈</span> 不需登入 · 設定僅儲存在這台裝置</p>
+      </aside>
+      <div class="studio-panel">
+        <div class="studio-header"><div class="scene-heading"><span class="studio-overline"><span class="live-dot"></span> LIVE PREVIEW <span id="scene-category" class="scene-tag">靠近一點</span></span><h2 id="active-name">正面擁抱</h2></div><div class="studio-nav"><button class="icon-button" id="prev-pose" title="上一個姿勢" aria-label="上一個姿勢">‹</button><button class="icon-button" id="next-pose" title="下一個姿勢" aria-label="下一個姿勢">›</button><span class="studio-nav-separator"></span><button class="icon-button" id="favorite" title="收藏這個姿勢" aria-label="收藏目前情境" aria-pressed="false">♡</button></div></div>
+        <div class="stage" id="stage">
+          <div class="view-switch" role="group" aria-label="視角切換"><button data-view="free" class="active" aria-pressed="true">自由視角</button><button data-view="a" aria-pressed="false">A 的視角</button><button data-view="b" aria-pressed="false">B 的視角</button></div><div class="compare-switch" id="compare-switch" hidden aria-label="尺寸比較方式"><span class="compare-switch-title">對齊比較</span><div role="group" aria-label="比較佈局"><button data-compare="overlay" type="button" aria-pressed="true">疊放</button><button data-compare="side" type="button" aria-pressed="false">並排</button></div></div>
+          <div class="height-badge"><span id="difference-label">身高差</span><strong id="difference">15 <small>cm</small></strong></div>
+          <canvas id="world" tabindex="0" aria-label="雙人 3D 場景：拖曳旋轉、滾輪縮放，方向鍵旋轉，＋或－縮放。"></canvas>
+          <div class="scene-loading" id="loading">正在準備你們的小世界…</div>
+          <div class="person-labels"><span><i class="dot-a"></i><b id="label-a">你</b><span id="height-a">165 cm</span></span><span><i class="dot-b"></i><b id="label-b">另一半</b><span id="height-b">180 cm</span></span></div>
+          <div class="stage-hint">拖曳旋轉 · Shift＋拖曳平移 · 滾輪縮放 · 雙指平移縮放</div><div class="near-stage-pan" role="group" aria-label="調整場景上下位置"><button type="button" data-stage-pan="0,-50" title="場景向上" aria-label="場景向上平移">↑</button><button type="button" data-stage-pan="0,50" title="場景向下" aria-label="場景向下平移">↓</button></div>
+          <div class="stage-tools"><button class="icon-button" id="reset-view" aria-label="重設視角" title="重設視角">↺</button><button class="icon-button" id="rotate" aria-label="自動旋轉" aria-pressed="false" title="自動旋轉">⟳</button><button class="icon-button" id="grid" aria-label="顯示格線" aria-pressed="true" title="顯示格線">▦</button></div>
         </div>
-        <div class="card-link">前往網站 &rarr;</div>
-      </a>
+        <div class="studio-footer"><div class="mobile-quick-heights" id="mobile-quick-heights" aria-label="快速調整身高"><span class="quick-height-title">即時調整身高</span><div class="quick-height-fields"><label>人物 A <input type="number" min="50" max="1200" step="1" data-quick-height="0" value="165" inputmode="decimal" aria-label="人物 A 身高，公分"><small>cm</small></label><label>人物 B <input type="number" min="50" max="1200" step="1" data-quick-height="1" value="180" inputmode="decimal" aria-label="人物 B 身高，公分"><small>cm</small></label></div></div><div class="scene-notes"><span class="micro">姿勢說明</span><p id="scene-description">把彼此放進臂彎，讓距離剛剛好。</p><p id="fit-message" class="fit-message" aria-live="polite"></p></div><div class="footer-actions"><a class="button" id="article-figure" href="https://helloyishi.com.tw/sexual-health/sex-tip/main-6-sex-position/" target="_blank" rel="noopener" hidden title="開啟此姿勢在 Hello 醫師文章的原始圖片">↗ 對照原圖</a><button class="button" id="focus"><span aria-hidden="true">⛶</span> 純享模式</button><button class="button" id="photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h4l2-2h4l2 2h4v14H4z"/><circle cx="12" cy="12" r="4"/></svg> 拍張合照</button><button class="button primary" type="button" id="save-card-main">♡ 儲存圖卡</button></div></div>
+      </div>
+    </section>
+    <section id="saved-pose-section" class="saved-pose-section" aria-labelledby="saved-pose-heading">
+      <div class="saved-head">
+        <div><span class="section-index">03 · YOUR COLLECTION</span><h2 id="saved-pose-heading">我的姿勢圖卡 <span id="saved-pose-count">0</span></h2><p>保存專屬的身高、關節、家具和鏡頭設定，隨時重新套用。</p></div>
+        <div class="saved-head-actions"><button type="button" class="button" id="import-pose-card">↑ 匯入設定</button><button type="button" class="button primary" id="open-save-card">＋ 儲存目前姿勢</button></div>
+      </div>
+      <div id="saved-pose-grid" class="saved-pose-grid"></div>
+      <p class="saved-footnote">圖卡與設定保存在目前的瀏覽器。分享 PNG 圖片不會傳送可編輯的參數；需要備份時可匯出設定檔。</p>
+    </section>
+    <section class="library" id="library" aria-labelledby="library-heading">
+      <div class="library-topline"><span class="section-index">03 · POSE LIBRARY</span><span class="library-total">69 個雙人情境</span></div>
+      <div class="library-heading"><div><h2 id="library-heading">探索每一種靠近<span class="library-title-dot">.</span></h2><p>從日常互動到親密相處，選一個情境立即套用到上方模型。</p></div><label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="search" type="search" placeholder="搜尋姿勢名稱…" aria-label="搜尋姿勢名稱"><kbd>/</kbd></label></div>
+      <div class="library-filter-bar"><div id="scope-tabs" class="scope-tabs" role="group" aria-label="情境類型"></div><div class="library-results"><span id="pose-count">69 個情境</span></div></div>
+      <div id="categories" class="categories" role="group" aria-label="姿勢細分類"></div>
+      <div class="pose-grid" id="poses"></div>
+      <div class="empty-state" id="empty" hidden><span aria-hidden="true">⌕</span><h3>找不到符合的姿勢</h3><p>試著清除關鍵字或切換分類。</p><button class="button" id="clear-filters" type="button">清除篩選</button></div>
+    </section>
+    <footer class="page-footer"><span class="brand-mark">néar.</span><p>無論相差幾公分，靠近就有答案。</p><span>3D 姿勢與家具比例示意 · 非真實人體動作或安全性判定</span></footer>
+  </main>
+   <input type="file" id="pose-import-input" accept=".json,.nearpose.json,application/json" hidden aria-label="匯入自訂姿勢設定">
+   <dialog id="pose-card-dialog" class="pose-card-dialog" aria-labelledby="pose-card-dialog-title">
+     <div class="dialog-heading"><div><span class="eyebrow">MAKE IT YOURS</span><h2 id="pose-card-dialog-title">儲存我的姿勢圖卡</h2></div><button class="icon-button" id="close-pose-card" aria-label="關閉圖卡編輯">×</button></div>
+     <div class="pose-card-dialog-grid">
+       <div class="pose-card-live-preview"><img id="pose-card-preview" alt="自訂姿勢分享圖卡預覽"><div id="pose-card-loading" class="pose-card-loading" hidden>產生圖卡中…</div></div>
+       <div class="pose-card-fields"><label>圖卡名稱<input type="text" id="custom-card-title" maxlength="34" placeholder="例如：我們的合照"></label><label>小備註（選填）<textarea id="custom-card-note" maxlength="75" rows="3" placeholder="記下你喜歡的姿勢或設定"></textarea></label><label class="near-card-style-label">圖卡風格<select id="near-card-style" aria-label="選擇圖卡風格"><option value="sage">森綠 · 原始質感</option><option value="rose">暮粉 · 溫柔浪漫</option><option value="night">墨夜 · 電影感</option></select></label><div class="pose-card-summary" id="pose-card-summary"></div><p class="pose-card-tip">儲存後會保留全部關節、身高、家具及視角參數。圖卡圖片可直接傳給對方。</p></div>
+     </div>
+     <div class="pose-card-dialog-actions"><button type="button" class="button" id="download-current-card">↓ 下載 PNG</button><button type="button" class="button" id="share-current-card">↗ 分享圖片</button><button type="button" class="button primary" id="commit-pose-card">♡ 存入圖卡</button></div>
+   </dialog>
+  <dialog id="photo-dialog"><div class="dialog-heading"><div><span class="eyebrow">OUR LITTLE MOMENT</span><h2>把這一刻，留起來。</h2></div><button class="icon-button" id="close-photo" aria-label="關閉合照">×</button></div><img id="photo-preview" alt="雙人身高差模擬合照"><div class="dialog-actions"><button class="button" id="retake">繼續調整</button><a class="button primary" id="download-photo" download="靠近一點-合照.png">下載合照 PNG ↓</a></div></dialog>
 
-      <!-- 網站 3：預留擴充範例（可隨時複製此區塊新增） -->
-      <a href="./tools/" class="card">
-        <div>
-          <div class="card-icon">🛠️</div>
-          <div class="card-title">實用小工具</div>
-          <div class="card-desc">日常使用的網頁小工具集合（待上架）。</div>
-        </div>
-        <div class="card-link">前往網站 &rarr;</div>
-      </a>
-    </main>
+  <!-- Two explicit confirmations are shown before displaying adult intimate poses. -->
+  <dialog id="near-age-dialog" class="near-safety-dialog" aria-labelledby="near-age-title" aria-describedby="near-age-description">
+    <div class="near-safety-content">
+      <div class="near-safety-icon" aria-hidden="true">18+</div>
+      <div class="near-safety-eyebrow">ADULT CONTENT · 年齡確認</div>
+      <h2 id="near-age-title">請確認你已年滿 18 歲</h2>
+      <p id="near-age-description">接下來的親密姿勢包含成人親密關係的靜態 3D 模擬，僅適合年滿 18 歲者瀏覽。</p>
+      <div class="near-safety-note"><span aria-hidden="true">ⓘ</span><span>這項確認只在本次開啟網頁期間有效；未確認前不會切換至親密姿勢。</span></div>
+      <div class="near-safety-actions">
+        <button id="near-age-decline" type="button" class="near-safety-secondary">未滿 18 歲／返回</button>
+        <button id="near-age-accept" type="button" class="near-safety-primary">我已滿 18 歲，繼續</button>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="near-anime-dialog" class="near-safety-dialog" aria-labelledby="near-anime-title" aria-describedby="near-anime-description">
+    <div class="near-safety-content">
+      <div class="near-safety-icon warning" aria-hidden="true">!</div>
+      <div class="near-safety-eyebrow">VISUAL CONTENT · 動漫模型提醒</div>
+      <h2 id="near-anime-title">動漫模型的親密姿勢提醒</h2>
+      <p id="near-anime-description">使用「精緻動漫人物」呈現親密姿勢時，人物造型與細節可能讓畫面看起來更具情色暗示。請確認你願意觀看這類視覺內容。</p>
+      <div class="near-safety-note"><span aria-hidden="true">ⓘ</span><span>若不希望看到這種效果，可以返回並使用「比例示意模型」，不影響姿勢及身高差模擬。</span></div>
+      <div class="near-safety-actions">
+        <button id="near-anime-decline" type="button" class="near-safety-secondary">返回</button>
+        <button id="near-anime-accept" type="button" class="near-safety-primary">我了解，繼續使用</button>
+      </div>
+    </div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./assets/near-main.js"></script>
+<script>
+/* Inline responsive studio controller. Uses the exact live DOM inputs from the existing 3D app. */
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const api = window.nearMobileApi;
+  if (!api || !$('studio') || !$('people')) return;
+  const settings = document.querySelector('#studio>.settings');
+  const studio = document.querySelector('#studio>.studio-panel');
+  const tabs = [
+    {id:'people',label:'人物',icon:'◉'},
+    {id:'poses',label:'姿勢',icon:'▦'},
+    {id:'joints',label:'關節',icon:'⟟'},
+    {id:'camera',label:'視角',icon:'◎'},
+    {id:'cards',label:'圖卡',icon:'♡'},
+    {id:'surface',label:'家具',icon:'▤'}
+  ];
+  const head = document.createElement('div');
+  head.className = 'mobile-control-head';
+  head.innerHTML = `<div class="head-title"><strong>即時調整</strong><small id="mobile-active-pose">${api.state.pose}</small></div><span class="mobile-live-chip">3D 同步</span>`;
+  const tabBar = document.createElement('nav');
+  tabBar.className = 'mobile-control-tabs';tabBar.setAttribute('aria-label','手機調整功能');
+  tabBar.innerHTML = tabs.map(t=>`<button type="button" data-mobile-tab="${t.id}" aria-selected="false"><span class="mobile-tab-icon" aria-hidden="true">${t.icon}</span><span>${t.label}</span></button>`).join('');
+  const pages = document.createElement('div');
+  pages.className = 'mobile-control-pages';
+  pages.setAttribute('aria-label','即時操作控制台');
+  const pane = (id) => {const d=document.createElement('section');d.className='mobile-pane';d.dataset.pane=id;pages.append(d);return d;};
+  const peoplePane=pane('people');
+  const posePane=pane('poses');
+  posePane.innerHTML=`<div class="mobile-section-title">選擇姿勢</div><p class="mobile-section-desc">選取後，直接在上方 3D 預覽查看效果。</p><label class="mobile-search"><span class="search-icon" aria-hidden="true">⌕</span><input id="mobile-pose-search" type="search" placeholder="搜尋 69 種姿勢" aria-label="搜尋姿勢"></label><div class="mobile-filters" id="mobile-pose-filters"></div><div class="mobile-pose-list" id="mobile-pose-list"></div>`;
+  const jointsPane=pane('joints');
+  const cameraPane=pane('camera');
+  const cardsPane=pane('cards');
+  const surfacePane=pane('surface');
+  cardsPane.innerHTML='<div class="mobile-section-title">我的姿勢圖卡</div><p class="mobile-section-desc">儲存目前的全部設定，分享圖片，或套用以前存的姿勢。</p><button id="mobile-save-pose-card" type="button" class="mobile-save-pose-card">＋ 儲存目前姿勢</button><button id="mobile-import-pose-card" type="button" class="mobile-import-pose-card">↑ 匯入姿勢設定 (.json)</button><div id="mobile-saved-pose-grid" class="mobile-saved-pose-grid"></div>';
+  // Attach panes before moving real inputs so document.getElementById remains valid.
+  settings.prepend(head,tabBar,pages);
+  const moveNodes = (dest, selectors) => selectors.forEach(sel=>{const node=settings.querySelector(sel);if(node)dest.append(node);});
+  moveNodes(peoplePane,['.panel-heading','.pair-auto-control','#people','#proportion-panel','#swap','.intimate-role-control','.quick-pairs','.local-note']);
+  moveNodes(surfacePane,['.settings-divider','.surface-heading','.surface-fields','.advanced-details:not(#joint-details)']);
+  const jointTitle=document.createElement('div');jointTitle.innerHTML='<div class="mobile-section-title">微調身體關節</div><p class="mobile-section-desc">選擇人物及部位，調整的同時可在上方看到結果。</p>';
+  jointsPane.append(jointTitle);
+  const shortcuts=document.createElement('div');shortcuts.className='mobile-joint-shortcuts';shortcuts.setAttribute('aria-label','常用關節');
+  shortcuts.innerHTML=[['body','上半身'],['head','頭部'],['leftArm','左肩'],['rightArm','右肩'],['leftLeg','左髖'],['rightLeg','右髖'],['position','位置'],['turn','朝向']].map(([v,t])=>`<button class="mobile-joint-chip" data-mobile-joint="${v}" type="button">${t}</button>`).join('');
+  jointsPane.append(shortcuts);
+  moveNodes(jointsPane,['#joint-details']);
+  $('joint-details').open=true;
+  cameraPane.innerHTML=`<div class="mobile-section-title">自由調整鏡頭</div><p class="mobile-section-desc">點選人物視角或直接拖曳上方模型。雙指可縮放。</p><div class="mobile-camera-choices" id="mobile-camera-choices"><button data-camera="free"><span class="cam-icon">◈</span>自由視角</button><button data-camera="a"><span class="cam-icon">A</span>A 的眼睛</button><button data-camera="b"><span class="cam-icon">B</span>B 的眼睛</button></div><div class="mobile-camera-actions"><button id="mobile-reset-camera">↺ 重設鏡頭</button><button id="mobile-auto-camera">⟳ 自動旋轉</button><button id="mobile-grid-camera">▦ 顯示格線</button><button id="mobile-photo-camera">▣ 儲存合照</button><button id="mobile-zoom-in">＋ 放大畫面</button><button id="mobile-zoom-out">－ 縮小畫面</button></div><div class="near-mobile-pan"><strong>平移 3D 畫面</strong><p>移動的是鏡頭，不會改變人物的位置</p><div class="near-pan-dpad"><button type="button" data-near-pan="0,-50" aria-label="畫面向上移動">↑</button><button type="button" data-near-pan="-50,0" aria-label="畫面向左移動">←</button><button type="button" data-near-pan="0,50" aria-label="畫面向下移動">↓</button><button type="button" data-near-pan="50,0" aria-label="畫面向右移動">→</button></div><small>單指旋轉、雙指縮放與平移；電腦可按住 Shift 拖曳。</small></div><p class="mobile-camera-callout">面對面姿勢會優先對眼；背對及俯伏的動作維持自然朝向。需要更精確的位置，可切換「關節」調整頭部與人物位置。</p>`;
+  // Move only the real nodes; other app event listeners continue to work unchanged.
+  const toolbar=document.createElement('div');toolbar.className='mobile-toolbar';
+  toolbar.innerHTML='<button type="button" id="mobile-toolbar-poses">▦ 換姿勢</button><button type="button" id="mobile-toolbar-photo">♡ 存圖卡</button>';
+  studio.querySelector('.stage').append(toolbar);
+  const intro=document.querySelector('.intro>div');
+  // No mobile hero CTA: the editor is already visible immediately.
+  let active='people';let poseFilter='all';let poseQuery='';
+  const names = ()=>new Map(api.poses.map(p=>[p.id,p.name]));
+  const group = (p) => p.category>=8?'親密': '日常';
+  function renderPoses(){
+    const filters=[['all','全部'],['daily','日常'],['intimate','親密'],['favorites','♥ 收藏']];
+    $('mobile-pose-filters').innerHTML=filters.map(([id,label])=>`<button type="button" data-mfilter="${id}" class="${poseFilter===id?'is-active':''}" aria-pressed="${poseFilter===id}">${label}</button>`).join('');
+    const q=poseQuery.trim().toLowerCase();
+    const options=api.poses.filter(p=>(poseFilter==='all'||(poseFilter==='daily'?p.category<8:poseFilter==='intimate'?p.category>=8:api.state.favorites.includes(p.id)))&&(!q||p.name.toLowerCase().includes(q)||api.familyLabel(p).toLowerCase().includes(q)));
+    // Mobile library: folder cards instead of displaying 69 choices at once.
+    const groups = new Map();
+    options.forEach(p=>{
+      const title=api.familyLabel(p);
+      if(!groups.has(title)) groups.set(title,[]);
+      groups.get(title).push(p);
+    });
+    const folderHtml = [...groups].map(([title, items])=>`<details class="near-pose-folder" ${q?'open':''}><summary><span><b>${escapeHtml(title)}</b><small>${items.length} 個姿勢</small></span><span class="near-folder-chevron">⌄</span></summary><div class="near-pose-folder-items">${items.map(p=>`<button type="button" class="mobile-pose-option ${api.state.pose===p.id?'is-active':''}" data-mobile-pose="${p.id}" aria-pressed="${api.state.pose===p.id}"><span class="pose-option-letter" aria-hidden="true">${p.category>=8?'♡':'✦'}</span><span class="pose-option-info"><b>${escapeHtml(p.name)}</b><small>${escapeHtml(api.familyLabel(p))} · ${group(p)}</small></span>${api.state.pose===p.id?'<span class="pose-option-active">使用中 ✓</span>':'<span aria-hidden="true" style="color:#bacbb9">›</span>'}</button>`).join('')}</div></details>`).join('');
+    $('mobile-pose-list').innerHTML=options.length?folderHtml:'<div class="mobile-pose-empty">沒有符合的姿勢，試試其他關鍵字。</div>';
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function pick(id){
+    if(!tabs.some(t=>t.id===id))return;
+    active=id;
+    tabBar.querySelectorAll('[data-mobile-tab]').forEach(b=>{const yes=b.dataset.mobileTab===id;b.classList.toggle('is-active',yes);b.setAttribute('aria-selected',yes);});
+    pages.querySelectorAll('.mobile-pane').forEach(p=>p.classList.toggle('is-active',p.dataset.pane===id));
+    pages.scrollTop=0;
+    if(id==='poses')renderPoses();
+    if(id==='camera')syncCamera();
+    if(id==='cards')window.__renderSavedCards?.();
+    if(id==='joints')syncJointShortcuts();
+    if(id==='people'){};
+  }
+  function syncCamera(){cameraPane.querySelectorAll('[data-camera]').forEach(b=>b.classList.toggle('is-active',b.dataset.camera===api.state.view));const a=$('mobile-auto-camera'),g=$('mobile-grid-camera');a.setAttribute('aria-pressed',String(api.state.auto));g.setAttribute('aria-pressed',String(api.state.grid));}
+  function syncJointShortcuts(){shortcuts.querySelectorAll('[data-mobile-joint]').forEach(b=>b.classList.toggle('is-active',b.dataset.mobileJoint===$('edit-joint').value));}
+  function refresh(){
+    const p=names().get(api.state.pose)||api.state.pose;
+    $('mobile-active-pose').textContent=p;
+    if(active==='poses') {
+      const isAvailable=$('mobile-pose-list').querySelector(`[data-mobile-pose="${CSS.escape(api.state.pose)}"]`);
+      if(isAvailable) $('mobile-pose-list').querySelectorAll('[data-mobile-pose]').forEach(b=>{let yes=b.dataset.mobilePose===api.state.pose;b.classList.toggle('is-active',yes);b.setAttribute('aria-pressed',yes);const x=b.querySelector('.pose-option-active');if(yes&&!x){const span=document.createElement('span');span.className='pose-option-active';span.textContent='使用中 ✓';b.lastElementChild.replaceWith(span);} else if(!yes&&x){const span=document.createElement('span');span.textContent='›';span.style.color='#bacbb9';span.setAttribute('aria-hidden','true');x.replaceWith(span);}});
+    }
+    if(active==='camera')syncCamera();
+  }
+  window.__mobileRefresh=refresh;
+  const activeNameObserver = new MutationObserver(refresh);
+  activeNameObserver.observe($('active-name'), {childList:true,characterData:true,subtree:true});
+  tabBar.addEventListener('click',e=>{const b=e.target.closest('[data-mobile-tab]');if(b)pick(b.dataset.mobileTab);});
+  $('mobile-pose-filters').addEventListener('click',e=>{const b=e.target.closest('[data-mfilter]');if(!b)return;const select=()=>{poseFilter=b.dataset.mfilter;renderPoses();};if(b.dataset.mfilter==='intimate')api.confirmIntimateLibrary(select);else select();});
+  $('mobile-pose-search').addEventListener('input',e=>{poseQuery=e.target.value;renderPoses();});
+  $('mobile-pose-list').addEventListener('click',e=>{const b=e.target.closest('[data-mobile-pose]');if(b){api.choosePose(b.dataset.mobilePose);renderPoses();}});
+  $('mobile-toolbar-poses').addEventListener('click',()=>pick('poses'));
+  $('mobile-toolbar-photo').addEventListener('click',()=>$('open-save-card').click());
+  $('mobile-save-pose-card').addEventListener('click',()=>$('open-save-card').click());
+  $('mobile-import-pose-card').addEventListener('click',()=>$('import-pose-card').click());
+  $('mobile-camera-choices').addEventListener('click',e=>{const b=e.target.closest('[data-camera]');if(b){document.querySelector(`.stage .view-switch [data-view="${b.dataset.camera}"]`)?.click();syncCamera();}});
+  $('mobile-reset-camera').addEventListener('click',()=>$('reset-view').click());
+  $('mobile-auto-camera').addEventListener('click',()=>{$('rotate').click();syncCamera();});
+  $('mobile-grid-camera').addEventListener('click',()=>{$('grid').click();syncCamera();});
+  $('mobile-photo-camera').addEventListener('click',()=>$('photo').click());
+  $('mobile-zoom-in').addEventListener('click',()=>api.getScene()?.zoomView(1/1.2));
+  $('mobile-zoom-out').addEventListener('click',()=>api.getScene()?.zoomView(1.2));
+  cameraPane.querySelector('.near-mobile-pan').addEventListener('click',e=>{
+    const b=e.target.closest('[data-near-pan]');if(!b)return;
+    if(api.state.view!=='free') document.querySelector('.stage [data-view="free"]')?.click();
+    const [x,y]=b.dataset.nearPan.split(',').map(Number);
+    api.getScene()?.panView(x,y);
+    syncCamera();
+  });
+  shortcuts.addEventListener('click',e=>{const b=e.target.closest('[data-mobile-joint]');if(b){$('edit-joint').value=b.dataset.mobileJoint;$('edit-joint').dispatchEvent(new Event('change',{bubbles:true}));syncJointShortcuts();}});
+  $('edit-joint').addEventListener('change',syncJointShortcuts);
+  // Add real one-degree nudges alongside existing joint sliders.
+  function enhanceJointSliders(){
+    const host=$('joint-sliders');
+    host.querySelectorAll('.joint-field').forEach(field=>{
+      const range=field.querySelector('input[type="range"]');
+      if(!range||range.parentElement.classList.contains('mobile-step-row'))return;
+      const r=document.createElement('div');r.className='mobile-step-row';range.before(r);r.append(range);
+      const makeNudge=(label,delta)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${label} ${delta>0?'增加':'減少'}一單位`);b.textContent=delta>0?'+':'−';b.addEventListener('click',()=>{range.value=Math.min(Number(range.max),Math.max(Number(range.min),Number(range.value)+delta));range.dispatchEvent(new Event('input',{bubbles:true}));});return b;};
+      r.prepend(makeNudge(range.getAttribute('aria-label')||'角度',-1));r.append(makeNudge(range.getAttribute('aria-label')||'角度',1));
+    });
+  }
+  const jointObserver=new MutationObserver(enhanceJointSliders);jointObserver.observe($('joint-sliders'),{childList:true});enhanceJointSliders();
+  // When a phone is rotated or browser toolbar changes size, ResizeObserver on #stage updates Three canvas.
+  settings.classList.add('mobile-ready');
+  pick('people');refresh();
+  // Don't make landscape/mobile-tab UIs appear to desktop; their CSS hides them.
+})();
 
-    <footer>
-      &copy; 2026 Andy.ddns.net &bull; Hosted on Cloudflare
-    </footer>
-  </div>
+</script>
+<script>
+/* Saved pose card gallery. Works offline and reuses the exact live studio state. */
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const api = window.nearMobileApi;
+  if (!api || !$('pose-card-dialog')) return;
+  const KEY = 'near-custom-pose-cards-v1';
+  const LIMIT = 24;
+  let entries = [];
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) || '[]');
+    if (Array.isArray(raw)) entries = raw.filter(x => x && typeof x.id === 'string' && x.state && typeof x.state.pose === 'string').slice(0,LIMIT);
+  } catch (err) { console.warn('Cannot read saved pose cards', err); }
+  const dialog = $('pose-card-dialog');
+  const title = $('custom-card-title');
+  const note = $('custom-card-note');
+  const preview = $('pose-card-preview');
+  const loading = $('pose-card-loading');
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080; canvas.height = 1350;
+  const ctx = canvas.getContext('2d', {alpha:false});
+  let draft = null;
+  let draftImage = null;
+  let busy = false;
+  let pendingDraw = 0;
 
-</body>
-</html>
+  function message(s) {
+    const el = $('toast');
+    el.textContent = s;
+    el.classList.add('visible');
+    setTimeout(() => { if (el.textContent === s) el.classList.remove('visible'); }, 4200);
+  }
+  function escaped(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function lookupPose(id) { return api.poses.find(p => p.id === id); }
+  function cameraState() {
+    const sc = api.getScene();
+    return sc ? {yaw: sc.yaw, pitch: sc.pitch, zoom: sc.zoom, pan: sc.panOffset?.toArray() || [0,0,0]} : {};
+  }
+  function stateCopy() {
+    const c = JSON.parse(JSON.stringify(api.state));
+    c.favorites = [];
+    c.auto = false;
+    return c;
+  }
+  function persist() {
+    try {localStorage.setItem(KEY, JSON.stringify(entries)); return true;}
+    catch (err) { console.warn('Cannot store custom cards',err); return false; }
+  }
+  function multiText(text, maxWidth, maxLines, startX, startY, lineHeight) {
+    const chars = Array.from(String(text || ''));
+    let line = '', rows=[];
+    for (const char of chars) {
+      if (ctx.measureText(line+char).width > maxWidth && line) {rows.push(line);line=char;}
+      else line+=char;
+    }
+    if (line) rows.push(line);
+    rows.slice(0,maxLines).forEach((row,i)=>ctx.fillText(row, startX, startY+i*lineHeight));
+  }
+  function roundedRect(x,y,w,h,r,fill) {
+    ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();
+  }
+  function drawCard() {
+    if (!draft) return;
+    const state = draft.state;
+    const palette={
+      sage:{paper:'#f8f9f5',ink:'#334f42',sub:'#839a8a',frame:'#e9eee7',placeholder:'#96a99a',line:'#d0dcd0',heading:'#334e43',caption:'#697e6f',people:'#6d8977',accent:'#b37866',footer:'#a5b3a4'},
+      rose:{paper:'#fff9f6',ink:'#87594d',sub:'#b88879',frame:'#f8e8e1',placeholder:'#b99789',line:'#edd1c5',heading:'#754b47',caption:'#9d7770',people:'#a37674',accent:'#c27f70',footer:'#ba9b93'},
+      night:{paper:'#233039',ink:'#fcf6ed',sub:'#c6c9bd',frame:'#344851',placeholder:'#a8b8b6',line:'#566970',heading:'#ffffff',caption:'#d1d7d2',people:'#e1dad0',accent:'#e8b39d',footer:'#aebcc0'}
+    };
+    const style=document.getElementById('near-card-style')?.value || 'sage';
+    const tone=palette[style]||palette.sage;
+    const name = title.value.trim() || lookupPose(state.pose)?.name || '我們的姿勢';
+    const comment = note.value.trim();
+    ctx.fillStyle=tone.paper;ctx.fillRect(0,0,1080,1350);
+    ctx.fillStyle=tone.ink;ctx.font='italic bold 72px Georgia,serif';ctx.fillText('néar.',66,104);
+    ctx.fillStyle=tone.sub;ctx.font='bold 23px system-ui,sans-serif';ctx.fillText('OUR LITTLE MOMENT  /  3D POSE',68,146);
+    roundedRect(54,178,972,793,28,tone.frame);
+    if (draftImage) {
+      const iw=draftImage.naturalWidth, ih=draftImage.naturalHeight;
+      if(iw>0&&ih>0) {
+        // Contain instead of covering: never crop off the couple's heads or feet.
+        const r=Math.min(948/iw,768/ih);
+        ctx.drawImage(draftImage,540-iw*r/2,574.5-ih*r/2,iw*r,ih*r);
+      }
+    } else {
+      ctx.textAlign='center';ctx.fillStyle=tone.placeholder;ctx.font='29px system-ui,sans-serif';
+      ctx.fillText('3D 預覽暫不可用 · 姿勢設定仍可儲存',540,550);ctx.textAlign='left';
+    }
+    ctx.fillStyle=tone.line;ctx.fillRect(66,1005,948,2);
+    ctx.fillStyle=tone.heading;ctx.font='bold 48px system-ui,"Microsoft JhengHei",sans-serif';
+    multiText(name,940,1,67,1077,58);
+    ctx.fillStyle=tone.caption;ctx.font='25px system-ui,"Microsoft JhengHei",sans-serif';
+    multiText(comment || `${lookupPose(state.pose)?.name || '自訂姿勢'} · 兩個人的專屬角度`,930,1,68,1128,33);
+    ctx.fillStyle=tone.people;ctx.font='bold 26px system-ui,"Microsoft JhengHei",sans-serif';
+    const A=state.people[0],B=state.people[1];
+    ctx.fillText(`${A.name||'人物 A'}  ${A.height} cm`,68,1225);
+    ctx.fillText(`${B.name||'人物 B'}  ${B.height} cm`,510,1225);
+    ctx.fillStyle=tone.accent;ctx.font='bold 22px system-ui,"Microsoft JhengHei",sans-serif';
+    ctx.fillText(`身高差 ${Math.abs(A.height-B.height)} cm   ·   床 ${state.bedHeight} cm   ·   沙發 ${state.sofaHeight} cm`,68,1282);
+    ctx.textAlign='right';ctx.font='21px Georgia,serif';ctx.fillStyle=tone.footer;ctx.fillText('made for two',1012,1282);ctx.textAlign='left';
+    preview.src = canvas.toDataURL('image/jpeg',0.85);
+  }
+  function scheduleDraw() {
+    if (pendingDraw) cancelAnimationFrame(pendingDraw);
+    pendingDraw=requestAnimationFrame(() => {pendingDraw=0;drawCard();});
+  }
+  function imageFromDataURL(url) {
+    return new Promise((resolve,reject)=>{
+      const img=new Image();img.onload=()=>resolve(img);img.onerror=reject;img.src=url;
+    });
+  }
+  async function newCard() {
+    if (busy) return;
+    busy=true;
+    draft={state:stateCopy(),camera:cameraState()};
+    title.value=lookupPose(draft.state.pose)?.name || '我的姿勢';
+    note.value='';draftImage=null;
+    $('pose-card-summary').textContent=`人物 A：${draft.state.people[0].height} cm · 人物 B：${draft.state.people[1].height} cm · 家具高度與關節角度會一併儲存`;
+    loading.hidden=false;
+    dialog.showModal();
+    try {
+      const sc=api.getScene();
+      if (sc) draftImage=await imageFromDataURL(sc.capture());
+    } catch(err) { console.warn('Could not capture 3D pose',err); }
+    finally {loading.hidden=true;busy=false;drawCard();}
+  }
+  function thumbData() {
+    const small=document.createElement('canvas');small.width=248;small.height=310;
+    const c=small.getContext('2d');c.drawImage(canvas,0,0,248,310);
+    return small.toDataURL('image/jpeg',0.62);
+  }
+  function blobOf(canvas) {return new Promise(resolve=>canvas.toBlob(resolve,'image/png'));}
+  function download(blob, name) {
+    const href=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=href;a.download=name;a.style.display='none';
+    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(href),2500);
+  }
+  function filename(name,ext='png') {
+    return (String(name||'near-pose').replace(/[\\/:*?"<>|\x00-\x1F]/g,'-').trim().slice(0,40)||'near-pose')+'.'+ext;
+  }
+  async function shareImage(blob, name) {
+    if (!blob) {message('尚未產生可分享的圖卡');return;}
+    const file=new File([blob],filename(name),'image/png');
+    try {
+      if(navigator.share && (!navigator.canShare || navigator.canShare({files:[file]}))) {
+        await navigator.share({title:name,text:'我們的 3D 姿勢圖卡',files:[file]});
+        return;
+      }
+    } catch(err) {
+      if(err?.name==='AbortError')return;
+      console.warn('Web Share was not available',err);
+    }
+    download(blob,filename(name));
+    message('已下載 PNG 圖卡，可從相簿或聊天軟體傳送。');
+  }
+
+  // Keep full-resolution PNGs in IndexedDB when available; thumbnail and settings
+  // are also in localStorage, so the gallery is usable without IndexedDB.
+  let dbPromise;
+  function openImageDB() {
+    if (!dbPromise) dbPromise=new Promise((resolve)=>{
+      if (!window.indexedDB){resolve(null);return;}
+      try {
+        const req=indexedDB.open('near-pose-images',1);
+        req.onupgradeneeded=()=>req.result.createObjectStore('pngs');
+        req.onsuccess=()=>resolve(req.result);
+        req.onerror=()=>resolve(null);
+        req.onblocked=()=>resolve(null);
+      } catch(e) {resolve(null);}
+    });
+    return dbPromise;
+  }
+  async function putImage(id,blob) {
+    const db=await openImageDB(); if(!db||!blob)return;
+    try {db.transaction('pngs','readwrite').objectStore('pngs').put(blob,id);}catch(e){console.warn(e);}
+  }
+  async function getImage(id) {
+    const db=await openImageDB();if(!db)return null;
+    return new Promise(resolve=>{
+      try {const r=db.transaction('pngs','readonly').objectStore('pngs').get(id);r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>resolve(null);}
+      catch(e){resolve(null);}
+    });
+  }
+  async function removeImage(id) {
+    const db=await openImageDB();if(!db)return;
+    try {db.transaction('pngs','readwrite').objectStore('pngs').delete(id);}catch(e){}
+  }
+  async function saveCard() {
+    if (!draft || busy) return;
+    if (entries.length>=LIMIT) {message(`最多可儲存 ${LIMIT} 張圖卡；請先刪除舊的圖卡。`);return;}
+    busy=true;
+    try {
+      drawCard();
+      const id=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,9);
+      const record={id,title:title.value.trim().slice(0,34)||'我的姿勢',note:note.value.trim().slice(0,75),theme:document.getElementById('near-card-style')?.value||'sage',date:new Date().toISOString(),state:draft.state,camera:draft.camera,image:thumbData()};
+      entries.unshift(record);
+      if(!persist()) {
+        // Some file:// contexts have very limited storage capacity.
+        entries.shift();
+        message('瀏覽器儲存空間不足，請下載 PNG；可再嘗試刪除舊圖卡。');return;
+      }
+      await putImage(id,await blobOf(canvas));
+      renderCards();
+      dialog.close();
+      document.querySelector('[data-mobile-tab="cards"]')?.click();
+      message('已儲存完整姿勢參數及圖卡，下次開啟可重新套用。');
+    } finally {busy=false;}
+  }
+  async function imageForRecord(record) {
+    const full=await getImage(record.id);
+    if(full)return full;
+    if(!record.image)return null;
+    const img=await imageFromDataURL(record.image);
+    // Fallback for browsers that disabled IndexedDB.
+    const back=document.createElement('canvas');back.width=1080;back.height=1350;
+    back.getContext('2d').drawImage(img,0,0,1080,1350);
+    return blobOf(back);
+  }
+  function renderCards() {
+    const html=entries.length?entries.map(c=>{
+      const p=lookupPose(c.state.pose), a=c.state.people?.[0],b=c.state.people?.[1];
+      const locked=p?.category>=8&&!api.isAdultConfirmed();
+      return `<article class="saved-card" data-card-id="${escaped(c.id)}">
+        ${locked?'<div class="saved-empty">18+ 親密姿勢 · 請先確認年齡</div>':c.image?`<img src="${c.image}" alt="${escaped(c.title)}的自訂姿勢圖卡" loading="lazy">`:'<div class="saved-empty">已儲存設定</div>'}
+        <div class="saved-card-text"><div class="saved-card-title" title="${escaped(c.title)}">${escaped(c.title)}</div><div class="saved-card-meta">${escaped(p?.name||'自訂姿勢')}<br>${a?.height||0} / ${b?.height||0} cm</div></div>
+        <div class="saved-card-buttons"><button type="button" class="saved-apply" data-card-action="apply" aria-label="套用 ${escaped(c.title)}">套用</button><button type="button" data-card-action="share" aria-label="分享 ${escaped(c.title)} 的圖卡">分享 PNG</button><button type="button" data-card-action="download" aria-label="下載 ${escaped(c.title)} 的圖卡">下載</button><button type="button" data-card-action="export" aria-label="備份 ${escaped(c.title)} 的姿勢設定">備份設定</button><button type="button" class="saved-delete" data-card-action="delete" aria-label="刪除 ${escaped(c.title)}" style="grid-column:span 2">刪除圖卡</button></div>
+      </article>`;
+    }).join(''):'<div class="saved-empty">還沒有自己的圖卡。調好身高、家具及關節後，按「儲存目前姿勢」就能建立第一張。</div>';
+    $('saved-pose-grid').innerHTML=html;
+    $('mobile-saved-pose-grid').innerHTML=html;
+    $('saved-pose-count').textContent=String(entries.length);
+  }
+  window.__renderSavedCards=renderCards;
+  async function handleCardAction(event) {
+    const action=event.target.closest('[data-card-action]');if(!action)return;
+    const card=action.closest('[data-card-id]');
+    const record=entries.find(x=>x.id===card?.dataset.cardId);if(!record)return;
+    if(action.dataset.cardAction==='apply') {
+      if (!api.restoreSavedPose(record.state,record.camera,()=>{
+        message('已套用整套姿勢設定，可以繼續在上方 3D 畫面微調。');
+        if(window.innerWidth>760) $('studio').scrollIntoView({block:'start',behavior:'smooth'});
+      })) {message('找不到這張圖卡使用的姿勢');return;}
+    } else if(action.dataset.cardAction==='delete') {
+      if (!confirm(`要刪除「${record.title}」嗎？此動作無法復原。`))return;
+      entries=entries.filter(x=>x.id!==record.id);
+      persist();await removeImage(record.id);renderCards();message('已刪除圖卡。');
+    } else if(action.dataset.cardAction==='export') {
+      const json={format:'near-pose-card-v1',title:record.title,note:record.note,state:record.state,camera:record.camera};
+      download(new Blob([JSON.stringify(json,null,2)],{type:'application/json'}), filename(record.title,'nearpose.json'));
+      message('已下載姿勢設定備份檔。');
+    } else if(action.dataset.cardAction==='share'||action.dataset.cardAction==='download') {
+      api.gateIntimateState(record.state, async () => {
+        action.disabled=true;
+        try {
+          const blob=await imageForRecord(record);
+          if(!blob){message('找不到圖卡影像，請重新套用姿勢再儲存。');return;}
+          if(action.dataset.cardAction==='share')await shareImage(blob,record.title);
+          else {download(blob,filename(record.title));message('已下載 PNG 圖卡。');}
+        } finally {action.disabled=false;}
+      });
+    }
+  }
+  $('saved-pose-grid').addEventListener('click',handleCardAction);
+  $('mobile-saved-pose-grid').addEventListener('click',handleCardAction);
+  $('open-save-card').addEventListener('click',newCard);
+  $('save-card-main').addEventListener('click',newCard);
+  $('import-pose-card').addEventListener('click',()=>$('pose-import-input').click());
+  $('pose-import-input').addEventListener('change',async(e)=>{
+    const file=e.target.files?.[0];
+    e.target.value='';
+    if(!file)return;
+    if(file.size>250000){message('設定檔過大，請選擇由本模擬器匯出的 JSON。');return;}
+    try {
+      const data=JSON.parse(await file.text());
+      if(data.format!=='near-pose-card-v1'||!data.state||!api.poses.some(p=>p.id===data.state.pose))throw new Error('format');
+      if(!api.restoreSavedPose(data.state,data.camera,async()=>{
+        try {
+          await newCard();
+          title.value=String(data.title||lookupPose(data.state.pose)?.name||'匯入的姿勢').slice(0,34);
+          note.value=String(data.note||'').slice(0,75);
+          drawCard();
+          message('已匯入姿勢，確認後按「存入圖卡」即可保留。');
+        } catch(error) {console.warn(error);message('匯入後無法開啟圖卡編輯器。');}
+      }))throw new Error('restore');
+    }catch(err){console.warn(err);message('無法匯入：請使用本模擬器匯出的姿勢設定 JSON。');}
+  });
+  $('close-pose-card').addEventListener('click',()=>dialog.close());
+  title.addEventListener('input',scheduleDraw);
+  note.addEventListener('input',scheduleDraw);
+  document.getElementById('near-card-style')?.addEventListener('change',scheduleDraw);
+  $('commit-pose-card').addEventListener('click',saveCard);
+  $('download-current-card').addEventListener('click',async()=>{
+    if(!draft)return;drawCard();download(await blobOf(canvas),filename(title.value.trim()));
+  });
+  $('share-current-card').addEventListener('click',async()=>{
+    if(!draft)return;drawCard();await shareImage(await blobOf(canvas),title.value.trim());
+  });
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  renderCards();
+})();
+
+</script>
+<script>
+
+/* Upgrade existing controls without replacing the simulation's state or event listeners. */
+(() => {
+  'use strict';
+  const root=document.querySelector('#studio>.settings');
+  if(!root)return;
+  const $=id=>document.getElementById(id);
+  const fine=root.querySelector('.advanced-details:not(#joint-details)');
+  if(fine){
+    const title=fine.querySelector('summary>span');if(title)title.textContent='比例與間距';
+    const host=fine.querySelector('.fine-content');
+    if(host){
+      const grid=document.createElement('div');grid.className='refined-fine-rows';
+      const labels=Array.from(host.querySelectorAll(':scope > label'));
+      for(const lab of labels){
+        const target=lab.getAttribute('for');const inp=target?host.querySelector('#'+CSS.escape(target)):null;
+        if(!inp)continue;
+        const row=document.createElement('div');row.className='refined-fine-control';
+        grid.append(row);row.append(lab,inp);
+      }
+      host.prepend(grid);
+      const help=host.querySelector(':scope > p');if(help){help.className='refined-fine-hint';help.textContent='調整後會同步更新上方 3D 場景。';}
+    }
+  }
+  const joint=$('joint-details');const person=$('edit-person');const part=$('edit-joint');
+  if(!joint||!person||!part)return;
+  const mobilePane=root.querySelector('.mobile-pane[data-pane="joints"]');
+  const section=mobilePane?.firstElementChild;
+  if(section){
+    section.className='mobile-joint-header';
+    section.innerHTML='<div><div class="mobile-joint-header-title">精細調整</div><div class="mobile-joint-header-sub">選擇部位，直接在上方看變化</div></div><span class="joint-header-icon" aria-hidden="true">⌘</span>';
+  }
+  const main=joint.querySelector('.fine-content');
+  const summary=joint.querySelector('summary>span');if(summary)summary.textContent='關節微調';
+  if(!main)return;
+  const personPills=document.createElement('div');personPills.className='joint-person-toggle';personPills.setAttribute('role','group');personPills.setAttribute('aria-label','選擇要調整的人物');
+  personPills.innerHTML='<button type="button" data-person="0"><span class="person-toggle-symbol">A</span>人物 A</button><button type="button" data-person="1"><span class="person-toggle-symbol">B</span>人物 B</button>';
+  main.prepend(personPills);
+  const syncPerson=()=>personPills.querySelectorAll('button').forEach(b=>{let current=b.dataset.person===person.value;b.classList.toggle('is-current',current);b.setAttribute('aria-pressed',String(current));});
+  personPills.addEventListener('click',e=>{const b=e.target.closest('[data-person]');if(!b)return;person.value=b.dataset.person;person.dispatchEvent(new Event('change',{bubbles:true}));syncPerson();});
+  person.addEventListener('change',syncPerson);syncPerson();
+  const sliders=$('joint-sliders');sliders.classList.add('joint-axis-grid');
+  const reset=$('reset-pose');
+  if(reset){
+    const footer=document.createElement('div');footer.className='joint-reset-line';
+    const hint=document.createElement('p');hint.className='joint-help';hint.textContent='重設只影響目前姿勢';
+    reset.before(footer);footer.append(hint,reset);
+  }
+  // Remove the large second paragraph, but preserve live controls and their listeners.
+  main.querySelectorAll(':scope > p').forEach(p=>p.remove());
+  function decorateSliders(){
+    sliders.querySelectorAll('.joint-field').forEach(field=>{
+      if(field.classList.contains('ed-ready'))return;
+      const range=field.querySelector('input[type="range"]');if(!range)return;
+      let wrap=range.parentElement;
+      if(!wrap.classList.contains('mobile-step-row')&&!wrap.classList.contains('ed-step-row')){
+        wrap=document.createElement('div');wrap.className='ed-step-row';range.before(wrap);wrap.append(range);
+        const step=(delta)=>{
+          const b=document.createElement('button');b.type='button';b.textContent=delta<0?'−':'+';b.setAttribute('aria-label',(range.getAttribute('aria-label')||'角度')+(delta<0?'減少':'增加')+'一單位');
+          b.addEventListener('click',()=>{range.value=Math.max(Number(range.min),Math.min(Number(range.max),Number(range.value)+delta));range.dispatchEvent(new Event('input',{bubbles:true}));});
+          return b;
+        };
+        wrap.prepend(step(-1));wrap.append(step(1));
+      }
+      field.classList.add('ed-ready');
+    });
+  }
+  const observer=new MutationObserver(()=>requestAnimationFrame(decorateSliders));
+  observer.observe(sliders,{childList:true});decorateSliders();
+  // Keep the actual preview visible when an inner control receives focus.
+  // Mobile browser auto-scroll can otherwise move the entire studio offscreen.
+  const studio=document.getElementById('studio');
+  const alignStudio=()=>{
+    if(window.innerWidth>760||!studio)return;
+    const rect=studio.getBoundingClientRect();
+    if(rect.top < -9 || rect.top > 62){
+      window.scrollTo({top:Math.max(0,window.scrollY+rect.top-3),behavior:'instant'});
+    }
+  };
+  root.addEventListener('click',()=>requestAnimationFrame(alignStudio),true);
+  root.addEventListener('input',()=>requestAnimationFrame(alignStudio),true);
+})();
+
+</script>
+
+<script>
+/* Desktop inspector: moves existing live settings, never clones controls or state. */
+(()=>{
+  'use strict';
+  const studio=document.getElementById('studio');
+  const api=window.nearMobileApi;
+  if(!studio||!api) return;
+  const inspector=document.createElement('aside');
+  inspector.className='near-desktop-inspector';
+  inspector.setAttribute('aria-label','桌面姿勢與人物調整工具');
+  inspector.innerHTML=`<div class="ndi-top"><span class="ndi-eyebrow">STUDIO CONTROL</span><div class="ndi-head"><strong>精細調整</strong><span class="ndi-live">● 即時更新</span></div></div>
+  <nav class="ndi-tabs" aria-label="桌面編輯面板"><button type="button" data-ndi-tab="shape" aria-selected="true">人物</button><button type="button" data-ndi-tab="pose" aria-selected="false">姿勢</button><button type="button" data-ndi-tab="joints" aria-selected="false">關節</button><button type="button" data-ndi-tab="room" aria-selected="false">家具</button></nav>
+  <div class="ndi-pages">
+    <section class="ndi-page is-active" data-ndi-pane="shape"><div class="ndi-title">人物比例與輪廓</div><p class="ndi-desc">兩個人獨立調整，維持總身高不變。</p></section>
+    <section class="ndi-page" data-ndi-pane="pose"><div class="ndi-title">尋找雙人姿勢</div><p class="ndi-desc">選取後，中間 3D 畫面會立即切換。</p><label class="ndi-pose-search">⌕ <input type="search" id="ndi-pose-search" placeholder="搜尋所有姿勢…" aria-label="搜尋姿勢"></label><div class="ndi-filters"><button data-ndi-filter="all" aria-pressed="true">全部</button><button data-ndi-filter="daily" aria-pressed="false">日常</button><button data-ndi-filter="intimate" aria-pressed="false">親密</button><button data-ndi-filter="fav" aria-pressed="false">收藏</button></div><div class="ndi-pose-list" id="ndi-pose-list"></div></section>
+    <section class="ndi-page" data-ndi-pane="joints"><div class="ndi-title">關節精修</div><p class="ndi-desc">選擇人物及部位，精確調整姿勢與相對位置。</p></section>
+    <section class="ndi-page" data-ndi-pane="room"><div class="ndi-title">家具與場景</div><p class="ndi-desc">調整床、沙發與椅面高度，結果同步預覽。</p></section>
+  </div><div class="ndi-bottom"><button type="button" id="ndi-reset-view">↺ 重設視角</button><button type="button" class="ndi-primary" id="ndi-save-card">♡ 儲存圖卡</button></div>`;
+  studio.append(inspector);
+  const $=(sel,root=document)=>root.querySelector(sel);
+  const page=(key)=>$('[data-ndi-pane="'+key+'"]',inspector);
+  // Existing settings were organized into mobile panes by the responsive controller.
+  // Placeholders ensure each input returns to its EXACT original location below 1100px.
+  const moved=[];
+  const move=(node,dst)=>{if(!node||!dst)return;const placeholder=document.createComment('near-original-location');node.before(placeholder);dst.append(node);moved.push({node,placeholder});};
+  const mq=window.matchMedia('(min-width:1100px)');
+  const personPane=$('.mobile-pane[data-pane="people"]');
+  const roomPane=$('.mobile-pane[data-pane="surface"]');
+  const jointPane=$('.mobile-pane[data-pane="joints"]');
+  const sourcePositions=[
+    [document.getElementById('proportion-panel'),page('shape')],
+    [$('.surface-heading',roomPane),page('room')],
+    [$('.surface-fields',roomPane),page('room')],
+    [$('.advanced-details:not(#joint-details)',roomPane),page('room')],
+    [$('.mobile-joint-shortcuts',jointPane),page('joints')],
+    [document.getElementById('joint-details'),page('joints')]
+  ];
+  const switchLayout=()=>{
+    if(mq.matches){
+      if(!moved.length)sourcePositions.forEach(([node,host])=>move(node,host));
+      const p=document.getElementById('proportion-panel');if(p)p.open=true;
+      const j=document.getElementById('joint-details');if(j)j.open=true;
+    }else{
+      while(moved.length){const {node,placeholder}=moved.pop();placeholder.replaceWith(node);}
+    }
+    window.dispatchEvent(new Event('resize'));
+  };
+  const setTab=(name)=>{
+    inspector.querySelectorAll('[data-ndi-tab]').forEach(btn=>btn.setAttribute('aria-selected',String(btn.dataset.ndiTab===name)));
+    inspector.querySelectorAll('[data-ndi-pane]').forEach(p=>p.classList.toggle('is-active',p.dataset.ndiPane===name));
+    $('.ndi-pages',inspector).scrollTop=0;
+    if(name==='pose')renderPoseList();
+  };
+  $('.ndi-tabs',inspector).addEventListener('click',e=>{const b=e.target.closest('[data-ndi-tab]');if(b)setTab(b.dataset.ndiTab)});
+  let filter='all';
+  const safe=(value)=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const renderPoseList=()=>{
+    const query=$('#ndi-pose-search',inspector).value.trim().toLowerCase();
+    const list=api.poses.filter(p=>(filter==='all'||filter==='daily'&&p.category<8||filter==='intimate'&&p.category>=8||filter==='fav'&&api.state.favorites.includes(p.id))&&(!query||p.name.toLowerCase().includes(query)));
+    $('#ndi-pose-list',inspector).innerHTML=list.map((p,i)=>`<button type="button" data-pose-id="${safe(p.id)}" aria-current="${String(p.id===api.state.pose)}"><span class="ndi-pose-number">${String(i+1).padStart(2,'0')}</span><span class="ndi-pose-name">${safe(p.name)}</span><span class="ndi-pose-type">${p.category>=8?'親密':'日常'}</span></button>`).join('')||'<p class="ndi-desc">目前沒有符合的姿勢。</p>';
+  };
+  $('#ndi-pose-search',inspector).addEventListener('input',renderPoseList);
+  $('.ndi-filters',inspector).addEventListener('click',e=>{let b=e.target.closest('[data-ndi-filter]');if(!b)return;const select=()=>{filter=b.dataset.ndiFilter;inspector.querySelectorAll('[data-ndi-filter]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));renderPoseList();};if(b.dataset.ndiFilter==='intimate')api.confirmIntimateLibrary(select);else select();});
+  $('#ndi-pose-list',inspector).addEventListener('click',e=>{const b=e.target.closest('[data-pose-id]');if(b){api.choosePose(b.dataset.poseId);renderPoseList();}});
+  document.getElementById('active-name')&&new MutationObserver(()=>{if(page('pose').classList.contains('is-active'))renderPoseList()}).observe(document.getElementById('active-name'),{childList:true,subtree:true,characterData:true});
+  $('#ndi-save-card',inspector).addEventListener('click',()=>document.getElementById('save-card-main')?.click());
+  $('#ndi-reset-view',inspector).addEventListener('click',()=>document.getElementById('reset-view')?.click());
+  mq.addEventListener?mq.addEventListener('change',switchLayout):mq.addListener(switchLayout);
+  switchLayout();setTab('shape');
+  window.nearDesktopInspector={setTab,renderPoseList};
+})();
+</script>
+
+
+<script>
+/* néar. 4.1 — compact mobile settings cards. All original inputs stay live. */
+(() => {
+  'use strict';
+  const phone = window.matchMedia('(max-width:760px)');
+  const people = document.getElementById('people');
+  const proportion = document.getElementById('proportion-panel');
+  const joint = document.getElementById('joint-details');
+  const surface = document.querySelector('.mobile-pane[data-pane="surface"]');
+  if (!people || !proportion || !joint || !surface) return;
+  // Lightweight toggle button lets app.js continue to address #people.children[0/1].
+  function addToggle(card, title, subtitle) {
+    if (!card || card.querySelector(':scope > .near-card-toggle')) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'near-card-toggle';
+    button.setAttribute('aria-expanded','false');
+    button.innerHTML = '<span class="near-card-toggle-text"><b></b><small></small></span><span class="near-card-chevron" aria-hidden="true">⌄</span>';
+    card.prepend(button);
+    card.classList.add('near-card-collapsed');
+    button.querySelector('b').textContent = title;
+    button.querySelector('small').textContent = subtitle || '點擊展開設定';
+    button.addEventListener('click', () => {
+      const collapsed=card.classList.toggle('near-card-collapsed');
+      button.setAttribute('aria-expanded',String(!collapsed));
+    });
+    return button;
+  }
+  function bindPeople() {
+    people.querySelectorAll(':scope > .person-card').forEach((card,i) => {
+      const button=addToggle(card,`人物 ${i?'B':'A'}`,'身高與外觀');
+      const name=document.getElementById(`name-${i}`);
+      const height=document.getElementById(`number-${i}`);
+      if (button && name && height) {
+        const sync=()=>{button.querySelector('small').textContent=`${name.value||'未命名'} · ${height.value||'—'} cm`;};
+        name.addEventListener('input',sync);
+        height.addEventListener('input',sync);
+        height.addEventListener('change',sync);
+        sync();
+      }
+    });
+  }
+  bindPeople();
+  new MutationObserver(() => bindPeople()).observe(people,{childList:true});
+  function bindFurniture() {
+    surface.querySelectorAll('.surface-field').forEach(card=>{
+      const label=card.querySelector(':scope > label');
+      const name=label?.querySelector('span:nth-child(2)')?.childNodes?.[0]?.textContent?.trim() || label?.textContent?.trim() || '家具高度';
+      const range=card.querySelector('input[type="range"]');
+      const number=card.querySelector('input[type="number"]');
+      const button=addToggle(card,name,'點擊調整高度');
+      if (button && range) {
+        const sync=()=>{button.querySelector('small').textContent=`目前 ${number?.value || range.value} cm · 點擊調整`;};
+        range.addEventListener('input',sync);
+        number?.addEventListener('input',sync);
+        sync();
+      }
+    });
+  }
+  bindFurniture();
+  // The original joint pane deliberately forced its details open and hid the
+  // summary; restore the native accordion on phones.
+  let previousMobile=phone.matches;
+  function applyLayout() {
+    if (phone.matches) {
+      if (!previousMobile) {
+        people.querySelectorAll('.person-card').forEach(card=>{
+          card.classList.add('near-card-collapsed');
+          card.querySelector('.near-card-toggle')?.setAttribute('aria-expanded','false');
+        });
+        surface.querySelectorAll('.surface-field').forEach(card=>{
+          card.classList.add('near-card-collapsed');
+          card.querySelector('.near-card-toggle')?.setAttribute('aria-expanded','false');
+        });
+      }
+      proportion.open = false;
+      joint.open = false;
+      surface.querySelectorAll('details.advanced-details').forEach(d=>d.open=false);
+    } else if (window.matchMedia('(min-width:1100px)').matches) {
+      proportion.open=true;
+      joint.open=true;
+    }
+    previousMobile=phone.matches;
+  }
+  phone.addEventListener?.('change',applyLayout);
+  applyLayout();
+})();
+</script>
+</body></html>
